@@ -12,5 +12,13 @@ libraryDependencies ++= Seq(
   jdbc,
   evolutions,
   ws,
+  "org.webjars" %% "webjars-play" % "2.4.0-1",
+  "org.webjars" % "bootstrap" % "3.3.4",
   filters
+)
+
+resolvers ++= Seq(
+	"Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
+	"Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases/",
+	"Apache" at "http://repo1.maven.org/maven2/"
 )
