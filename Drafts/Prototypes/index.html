@@ -1,0 +1,75 @@
+<!DOCTYPE html><!-- indicador HTML5 -->
+<html>
+<head>
+	<meta charset="utf-8"><!-- codificação mais utilizada -->
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- width =device-width torna responsivo -->
+	<title>SINBA - Sistema de Informações de Bacias Hidrográficas</title>
+	<!-- início das chamadas do Bootstrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- fim das chamadas do Bootstrap -->
+	<link rel="stylesheet" href="index.css"><!-- ligação com CSS -->
+</head>
+<body>
+	<div class="container"><!-- com container-fluid também fica bom mas espalha por toda a tela -->
+		<div class="page-header"><!-- cria uma divisão no topo da página -->
+			<h1>SINBA<br /><small>Sistema de Informações de Bacias Hidrográficas</small></h1><!-- small cria um texto secundário um pouco menor que o cabeçalho -->
+		</div>
+		<div class="row"><!-- cria uma linha -->
+			<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
+				<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Contorno_do_mapa_do_Brasil.svg/1024px-Contorno_do_mapa_do_Brasil.svg.png" width="505" height="505"/><!-- img-responsive torna a imagem responsiva -->	
+			</div>
+			<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
+				<table class="table-striped">
+					<div class="row">
+						<form role="form">               
+							<div class="form-group">
+								<label for="inputdefault">Login</label>
+								<input class="form-control" id="inputdefault" type="text">                
+							</div>
+							<div class="form-group">
+								<label for="inputdefault">Senha</label>
+								<input class="form-control" id="inputdefault" type="text">                  
+							</div>
+						</form>
+						<a href="www.ufms.br">Esqueci minha senha</a>
+						<br />
+						<a href="www.ufms.br">Cadastre-se</a>
+						<br />
+						<br />
+						<a href="http://www.ufms.br" class="btn btn-default" role="button">
+							<button type="button" class="btn btn-default">Entrar</button>
+						</a>
+					</div>
+				</table>
+				<div class="row">
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<a href="http://www.ufms.br"><img class="img-responsive" src="http://recobio.wp.facom.ufms.br/wp-content/uploads/sites/11/2014/07/ufms.png" width="100" height="100"></a><!-- tirar essa gambiarra de br -->
+				</div>
+			</div>
+		</div>
+		<div class="page-footer"><!-- divisão inferior com 1 linha e 3 colunas mescladas relativo a 4 espaços cada -->
+			<div class="row">
+				<div class="col-sm-4">
+				</div>
+				<div class="col-sm-4">
+					<br />
+					<br />
+					<p class="text-center">LASAC - UFMS - 2016</p>
+				</div>
+				<div class="col-sm-4">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
