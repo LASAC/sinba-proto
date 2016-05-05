@@ -1,0 +1,66 @@
+@* View destinada ao sistema de unidades *@
+@(editingUnit: Unit, unitList: List[Unit])
+
+@import views.html.common._
+@import play.libs._
+
+@main("Sistema de Unidades") {
+<br />
+<br />
+<div class="row">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-6">
+    <table>
+      <tr>
+        <td>
+          <h3>Sistema de Unidades - Cadastro</h3>
+          @helper.form(action = routes.UnitController.save()) {             
+            <div class="form-group">
+              <label for="name">Nome (Ex.: metros)</label>
+              <input class="form-control" name="name" id="name" type="text" value="@editingUnit.name" />              
+            </div>
+            <div class="form-group">
+              <label for="symbol">Símbolo (Ex.: m)</label>
+              <input class="form-control" name="symbol" id="symbol" type="text" value="@editingUnit.symbol" />
+            </div>
+		    <input type="submit" class="btn btn-default" value="Inserir"></button>
+		    <button type="button" class="btn btn-default" onclick="return false;">Ajuda</button>     
+          }      
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-sm-3">
+  </div>
+</div>
+<br />
+<br />
+<div class="table-responsive">   
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Símbolo</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(unit <- unitList) {
+			<tr>
+				<td>@unit.name</td>
+				<td>@unit.symbol</td>
+				<td>
+					<button type="button" class="btn btn-success"
+							onclick="handle('@routes.UnitController.edit(unit.id)', 'POST');">Editar</button>
+					<button type="button" class="btn btn-warning"
+							onclick="handle('@routes.UnitController.delete(unit.id)', 'POST');">Excluir</button>
+				</td>
+			</tr>
+			}
+		</tbody>
+
+		@div_message("Atenção", "Você tem " + unitList.size() + " novas solicitações!")
+	</table>
+</div>
+}

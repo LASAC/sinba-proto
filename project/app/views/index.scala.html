@@ -2,7 +2,7 @@
  * This template takes a single argument, a String containing a
  * message to display.
  *@
-@(title: String)
+@(title: String, strong: String, message: String, messageType: String="success")
 
 
 @import views.html.common._
@@ -12,48 +12,46 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main(title) {
-
-    <div class="page-header"><!-- cria uma divisão no topo da página -->
-			<h1>SINBA<br /><small>Sistema de Informações de Bacias Hidrográficas</small></h1><!-- small cria um texto secundário um pouco menor que o cabeçalho -->
+@main_public(title) {
+	<div class="row"><!-- cria uma linha -->
+		<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
+			<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Contorno_do_mapa_do_Brasil.svg/1024px-Contorno_do_mapa_do_Brasil.svg.png" width="505" height="505"/><!-- img-responsive torna a imagem responsiva -->	
 		</div>
-		<div class="row"><!-- cria uma linha -->
-			<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
-				<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Contorno_do_mapa_do_Brasil.svg/1024px-Contorno_do_mapa_do_Brasil.svg.png" width="505" height="505"/><!-- img-responsive torna a imagem responsiva -->	
-			</div>
-			<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
-				<table class="table-striped">
-					<div class="row">
-						<form role="form">               
-							<div class="form-group">
-								<label for="inputdefault">Login</label>
-								<input class="form-control" id="inputdefault" type="text">                
-							</div>
-							<div class="form-group">
-								<label for="inputdefault">Senha</label>
-								<input class="form-control" id="inputdefault" type="text">                  
-							</div>
-						</form>
+		<div class="col-sm-6"><!--cria uma coluna mesclada relativa à 6 colunas (somatório deve ser no máximo 12)-->
+			<table class="table-striped">
+				<div class="row">
+					@helper.form(action = routes.HomeController.login()) {            
+						<div class="form-group">
+							<label for="email">E-mail</label>
+							<input class="form-control" name="email" id="email" type="text">                
+						</div>
+						<div class="form-group">
+							<label for="password">Senha</label>
+							<input class="form-control" name="password" id="password" type="password">                  
+						</div>
 						<a href="www.ufms.br">Esqueci minha senha</a>
 						<br />
-						<a href="www.ufms.br">Cadastre-se</a>
+						<a href="/register">Cadastre-se</a>
 						<br />
 						<br />
-						<a href="http://www.ufms.br" class="btn btn-default" role="button">
-							<button type="button" class="btn btn-default">Entrar</button>
+						<a href="#" class="btn btn-default" role="button">
+							<input type="submit" class="btn btn-default" value="Entrar" />
 						</a>
-					</div>
-				</table>
-				<div class="row">
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<a href="http://www.ufms.br"><img class="img-responsive" src="http://recobio.wp.facom.ufms.br/wp-content/uploads/sites/11/2014/07/ufms.png" width="100" height="100"></a><!-- tirar essa gambiarra de br -->
+					}
 				</div>
+			</table>
+			<div class="row">
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<a href="http://www.ufms.br"><img class="img-responsive" src="http://recobio.wp.facom.ufms.br/wp-content/uploads/sites/11/2014/07/ufms.png" width="100" height="100"></a><!-- tirar essa gambiarra de br -->
 			</div>
 		</div>
-
+	</div>
+	@if(!message.isEmpty() || !strong.isEmpty()) {
+		@div_message(strong, message, messageType)
+	}
 }

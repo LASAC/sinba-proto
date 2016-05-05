@@ -1,0 +1,16 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html><!-- indicador HTML5 -->
+<html lang="pt-br">
+<head>
+	@head_section(title)
+</head>
+
+<body>
+	<div class="container"><!-- com container-fluid também fica bom mas espalha por toda a tela -->
+		@main_header()
+		@content
+		@main_footer()
+	</div>
+</body>
+</html>

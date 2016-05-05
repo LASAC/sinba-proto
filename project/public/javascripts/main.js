@@ -1,12 +1,12 @@
 /*
- * Function to handle deletion from the list
-function del(delUrl) {
+ * Function to handle ajax requests
+ */
+function handle(targetUrl, type) {
 	$.ajax( {
-		url: delUrl,
-		type: 'DELETE',
+		url: targetUrl,
+		type: type,
 		success: function(results) {
 			location.reload();
 		}
 	});
 }
- */

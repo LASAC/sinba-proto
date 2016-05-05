@@ -1,16 +1,25 @@
 @(title: String)(content: Html)
+@import views.html.common._
 
-<!DOCTYPE html><!-- indicador HTML5 -->
-<html lang="pt-br">
-<head>
-	@head_section(title)
-</head>
-
-<body>
-	@main_header()
-	<div class="container"><!-- com container-fluid também fica bom mas espalha por toda a tela -->
-		@content
-		@main_footer()
-	</div>
-</body>
-</html>
+@main_public(title) {
+<div class="row">
+	<center>
+		<button type="button" class="btn btn-default"
+				onclick="window.location='@routes.HomeController.home()';" >
+			Página Inicial
+		</button>
+		<button type="button" class="btn btn-default"
+				onclick="window.location='@routes.UserController.manage()';" >
+			Gerenciar Usuários
+		</button>
+		<button type="button" class="btn btn-default"
+				onclick="window.location='@routes.UnitController.create()';" >
+			Sistemas de Unidades
+		</button>
+		<button type="button" class="btn btn-default">Link04</button>
+		<button type="button" class="btn btn-default">Link05</button>
+		<button type="button" class="btn btn-default">Link06</button>
+	</center> 
+</div>
+@content
+}

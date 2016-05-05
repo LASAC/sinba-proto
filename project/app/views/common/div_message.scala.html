@@ -1,0 +1,8 @@
+@(strong: String, message: String, messageType: String="success")
+<div class="alert alert-@messageType">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	@if(!strong.isEmpty()) {
+		<strong>@strong</strong>
+	}
+	@message
+</div>

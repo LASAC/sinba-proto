@@ -1,0 +1,58 @@
+@(userForm: Form[User])
+
+@import helper._
+@import views.html.common._
+
+@main_public("Solicitação de Cadastro") {
+<br />
+<br />
+<div class="row">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-6">
+    <table class="table table-striped table-bordered" style="50%">
+      <tr>
+        <td>
+          <h3>Cadastro</h3>
+          @helper.form(action = routes.UserController.save()) {
+          <!--<form role="form" action="register" method="post">-->
+            <div class="form-group">
+              @helper.inputText(userForm.field("name"),
+                '_label -> "Nome",
+                '_class -> "form-group")
+              <!--<label for="name">Nome</label>
+              <input class="form-control" id="name" type="text">-->
+            </div>
+            <div class="form-group">
+              @helper.inputText(userForm.field("lastName"),
+                '_label -> "Sobrenome",
+                '_class -> "form-group")
+              <!--<label for="lastName">Sobrenome</label>
+              <input class="form-control" id="lastName" type="text">-->
+            </div>
+            <div class="form-group">
+              @helper.inputText(userForm.field("email"),
+                '_label -> "E-mail",
+                '_class -> "form-group")
+              <!--<label for="email">Email</label>
+              <input class="form-control" id="email" type="text">-->
+            </div>
+            <div class="form-group">
+              @helper.inputText(userForm.field("justification"),
+                '_label -> "Justificativa",
+                '_class -> "form-group")
+              <!--<label for="justification">Justificativa</label>
+              <input class="form-control" id="justification" type="text">-->
+            </div>
+      			<input type="submit" class="btn btn-default" value="Enviar" />
+      			<button type="button" class="btn btn-default">Ajuda</button>      
+          <!--</form>-->
+          }  
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-sm-3">
+  </div>
+</div>
+}

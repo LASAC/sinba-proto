@@ -2,9 +2,27 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
+# Área Pública
 GET     /                           controllers.HomeController.index()
 POST    /                           controllers.HomeController.login()
+GET		/denied						controllers.HomeController.accessDenied()
+
+# Página Inicial
+GET     /home                       controllers.HomeController.home()
+
+# Cadastre-se
+GET     /register 	                controllers.UserController.register()
+POST    /register 	                controllers.UserController.save()
+# Gerenciar Usuários
+GET     /manage 	                controllers.UserController.manage()
+POST    /deny/:id 	                controllers.UserController.deny(id: Long)
+GET     /updatePermission           controllers.UserController.updatePermission()
+
+# Sistema de Unidades
+GET		/unit						controllers.UnitController.create()
+POST	/unit						controllers.UnitController.save()
+POST	/unit/edit/:id				controllers.UnitController.edit(id: Long)
+POST	/unit/delete/:id			controllers.UnitController.delete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET 	/assets/*file				controllers.Assets.at(path="/public", file)
