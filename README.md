@@ -1,2 +1,8 @@
 # SINBA
-Desenvolvido usando Java Play Framework. Sistema de Informações de Bacias Hidrográficas.
+
+## Sistema de Informações de Bacias Hidrográficas.
+
+Aplicação Web desenvolvida como pré-requisito para defesa de Mestrado na FAENG/UFMS.
+
+## Desenvolvido usando PHP Laravel Framework. 
+
