@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/unities', function () {
+    return view('unities.list');
+});
+
 // Rotas de Autenticação
 Auth::routes();
 Route::get('/home', 'HomeController@index');
