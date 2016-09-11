@@ -15,5 +15,8 @@ return [
 
     'failed' => 'Credenciais incorretas.',
     'throttle' => 'Muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
+    'register' => [
+        'title' => 'Solicitação de Cadastro'
+    ]
 
 ];

@@ -13,5 +13,12 @@ return [
     'contact' => [
         'us' => 'Entre em contato conosco via email'
     ],
+    'emailAddress' => 'Endereço de E-mail',
+    'name' => 'Nome',
+    'lastName' => 'Sobrenome',
+    'password' => 'Senha',
+    'confirmPassword' => 'Confirmação da Senha',
+    'register' => 'Registrar',
+    'justification' => 'Justificativa',
 
 ];
