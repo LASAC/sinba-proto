@@ -1,0 +1,39 @@
+Roteiro para criar um CRUD
+
+* Criar pasta para as Views:
+	resources/views/<conceito>
+
+* Criar views de crud:
+	resources/views/<conceito>/edit.blade.php
+
+		View responsável por:
+			- Criar um novo conceito (Modo "create")
+			- Visualizar (somente-leitura) um conceito existente (Modo "show")
+			- Editar um conceito existente (Modo "edit")
+
+	resources/views/<conceito>/list.blade.php
+
+		View responsável por listar os conceitos
+		Para cada conceito, conter ações de "Visualizar", "Editar" e "Excluir"
+
+* Criar Model e Migration
+
+	Executar comando:
+		php artisan make:model --migration
+
+	Implementar Scripts up e down de Migration
+	Implementar os atributos fillable
+
+* Criar controller:
+	Executar comando:
+		php artisan make:controller <ConceitosController>
+	Implementar validação:
+		validator(array $data)
+	Implementar ações:
+		getIndex -> listar
+		postSearch -> buscar
+		getCreate -> retornar view de criar
+		getEdit($id) -> retornar view para editar um conceito específico
+		postEdit() -> executar update do conceito no BD
+		getShow($id) -> retornar view para visualizar um conceito específico
+		postDelete($id) -> excluir um registro do BD
