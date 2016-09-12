@@ -13,9 +13,17 @@ return [
     'contact' => [
         'us' => 'Contact us via email'
     ],
-    'emailAddress' => 'E-mail Address',
     'name' => 'First Name',
     'lastName' => 'Last Name',
+    'birthDate' => 'Birthday Date',
+    'cpf' => 'CPF',
+    'rg' => 'RG',
+    'address' => 'Address',
+    'phone' => 'Phone Number',
+    'celphone' => 'Phone Number (celular)',
+    'email' => 'Email',
+    'occupation' => 'Occupation',
+    'institution' => 'Institution',
     'password' => 'Password',
     'confirmPassword' => 'Confirm Password',
     'register' => 'Register',
