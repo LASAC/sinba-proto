@@ -20,5 +20,16 @@ return [
     'confirmPassword' => 'Confirm Password',
     'register' => 'Register',
     'justification' => 'Justification',
-
+    'units' => 'Units',
+    'listUnits' => 'List Units',
+    'unitsSystem' => 'Unities System',
+    'searchUnit' => 'Search Unit',
+    'createUnit' => 'Create Unit',
+    'editUnit' => 'Edit Unit',
+    'showUnit' => 'Show Unit',
+    'symbol' => 'Symbol',
+    'action' => 'Action',
+    'actions' => 'Actions',
+    'search' => 'Search',
+    'save' => 'Save',
 ];

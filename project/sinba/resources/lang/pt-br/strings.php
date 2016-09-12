@@ -20,5 +20,18 @@ return [
     'confirmPassword' => 'Confirmação da Senha',
     'register' => 'Registrar',
     'justification' => 'Justificativa',
-
+    'units' => 'Unidades',
+    'listUnits' => 'Listar Unidades',
+    'unitsSystem' => 'Sistema de Unidades',
+    'searchUnit' => 'Buscar Unidade',
+    'createUnit' => 'Cadastrar Unidade',
+    'editUnit' => 'Editar Unidade',
+    'showUnit' => 'Exibir Unidade',
+    'symbol' => 'Símbolo',
+    'action' => 'Ação',
+    'actions' => 'Ações',
+    'search' => 'Buscar',
+    'edit' => 'Editar',
+    'delete' => 'Excluir',
+    'save' => 'Salvar'
 ];
