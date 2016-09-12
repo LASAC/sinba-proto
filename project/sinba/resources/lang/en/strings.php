@@ -40,4 +40,9 @@ return [
     'actions' => 'Actions',
     'search' => 'Search',
     'save' => 'Save',
+    'start' => 'Start',
+    'results' => 'Results',
+    'lastSearch' => 'Last Search',
+    'settings' => 'Settings',
+    'watershedsManagement' => 'Watershed Management',
 ];

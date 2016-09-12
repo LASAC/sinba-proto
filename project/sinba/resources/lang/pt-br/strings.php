@@ -41,5 +41,10 @@ return [
     'search' => 'Buscar',
     'edit' => 'Editar',
     'delete' => 'Excluir',
-    'save' => 'Salvar'
+    'save' => 'Salvar',
+    'start' => 'Iniciar',
+    'results' => 'Resultados',
+    'lastSearch' => 'Última Pesquisa',
+    'settings' => 'Configurações',
+    'watershedsManagement' => 'Gerenciar Bacias Hidrográficas',
 ];

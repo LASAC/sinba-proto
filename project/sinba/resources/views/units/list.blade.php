@@ -36,18 +36,17 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $units = [
-                                        (object)['name'=>'Metros', 'symbol'=>'m'],
-                                        (object)['name'=>'Quilômetros', 'symbol'=>'km']
-                                ];
                                 ?>
                                 @foreach($units as $unit)
                                 <tr>
                                     <td style="text-align: center">{{$unit->name}}</td>
                                     <td style="text-align: center">{{$unit->symbol}}</td>
                                     <td style="text-align: center">
-                                        <button type="button" class="btn btn-success"
-                                                onclick="return false;">{{trans('strings.edit')}}</button>
+                                        <a href="{{url('/units/edit') . '/' . $unit->id}}">
+                                        <button type="button" class="btn btn-success">
+                                            {{trans('strings.edit')}}
+                                        </button>
+                                        </a>
                                         <button type="button" class="btn btn-warning"
                                                 onclick="return false;">{{trans('strings.delete')}}</button>
                                     </td>

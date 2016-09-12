@@ -17,12 +17,35 @@ Route::get('/', function () {
 
 // Rotas de Autenticação
 Auth::routes();
-Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function(){
 
+    Route::get('/home', function () {
+
+        $watersheds = [
+            'teste1',
+            'teste2'
+        ];
+
+        return view('home', [
+            'isAdmin' => true,
+            'resultLabel' => trans('strings.results'),
+            'watersheds' => $watersheds
+        ]);
+    });
+
     Route::get('/units', function () {
-        return view('units.list', ['message' => null]);
+
+        $units = [
+            (object)['id' => 1, 'name'=>'Metros', 'symbol'=>'m'],
+            (object)['id' => 2, 'name'=>'Quilômetros', 'symbol'=>'km'],
+            (object)['id' => 3, 'name'=>'Segundos', 'symbol'=>'s']
+        ];
+
+        return view('units.list', [
+            'message' => null,
+            'units' => $units
+        ]);
     });
 
     Route::post('/units/search', function(){
@@ -41,7 +64,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/units/edit/{id}', function ($id) {
         // buscar por id
-        $unit = (object)['name'=>'Metros', 'symbol'=>'m'];
+        $unit = (object)['name'=>'Quilômetros', 'symbol'=>'km'];
         return view('units.edit', [
             'title' => trans('strings.editUnit'),
             'url' => '/units/edit',
@@ -65,6 +88,10 @@ Route::group(['middleware' => 'auth'], function(){
         // buscar por id
         $unit = (object)['id' => $id, 'name'=>'Metros', 'symbol'=>'m'];
         return view('units.list', ['message' => 'edit', 'unit' => $unit]);
+    });
+
+    Route::get('watersheds/edit' , function () {
+        return view('watersheds.edit');
     });
 
 });
