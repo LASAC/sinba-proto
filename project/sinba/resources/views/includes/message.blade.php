@@ -13,6 +13,7 @@
                     </button>
                     <i class="fa-fw fa fa-warning"></i>
                     {{ Session::get('message_warning') }}
+                    {{ Session::forget('message_warning') }}
                 </div>
             @endif
 
@@ -23,6 +24,7 @@
                     </button>
                     <i class="fa-fw fa fa-check"></i>
                     {{ Session::get('message_success') }}
+                    {{ Session::forget('message_success') }}
                 </div>
             @endif
 
@@ -33,6 +35,7 @@
                     </button>
                     <i class="fa-fw fa fa-info"></i>
                     {{ Session::get('message_info') }}
+                    {{ Session::forget('message_info') }}
                 </div>
             @endif
 
@@ -43,6 +46,22 @@
                     </button>
                     <i class="fa-fw fa fa-times"></i>
                     {{ Session::get('message_danger') }}
+                    {{ Session::forget('message_danger') }}
+                </div>
+            @endif
+
+            @if(count($errors) > 0))
+                <div class="alert alert-danger fade in">
+                    <button class="close" data-dismiss="alert">
+                        X
+                    </button>
+                    <i class="fa-fw fa fa-times"></i>
+                    {{ trans('strings.fixTheErrors') }}
+                    <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                    </ul>
                 </div>
             @endif
 

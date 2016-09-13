@@ -16,7 +16,10 @@
                     <div class="panel-body">
 
                         <div id="unit">
-                            {{Form::open(['url' => $url])}}
+                            {{Form::open([
+                                'url' => $url,
+                                'method' => $method
+                            ])}}
                             {{Form::label('name', trans('strings.name') . ':')}}
                             {{Form::text('name', $unit->name, $attributes)}}
                             {{Form::label('symbol', trans('strings.symbol') . ':')}}

@@ -16,7 +16,9 @@
                     <div class="panel-body">
 
                         <div id="search_form">
-                        {{ Form::open(['url' => '/units']) }}
+                        {{ Form::open([
+                            'url' => '/units/search'
+                        ]) }}
                             {{Form::label('search', trans('strings.searchUnit') . ':')}}
                             {{Form::text('search')}}
                             {{Form::submit(trans('strings.search'))}}
@@ -31,27 +33,32 @@
                                 <tr>
                                     <th style="text-align: center">{{trans('strings.name')}}</th>
                                     <th style="text-align: center">{{trans('strings.symbol')}}</th>
-                                    <th style="text-align: center">{{trans('strings.action')}}</th>
+                                    <th style="text-align: center">{{trans('strings.actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                ?>
                                 @foreach($units as $unit)
                                 <tr>
                                     <td style="text-align: center">{{$unit->name}}</td>
                                     <td style="text-align: center">{{$unit->symbol}}</td>
                                     <td style="text-align: center">
-                                        <a href="{{url('/units/edit') . '/' . $unit->id}}">
-                                        <button type="button" class="btn btn-success">
-                                            {{trans('strings.edit')}}
-                                        </button>
+                                        {{Form::open([
+                                            'url' => "/units/{$unit->id}",
+                                            'method' => 'delete'
+                                        ])}}
+                                        <a href="{{url("/units/{$unit->id}/edit")}}">
+                                            <button type="button" class="btn btn-success">
+                                                {{trans('strings.edit')}}
+                                            </button>
                                         </a>
-                                        <button type="button" class="btn btn-warning"
-                                                onclick="return false;">{{trans('strings.delete')}}</button>
+                                        {{Form::submit(trans('strings.delete'), [
+                                            'class' => 'btn btn-warning'
+                                        ])}}
+                                        {{Form::close()}}
                                     </td>
                                 </tr>
                                 @endforeach
+
                                 </tbody>
                             </table>
                         </div>
