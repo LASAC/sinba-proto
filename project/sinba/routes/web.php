@@ -23,8 +23,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', function () {
 
         $watersheds = [
-            'teste1',
-            'teste2'
+            (object)['id' => 1, 'name' => 'Bacia 01'],
+            (object)['id' => 2, 'name' => 'Bacia 02'],
         ];
 
         return view('home', [
@@ -90,8 +90,12 @@ Route::group(['middleware' => 'auth'], function(){
         return view('units.list', ['message' => 'edit', 'unit' => $unit]);
     });
 
-    Route::get('watersheds/edit' , function () {
+    Route::get('watersheds/edit/{id}' , function ($id) {
         return view('watersheds.edit');
+    });
+
+    Route::get('watersheds/model/{id}', function ($id) {
+        return view('watersheds.model');
     });
 
 });

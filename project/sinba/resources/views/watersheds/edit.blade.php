@@ -1,69 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>SINBA</title>
+@section('style')
+<style>
+    h2 {
+        font-style: italic;
+    }
+</style>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+@section('content')
+    <center><h2>Bacia 01</h2></center>
+    <table style="width:100%">
+        <tr>
+            <th>Informações</th>
+        </tr>
+        <tr>
+            <th>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet commodo pellentesque. Donec id dolor placerat, aliquet risus vitae, vulputate nibh. Phasellus ut diam eros. Integer sodales ligula purus, vel semper turpis vulputate id. Suspendisse suscipit est sed odio pretium, faucibus elementum magna sollicitudin. Nullam posuere accumsan neque. Vivamus ornare nulla et elit pulvinar pharetra. Nam pulvinar, libero id dapibus venenatis, orci turpis pulvinar odio, eget fermentum erat neque sit amet mi. Nullam tincidunt pretium mi, sit amet rutrum eros mattis sed. Aenean fringilla euismod sem, convallis porta ipsum sollicitudin a. Donec sed dui ac turpis faucibus tristique.
 
-        <!-- Styles -->
-        <style>
-html, body {
-    background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+                Maecenas id est nec lacus convallis imperdiet ac ac turpis. Cras lorem sapien, finibus id egestas vitae, tincidunt porttitor nulla. Mauris porta tincidunt vulputate. Nullam eu porta sem. In imperdiet, lacus sed molestie cursus, tellus lacus efficitur orci, eget laoreet quam urna non enim. Aenean fringilla nulla in ex pretium finibus. Suspendisse dapibus luctus felis a fringilla.
 
-            .full-height {
-    height: 100vh;
-            }
+                Nullam felis erat, suscipit nec arcu nec, lobortis condimentum eros. Aliquam quis viverra massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris congue facilisis finibus. Aenean convallis suscipit sem nec dignissim. Nam eget ipsum et dui ultrices vehicula. Proin ut turpis eget dui feugiat vulputate. Vivamus convallis, enim vel lobortis elementum, turpis turpis condimentum justo, sit amet mattis nulla enim in tortor. Duis id lobortis ex. Curabitur ut pellentesque nisi, in hendrerit neque. Aenean ac eleifend lorem. Nunc malesuada posuere libero eu ullamcorper. Integer id tempus ex, a ullamcorper nibh. Sed ut lectus sed magna iaculis dignissim.
 
-            .flex-center {
-    align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                Aliquam aliquet dapibus odio eu sagittis. In felis eros, consectetur vel mattis eget, aliquet sit amet ipsum. Fusce nec risus arcu. In sagittis, risus at egestas tincidunt, erat leo convallis nisl, quis tincidunt leo diam euismod libero. Fusce eu molestie justo, ut rutrum sem. Nullam porta volutpat metus, in ornare tellus vestibulum pulvinar. Maecenas sollicitudin vel ante ac accumsan. Donec ultrices, risus vitae faucibus malesuada, odio velit efficitur elit, egestas volutpat ligula elit eget mi.</th>
+        </tr>
 
-            .position-ref {
-    position: relative;
-}
+    </table>
 
-            .top-right {
-    position: absolute;
-    right: 10px;
-                top: 18px;
-            }
-
-            .content {
-    text-align: center;
-            }
-
-            .title {
-    font-size: 84px;
-            }
-
-            .links > a {
-    color: #636b6f;
-    padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-    margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-    </body>
-</html>
+    <button type="button" class="btn btn-default"><a href="{{url('watersheds/model/1')}}">Cadastrar Dados</a> </button></br>
+    <button type="button" class="btn btn-default"><a href="/">Visualizar Dados</a></button>
+@endsection
