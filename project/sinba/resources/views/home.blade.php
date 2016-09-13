@@ -33,9 +33,9 @@
 
                         {{$resultLabel}}:
 
-                        @for($i = 0; $i < count($watersheds); $i++)
-                            <li><a href="#">{{$watersheds[$i]}}</a></li>
-                        @endfor
+                        @foreach($watersheds as $watershed)
+                            <li><a href="{{url("/watersheds/edit/{$watershed->id}")}}">{{$watershed->name}}</a></li>
+                        @endforeach
 
                     </div>
                     @endif
