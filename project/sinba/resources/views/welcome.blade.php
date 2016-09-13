@@ -85,8 +85,8 @@
 
                 <div class="links">
                     <a href="https://github.com/LASAC/SINBA/wiki">{{trans('strings.documentation')}}</a>
-                    <a href="https://lasac.ledes.net">LASAC</a>
-                    <a href="https://www.ledes.net">LEDES</a>
+                    <a href="http://lasac.ledes.net">LASAC</a>
+                    <a href="http://www.ledes.net">LEDES</a>
                     <a href="https://ufms.br">UFMS</a>
                 </div>
 

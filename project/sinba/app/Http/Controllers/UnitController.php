@@ -145,8 +145,9 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        dump($this->request);
-        return response()->json("Unidade $id Removida Com Sucesso! (#sqn)");
+        Unit::destroy($id);
+        $this->session->flash('message_success', trans('strings.deletedSuccess'));
+        return $this->index();
     }
 
     public function search() {

@@ -52,7 +52,8 @@
                                             </button>
                                         </a>
                                         {{Form::submit(trans('strings.delete'), [
-                                            'class' => 'btn btn-warning'
+                                            'class' => 'btn btn-warning',
+                                            'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");'
                                         ])}}
                                         {{Form::close()}}
                                     </td>

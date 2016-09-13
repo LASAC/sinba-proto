@@ -26,7 +26,7 @@ return [
     'occupation' => 'Profissão',
     'institution' => 'Instituição',
     'password' => 'Senha',
-    'rememberMe' => 'Lembre de Mim',
+    'rememberMe' => 'Permanecer Conectado',
     'forgotYourPassword' => 'Esqueceu Sua Senha?',
     'confirmPassword' => 'Confirmar Senha',
     'register' => 'Registrar',
@@ -53,6 +53,8 @@ return [
     'documentation' => 'Documentação',
     'saveSuccess' => 'Cadastro Realizado com Sucesso',
     'updatedSuccess' => 'Cadastro Atualizado com Sucesso',
+    'deletedSuccess' => 'Cadastro Removido com Sucesso',
     'noItemsFound' => 'Nenhum Item Encontrado',
     'fixTheErrors' => 'Por favor, verifique os seguintes erros:',
+    'confirmDelete' => 'Tem certeza que deseja excluir?',
 ];

@@ -51,6 +51,8 @@ return [
     'documentation' => 'Documentation',
     'saveSuccess' => 'Successfully Saved',
     'updatedSuccess' => 'Successfully Updated',
+    'deletedSuccess' => 'Successfully Deleted',
     'noItemsFound' => 'No Items Found',
     'fixTheErrors' => 'Please, fix the following errors',
+    'confirmDelete' => 'Are you sure you want to delete it?',
 ];
