@@ -13,6 +13,15 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    @yield('style')
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

@@ -13,7 +13,12 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-image: url('img/brasilvector.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: 43% 30%;
+                /*background-color: #fff; deixei para saber que cor estava antes*/
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
