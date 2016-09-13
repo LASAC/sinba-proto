@@ -52,9 +52,10 @@ class UnitController extends Controller
             'unit' => new Unit]);
     }
 
-    private function validateRequest() {
+    private function validateRequest($isUpdate = false) {
+        $id = $isUpdate ? ", " . $this->request->input('id') : '';
         $this->validate($this->request, [
-            'name' => 'required|unique:units|max:255',
+            'name' => 'required|max:255|unique:units,name' . $id,
             'symbol' => 'max:15'
         ]);
     }
@@ -105,7 +106,7 @@ class UnitController extends Controller
         return view('units.edit', [
             'title' => trans('strings.editUnit'),
             'url' => "units/$id",
-            'method' => 'put',
+            'method' => 'patch',
             'saveEnabled' => true,
             'attributes' => [],
             'unit' => $this->unit->findOrFail($id)]);
@@ -120,7 +121,7 @@ class UnitController extends Controller
      */
     public function update($id)
     {
-        $this->validateRequest();
+        $this->validateRequest(true);
         $this->unit = $this->unit->findOrFail($id);
         $updated = $this->unit->update([
             'name' => $this->request->input('name'),

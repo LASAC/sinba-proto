@@ -24,7 +24,7 @@
                             {{Form::text('name', $unit->name, $attributes)}}
                             {{Form::label('symbol', trans('strings.symbol') . ':')}}
                             {{Form::text('symbol', $unit->symbol, $attributes)}}
-
+                            {{Form::hidden('id', $unit->id)}}
                             @if($saveEnabled)
                             {{Form::submit(trans('strings.save'))}}
                             @endif
