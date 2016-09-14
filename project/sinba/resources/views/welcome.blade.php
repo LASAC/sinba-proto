@@ -13,11 +13,12 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url('img/brasilvector.svg');
+                background-image: url('img/brasilvector.png');
+                background-size: 300px 500px;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
-                background-position: 43% 30%;
+                background-position: 50% 65%;
                 /*background-color: #fff; deixei para saber que cor estava antes*/
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;

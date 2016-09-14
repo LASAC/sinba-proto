@@ -55,7 +55,10 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::get('watersheds/edit/{id}' , function ($id) {
-        return view('watersheds.edit');
+        $watershed = (object)['id' => $id, 'name' => 'Bacia do Guariroba'];
+        return view('watersheds.edit', [
+            'watershed' => $watershed
+        ]);
     });
 
     Route::get('watersheds/model/{id}', function ($id) {
