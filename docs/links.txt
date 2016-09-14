@@ -2,3 +2,6 @@ links.txt
 
 Form helpers:
 https://laravelcollective.com/docs/5.2/html
+
+Laravel DB Localization:
+https://github.com/despark/laravel-db-localization
