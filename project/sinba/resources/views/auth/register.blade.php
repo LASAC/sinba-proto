@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('content')
 <div class="container">
@@ -108,15 +108,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('celphone') ? ' has-error' : '' }}">
-                            <label for="celphone" class="col-md-4 control-label">{{trans('strings.celphone')}}</label>
+                        <div class="form-group{{ $errors->has('cellphone') ? ' has-error' : '' }}">
+                            <label for="cellphone" class="col-md-4 control-label">{{trans('strings.cellphone')}}</label>
 
                             <div class="col-md-6">
-                                <input id="celphone" type="text" class="form-control" name="celphone" value="{{ old('celphone') }}" required autofocus>
+                                <input id="cellphone" type="text" class="form-control" name="cellphone" value="{{ old('cellphone') }}" required autofocus>
 
-                                @if ($errors->has('celphone'))
+                                @if ($errors->has('cellphone'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('celphone') }}</strong>
+                                        <strong>{{ $errors->first('cellphone') }}</strong>
                                     </span>
                                 @endif
                             </div>

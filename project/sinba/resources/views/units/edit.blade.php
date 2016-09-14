@@ -2,8 +2,6 @@
 
 @section('content')
 
-    @include('includes.message')
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -21,26 +19,45 @@
                                 'method' => $method
                             ])}}
 
-                            {{Form::hidden('id', $unit->id)}}
+                            {{Form::hidden('id', $model->id)}}
 
                             {{Form::label('quantity', trans('strings.quantity') . ':')}}
-                            {{Form::text('quantity', $unit->quantity, $attributes)}}
+                            {{Form::text('quantity', $model->quantity, [
+                                $readonly,
+                                'class' => 'form-control'
+                            ])}}
 
                             {{Form::label('name', trans('strings.name') . ':')}}
-                            {{Form::text('name', $unit->name, $attributes)}}
+                            {{Form::text('name', $model->name, [
+                                $readonly,
+                                'class' => 'form-control'
+                            ])}}
 
                             {{Form::label('symbol', trans('strings.symbol') . ':')}}
-                            {{Form::text('symbol', $unit->symbol, $attributes)}}
+                            {{Form::text('symbol', $model->symbol, [
+                                $readonly,
+                                'class' => 'form-control'
+                            ])}}
+
+                            {{Form::label('inBaseUnits', trans('strings.inBaseUnits') . ':')}}
+                            {{Form::text('inBaseUnits', $model->inBaseUnits, [
+                                $readonly,
+                                'class' => 'form-control'
+                            ])}}
+                            {{Form::label('inOtherUnits', trans('strings.inOtherUnits') . ':')}}
+                            {{Form::text('inOtherUnits', $model->inOtherUnits, [
+                                $readonly,
+                                'class' => 'form-control'
+                            ])}}
 
                             <hr />
 
-                            {{Form::label('inBaseUnits', trans('strings.inBaseUnits') . ':')}}
-                            {{Form::text('inBaseUnits', $unit->inBaseUnits, $attributes)}}
-                            {{Form::label('inOtherUnits', trans('strings.inOtherUnits') . ':')}}
-                            {{Form::text('inOtherUnits', $unit->inOtherUnits, $attributes)}}
-
                             @if($saveEnabled)
-                                {{Form::submit(trans('strings.save'))}}
+                                <div style="text-align: center">
+                                {{Form::submit(trans('strings.save'), [
+                                    'class' => 'btn btn-primary'
+                                ])}}
+                                </div>
                             @endif
 
 

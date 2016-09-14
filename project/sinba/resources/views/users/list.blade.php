@@ -1,15 +1,15 @@
 @extends('layouts.crud.list')
 
 @section('links')
-    {{trans('strings.unitsSystem')}} |
-    <a href="{{ url('/units/create') }}">{{trans('strings.createUnit')}}</a>
+    {{trans('strings.users')}} |
+    <a href="{{ url('/units/create') }}">{{trans('strings.createUser')}}</a>
 @endsection
 
 @section('search')
     {{ Form::open([
-        'url' => '/units/search'
+        'url' => '/users/search'
     ]) }}
-    {{Form::label('search', trans('strings.searchUnit') . ':')}}
+    {{Form::label('search', trans('strings.searchUser') . ':')}}
     {{Form::text('search', Session::get('search'))}}
     {{Form::submit(trans('strings.search'), [
         'class' => 'btn btn-primary',
@@ -17,7 +17,7 @@
     ])}}
 
 
-    {{Form::label(count($units) . ' resultado(s)', '',[
+    {{Form::label(count($users) . ' resultado(s)', '',[
         'style' => 'font-style: italic; font-size: x-small;'
     ])}}
     {{ Form::close() }}
@@ -27,40 +27,48 @@
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>{{trans('strings.quantity')}}</th>
             <th>{{trans('strings.name')}}</th>
-            <th>{{trans('strings.symbol')}}</th>
-            <th>{{trans('strings.other')}}</th>
-            <th>{{trans('strings.base')}}</th>
+            <th>{{trans('strings.email')}}</th>
+            <th>{{trans('strings.occupation')}}</th>
+            <th>{{trans('strings.institution')}}</th>
+            <th>{{trans('strings.isAdmin')}}</th>
             <th class="action">
                 {{trans('strings.actions')}}
             </th>
         </tr>
         </thead>
         <tbody>
-        @foreach($units as $unit)
+        @foreach($users as $user)
             <tr>
-                <td>{{$unit->quantity}}</td>
-                <td>{{$unit->name}}</td>
-                <td>{{$unit->symbol}}</td>
-                <td>{{$unit->inOtherUnits}}</td>
-                <td>{{$unit->inBaseUnits}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->occupation}}</td>
+                <td>{{$user->institution}}</td>
+                <td>{{$user->isAdmin ? trans('strings.yes') : trans('strings.no')}}</td>
                 <td class="action">
                     {{Form::open([
-                        'url' => "/units/{$unit->id}",
+                        'url' => "/users/{$user->id}",
                         'method' => 'delete'
                     ])}}
-                    <a href="{{url("/units/{$unit->id}/edit")}}">
+                    <a href="{{url("/users/{$user->id}/edit")}}">
                         <button type="button" class="btn btn-success"
                                 style="padding: 1px 1px">
                             {{trans('strings.edit')}}
                         </button>
                     </a>
+                    <a href="{{url("/users/{$user->id}")}}">
+                        <button type="button" class="btn btn-info"
+                                style="padding: 1px 1px">
+                            {{trans('strings.view')}}
+                        </button>
+                    </a>
+                    @if(!$user->isAdmin)
                     {{Form::submit(trans('strings.delete'), [
                         'class' => 'btn btn-warning',
                         'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");',
                         'style' => 'padding: 1px 1px'
                     ])}}
+                    @endif
                     {{Form::close()}}
                 </td>
             </tr>

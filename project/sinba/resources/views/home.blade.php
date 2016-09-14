@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if($isAdmin)
+    @can('manage')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -9,7 +9,9 @@
                     <div class="panel-heading">{{config('app.name')}} - {{trans('strings.settings')}}</div>
 
                     <div class="panel-body">
+                        <li><a href="{{ url('/users') }}">{{trans('strings.usersManagement')}}</a></li>
                         <li><a href="{{ url('/units') }}">{{trans('strings.unitsSystem')}}</a></li>
+                        <li><a href="{{ url('/parameters') }}">{{trans('strings.parametersManagement')}}</a></li>
                         <li><a href="{{ url('/watersheds') }}">{{trans('strings.watershedsManagement')}}</a></li>
                     </div>
 
@@ -17,7 +19,7 @@
             </div>
         </div>
     </div>
-    @endif
+    @endcan
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

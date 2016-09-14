@@ -20,6 +20,20 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
+    Route::group(['middleware' => 'can:manage'], function () {
+        // User Management
+
+        Route::get('users/search', 'UserManagementController@index');
+        Route::post('users/search', 'UserManagementController@search');
+        Route::resource('users', 'UserManagementController');
+
+        // Unit CRUD:
+
+        Route::get('units/search', 'UnitController@index');
+        Route::post('units/search', 'UnitController@search');
+        Route::resource('units', 'UnitController');
+    });
+
     Route::get('home', function () {
 
         $watersheds = [
@@ -33,11 +47,6 @@ Route::group(['middleware' => 'auth'], function(){
             'watersheds' => $watersheds
         ]);
     });
-
-    Route::get('units/search', 'UnitController@index');
-    Route::post('units/search', 'UnitController@search');
-
-    Route::resource('units', 'UnitController');
 
     Route::get('watersheds/edit/{id}' , function ($id) {
         return view('watersheds.edit');

@@ -19,12 +19,13 @@ class UsersTableSeeder extends Seeder
             'rg' => '001112233',
             'address' => 'Rua 0, 00.',
             'phone' => '(99)9999-9999',
-            'celphone' => '(99)9999-9999',
+            'cellphone' => '(99)9999-9999',
             'email' => 'geraldo.landre@gmail.com',
             'occupation' => 'Professor',
             'institution' => 'UFMS',
             'justification' => 'Eu gostaria de compartilhar meus dados com outros pesquisadores.',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
+            'isAdmin' => true
         ]);
 
         DB::table('users')->insert([
@@ -35,12 +36,13 @@ class UsersTableSeeder extends Seeder
             'rg' => '001112234',
             'address' => 'Rua 0, 00.',
             'phone' => '(99)9999-9999',
-            'celphone' => '(99)9999-9999',
+            'cellphone' => '(99)9999-9999',
             'email' => 'mariliack@hotmail.com',
             'occupation' => 'Engenheira Ambiental',
             'institution' => 'UFMS',
             'justification' => 'Eu gostaria de compartilhar meus dados com outros pesquisadores.',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
+            'isAdmin' => true
         ]);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -46,21 +45,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'lastName' => 'required|max:255',
-            'birthDate' => 'required|max:10',
-            'cpf' => 'required|max:14',
-            'rg' => 'required|max:15',
-            'address' => 'required|max:255',
-            'phone' => 'required|max:20',
-            'celphone' => 'required|max:20',
-            'email' => 'required|email|max:255|unique:users',
-            'occupation' => 'required|max:255',
-            'institution' => 'required|max:255',
-            'justification' => 'required|max:511',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return User::validator($data);
     }
 
     /**
@@ -79,7 +64,7 @@ class RegisterController extends Controller
             'rg' => $data['rg'],
             'address' => $data['address'],
             'phone' => $data['phone'],
-            'celphone' => $data['celphone'],
+            'cellphone' => $data['cellphone'],
             'email' => $data['email'],
             'occupation' => $data['occupation'],
             'institution' => $data['institution'],

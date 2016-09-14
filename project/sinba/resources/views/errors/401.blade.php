@@ -1,7 +1,7 @@
 @extends('layouts.error')
 @section('code')
-    503
+    401
 @endsection
 @section('description')
-    {{trans('strings.beRightBack')}}
+    {{trans('strings.unauthorized')}}
 @endsection

@@ -27,25 +27,25 @@ return [
         'string'  => 'The :attribute must be between :min and :max caracteres.',
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
-    'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
-    'date'                 => 'The :attribute is not a valid date.',
-    'date_format'          => 'The :attribute does not match the format :format.',
-    'different'            => 'The :attribute and :other must be different.',
-    'digits'               => 'The :attribute must be :digits digits.',
-    'digits_between'       => 'The :attribute must be between :min and :max digits.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
-    'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'The :attribute must be a valid email address.',
-    'exists'               => 'The selected :attribute is invalid.',
-    'file'                 => 'The :attribute must be a file.',
+    'boolean'              => 'O campo :attribute precisa ser verdadeiro ou falso.',
+    'confirmed'            => 'O campo de confirmação de :attribute não corresponde.',
+    'date'                 => 'O campo :attribute não é uma data válida.',
+    'date_format'          => 'O campo :attribute não corresponde ao formato :format.',
+    'different'            => 'O campo :attribute and :other must be different.',
+    'digits'               => 'O campo :attribute must be :digits digits.',
+    'digits_between'       => 'O campo :attribute must be between :min and :max digits.',
+    'dimensions'           => 'O campo :attribute has invalid image dimensions.',
+    'distinct'             => 'O campo :attribute field has a duplicate value.',
+    'email'                => 'O campo :attribute must be a valid email address.',
+    'exists'               => 'O valor :attribute selecionado é inválido.',
+    'file'                 => 'O campo :attribute deve ser um arquivo.',
     'filled'               => 'O campo :attribute é obrigatório.',
-    'image'                => 'The :attribute must be an image.',
-    'in'                   => 'The selected :attribute is invalid.',
-    'in_array'             => 'The :attribute field does not exist in :other.',
-    'integer'              => 'The :attribute must be an integer.',
-    'ip'                   => 'The :attribute must be a valid IP address.',
-    'json'                 => 'The :attribute must be a valid JSON string.',
+    'image'                => 'O campo :attribute must be an image.',
+    'in'                   => 'O valor :attribute é inválido.',
+    'in_array'             => 'O campo :attribute não existe em :other.',
+    'integer'              => 'O campo :attribute precisa ser um inteiro.',
+    'ip'                   => 'O campo :attribute precisa ser um endereço IP válido.',
+    'json'                 => 'O campo :attribute precisa ser uma string JSON válida.',
     'max'                  => [
         'numeric' => 'O campo :attribute não pode ser maior que :max.',
         'file'    => 'O campo :attribute não pode ser maior que :max kilobytes.',
@@ -61,9 +61,9 @@ return [
         'array'   => 'The :attribute must have at least :min itens.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
-    'numeric'              => 'O campo :attribute must be a number.',
+    'numeric'              => 'O campo :attribute precisa ser um número.',
     'present'              => 'O campo :attribute field must be present.',
-    'regex'                => 'O campo :attribute format is invalid.',
+    'regex'                => 'O campo :attribute está no formato inválido.',
     'required'             => 'O campo :attribute é obrigatório.',
     'required_if'          => 'O campo :attribute é obrigatório quando :other é :value.',
     'required_unless'      => 'O campo :attribute é obrigatório unless :other is in :values.',
@@ -99,6 +99,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'phone' => [
+            'regex' => 'Telefone no formato incorreto. Exemplo: (067) 3333-3333'
+        ],
+        'cellphone' => [
+            'regex' => 'Telefone no formato incorreto. Exemplo: (067) 99999-9999'
+        ]
     ],
 
     /*
@@ -114,7 +120,14 @@ return [
 
     'attributes' => [
         'name' => 'Nome',
-        'symbol' => 'Símbolo'
+        'symbol' => 'Símbolo',
+        'birthDate' => 'Data de Nascimento',
+        'cpf' => 'CPF',
+        'rg' => 'RG',
+        'address' => 'Endereço',
+        'phone' => 'Telefone',
+        'cellphone' => 'Celular',
+        'password' => 'Senha'
     ],
 
 ];

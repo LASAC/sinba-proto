@@ -3,56 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Unit;
 
-class UnitController extends Controller
+class UnitController extends CRUDController
 {
-    private $request;
-    private $unit;
-    private $session;
-
     public function __construct(Request $request, Unit $unit)
     {
-        $this->request = $request;
-        $this->unit = $unit;
-        $this->session = Session();
+        parent::__construct($request);
+        $this->model = $unit;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param null $units
-     * @return \Illuminate\Http\Response
-     */
-    public function index($units = null)
-    {
-        if(!isset($units)) {
-            $units = $this->unit->orderBy('name')->get();
-        }
-        return view('units.list', [
-            'units' => $units
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('units.edit', [
-            'title' => trans('strings.createUnit'),
-            'url' => 'units',
-            'method' => 'post',
-            'saveEnabled' => true,
-            'attributes' => [],
-            'unit' => new Unit]);
-    }
-
-    private function validateRequest($isUpdate = false) {
+    protected function validateRequest($isUpdate = false) {
         $id = $isUpdate ? ", " . $this->request->input('id') : '';
         $this->validate($this->request, [
             'name' => 'required|max:255|unique:units,name' . $id,
@@ -85,40 +47,6 @@ class UnitController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('units.edit', [
-            'title' => trans('strings.showUnit'),
-            'url' => 'units',
-            'method' => 'get',
-            'saveEnabled' => false,
-            'attributes' => ['readonly'],
-            'unit' => $this->unit->findOrFail($id)]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('units.edit', [
-            'title' => trans('strings.editUnit'),
-            'url' => "units/$id",
-            'method' => 'patch',
-            'saveEnabled' => true,
-            'attributes' => [],
-            'unit' => $this->unit->findOrFail($id)]);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  int $id
@@ -128,8 +56,8 @@ class UnitController extends Controller
     public function update($id)
     {
         $this->validateRequest(true);
-        $this->unit = $this->unit->findOrFail($id);
-        $updated = $this->unit->update([
+        $this->model = $this->model->findOrFail($id);
+        $updated = $this->model->update([
             'name' => $this->request->input('name'),
             'symbol' => $this->request->input('symbol'),
             'quantity' => $this->request->input('quantity'),
@@ -147,22 +75,9 @@ class UnitController extends Controller
         return $this->index();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Unit::destroy($id);
-        $this->session->flash('message_success', trans('strings.deletedSuccess'));
-        return $this->index();
-    }
-
     public function search() {
 
-        $units = $this->unit
+        $units = $this->model
             ->where('name', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orWhere('symbol', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orWhere('quantity', 'LIKE', '%' . $this->request->input('search') . '%')
@@ -179,5 +94,45 @@ class UnitController extends Controller
 
 
         return $this->index($units);
+    }
+
+    protected function listView()
+    {
+        return 'units.list';
+    }
+
+    protected function editView()
+    {
+        return 'units.edit';
+    }
+
+    protected function columnToSort()
+    {
+        return 'name';
+    }
+
+    protected function collectionName()
+    {
+        return 'units';
+    }
+
+    protected function createViewTitle()
+    {
+        return trans('strings.createUnit');
+    }
+
+    protected function editViewTitle()
+    {
+        return trans('strings.editUnit');
+    }
+
+    protected function showViewTitle()
+    {
+        return trans('strings.editUnit');
+    }
+
+    protected function newModel()
+    {
+        return new Unit();
     }
 }
