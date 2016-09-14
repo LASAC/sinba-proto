@@ -1,54 +1,68 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+    h1{
+        color: #204d74;
+        font-family: "Arial";
+    }
+    h4{
+        color: #204d74;
+        font-family: "Arial";
+    }
+    h5{
+        color: #204d74;
+        font-family: "Arial";
+    }
+
+</style>
+@endsection
+
 @section('content')
-
-
-
-    <center>
-        <h1>Bacia do Guariroba</h1>
-        <h2>Nível 1 - Bacia do Paraná</h2>
-    </center>
-
-
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-1">
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-8">
+            <h1>Bacia do Guariroba</h1> <h5>(nível acima: Bacia do Rio Pardo)</h5>
+
+            <hr/>
+
+            <h4>Cadastro de Dados</h4>
+
+            <hr />
+
             <div class="checkbox">
-                <label><input type="checkbox"> Importar Dados</label>
+                <label style="font-weight: bold"><input type="checkbox"> Importar dados de uma planilha existente</label>
             </div>
 
             Selecione o Modelo:
 
             </br>
 
-            <table>
-                <tr><td>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 1 </label>
-                    </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 1 </label>
+            </div>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 2 </label>
-                    </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 2 </label>
+            </div>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 3 </label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 4 </label>
-                    </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 3 </label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 4 </label>
+            </div>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 5 </label>
-                    </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 5 </label>
+            </div>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Modelo 6 </label>
-                    </div></td>
-                </tr>
-
-            </table>
+            <div class="checkbox">
+                <label><input type="checkbox"> Modelo 6 </label>
+            </div>
 
             </br>
 
@@ -58,18 +72,18 @@
             </br>
             </br>
 
+            <hr />
+
             <div class="checkbox">
-                <label><input type="checkbox"> Criar Planilha</label>
+                <label><input type="checkbox"> Criar nova planilha</label>
             </div>
 
-            <div class="container">
-                <div class="form-group">
-                    <div class="col-sm-3">
-                        <label for="email">Nome do Modelo</label>
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                </div>
+            <div>
+                <form action="action_page.php">
+                    <label for="fname">Nome do Modelo</label>
+                    <input type="text" id="fname" name="nomeModelo">
             </div>
+
 
             </br>
 
@@ -89,7 +103,9 @@
             <button type="button" class="btn btn-default">Visualizar Modelo</button>
             <button type="button" class="btn btn-default">Exportar Modelo</button>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-1">
         </div>
     </div>
 
