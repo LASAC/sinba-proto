@@ -52,10 +52,14 @@ class UnitController extends Controller
             'unit' => new Unit]);
     }
 
-    private function validateRequest() {
+    private function validateRequest($isUpdate = false) {
+        $id = $isUpdate ? ", " . $this->request->input('id') : '';
         $this->validate($this->request, [
-            'name' => 'required|unique:units|max:255',
-            'symbol' => 'max:15'
+            'name' => 'required|max:255|unique:units,name' . $id,
+            'symbol' => 'max:15',
+            'quantity' => 'max:127',
+            'inBaseUnits' => 'max:63',
+            'inOtherUnits' => 'max:63'
         ]);
     }
 
@@ -69,7 +73,10 @@ class UnitController extends Controller
         $this->validateRequest();
         Unit::create([
             'name' => $this->request->input('name'),
-            'symbol' => $this->request->input('symbol')
+            'symbol' => $this->request->input('symbol'),
+            'quantity' => $this->request->input('quantity'),
+            'inBaseUnits' => $this->request->input('inBaseUnits'),
+            'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
 
         $this->session->flash('message_success', trans('strings.saveSuccess'));
@@ -105,7 +112,7 @@ class UnitController extends Controller
         return view('units.edit', [
             'title' => trans('strings.editUnit'),
             'url' => "units/$id",
-            'method' => 'put',
+            'method' => 'patch',
             'saveEnabled' => true,
             'attributes' => [],
             'unit' => $this->unit->findOrFail($id)]);
@@ -120,11 +127,14 @@ class UnitController extends Controller
      */
     public function update($id)
     {
-        $this->validateRequest();
+        $this->validateRequest(true);
         $this->unit = $this->unit->findOrFail($id);
         $updated = $this->unit->update([
             'name' => $this->request->input('name'),
-            'symbol' => $this->request->input('symbol')
+            'symbol' => $this->request->input('symbol'),
+            'quantity' => $this->request->input('quantity'),
+            'inBaseUnits' => $this->request->input('inBaseUnits'),
+            'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
 
         if($updated) {
@@ -152,10 +162,22 @@ class UnitController extends Controller
 
     public function search() {
 
-        $units = $this->unit->where('name', 'LIKE', '%' . $this->request->input('search') . '%')->get();
+        $units = $this->unit
+            ->where('name', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->orWhere('symbol', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->orWhere('quantity', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->get();
         if($units->isEmpty()) {
             $this->session->flash('message_info', trans('strings.noItemsFound'));
         }
+
+        $this->session->flash('search', '');
+        if(mb_strlen($this->request->input('search')) > 0) {
+            $this->session->flash('search', $this->request->input('search'));
+        }
+
+
+
         return $this->index($units);
     }
 }

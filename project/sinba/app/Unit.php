@@ -8,6 +8,9 @@ class Unit extends Model
 {
     protected $fillable = [
         'name',
-        'symbol'
+        'symbol',
+        'quantity',
+        'inOtherUnits',
+        'inBaseUnits'
     ];
 }

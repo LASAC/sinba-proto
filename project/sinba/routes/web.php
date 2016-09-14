@@ -34,9 +34,10 @@ Route::group(['middleware' => 'auth'], function(){
         ]);
     });
 
-    Route::resource('units', 'UnitController');
-
+    Route::get('units/search', 'UnitController@index');
     Route::post('units/search', 'UnitController@search');
+
+    Route::resource('units', 'UnitController');
 
     Route::get('watersheds/edit/{id}' , function ($id) {
         $watershed = (object)['id' => $id, 'name' => 'Bacia do Guariroba'];

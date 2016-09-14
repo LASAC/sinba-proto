@@ -15,45 +15,62 @@
 
                     <div class="panel-body">
 
-                        <div id="search_form">
+                        <div id="search_form" style="text-align: center">
                         {{ Form::open([
                             'url' => '/units/search'
                         ]) }}
                             {{Form::label('search', trans('strings.searchUnit') . ':')}}
-                            {{Form::text('search')}}
+                            {{Form::text('search', Session::get('search'))}}
                             {{Form::submit(trans('strings.search'))}}
+
+
+                            {{Form::label(count($units) . ' resultado(s)', '',[
+                                'style' => 'font-style: italic; font-size: x-small;'
+                            ])}}
                         {{ Form::close() }}
                         </div>
 
-                        <div>&nbsp;</div>
+                        <div>
+                        &nbsp;
+                        </div>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center">{{trans('strings.name')}}</th>
-                                    <th style="text-align: center">{{trans('strings.symbol')}}</th>
-                                    <th style="text-align: center">{{trans('strings.actions')}}</th>
+                                    <th>{{trans('strings.quantity')}}</th>
+                                    <th>{{trans('strings.name')}}</th>
+                                    <th>{{trans('strings.symbol')}}</th>
+                                    <th>{{trans('strings.other')}}</th>
+                                    <th>{{trans('strings.base')}}</th>
+                                    <th class="action">
+                                        {{trans('strings.actions')}}
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($units as $unit)
                                 <tr>
-                                    <td style="text-align: center">{{$unit->name}}</td>
-                                    <td style="text-align: center">{{$unit->symbol}}</td>
-                                    <td style="text-align: center">
+                                    <td>{{$unit->quantity}}</td>
+                                    <td>{{$unit->name}}</td>
+                                    <td>{{$unit->symbol}}</td>
+                                    <td>{{$unit->inOtherUnits}}</td>
+                                    <td>{{$unit->inBaseUnits}}</td>
+                                    <td class="action">
                                         {{Form::open([
                                             'url' => "/units/{$unit->id}",
                                             'method' => 'delete'
                                         ])}}
                                         <a href="{{url("/units/{$unit->id}/edit")}}">
-                                            <button type="button" class="btn btn-success">
+                                            <button type="button" class="btn btn-success"
+                                                    style="padding: 1px 1px">
                                                 {{trans('strings.edit')}}
                                             </button>
                                         </a>
                                         {{Form::submit(trans('strings.delete'), [
                                             'class' => 'btn btn-warning',
-                                            'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");'
+                                            'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");',
+                                            'style' => 'padding: 1px 1px'
                                         ])}}
                                         {{Form::close()}}
                                     </td>
