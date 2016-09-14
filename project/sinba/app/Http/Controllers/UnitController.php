@@ -56,7 +56,10 @@ class UnitController extends Controller
         $id = $isUpdate ? ", " . $this->request->input('id') : '';
         $this->validate($this->request, [
             'name' => 'required|max:255|unique:units,name' . $id,
-            'symbol' => 'max:15'
+            'symbol' => 'max:15',
+            'quantity' => 'max:127',
+            'inBaseUnits' => 'max:63',
+            'inOtherUnits' => 'max:63'
         ]);
     }
 
@@ -70,7 +73,10 @@ class UnitController extends Controller
         $this->validateRequest();
         Unit::create([
             'name' => $this->request->input('name'),
-            'symbol' => $this->request->input('symbol')
+            'symbol' => $this->request->input('symbol'),
+            'quantity' => $this->request->input('quantity'),
+            'inBaseUnits' => $this->request->input('inBaseUnits'),
+            'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
 
         $this->session->flash('message_success', trans('strings.saveSuccess'));
@@ -125,7 +131,10 @@ class UnitController extends Controller
         $this->unit = $this->unit->findOrFail($id);
         $updated = $this->unit->update([
             'name' => $this->request->input('name'),
-            'symbol' => $this->request->input('symbol')
+            'symbol' => $this->request->input('symbol'),
+            'quantity' => $this->request->input('quantity'),
+            'inBaseUnits' => $this->request->input('inBaseUnits'),
+            'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
 
         if($updated) {

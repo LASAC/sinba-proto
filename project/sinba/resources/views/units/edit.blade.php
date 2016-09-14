@@ -20,20 +20,31 @@
                                 'url' => $url,
                                 'method' => $method
                             ])}}
+
+                            {{Form::hidden('id', $unit->id)}}
+
+                            {{Form::label('quantity', trans('strings.quantity') . ':')}}
+                            {{Form::text('quantity', $unit->quantity, $attributes)}}
+
                             {{Form::label('name', trans('strings.name') . ':')}}
                             {{Form::text('name', $unit->name, $attributes)}}
+
                             {{Form::label('symbol', trans('strings.symbol') . ':')}}
                             {{Form::text('symbol', $unit->symbol, $attributes)}}
-                            {{Form::hidden('id', $unit->id)}}
+
+                            <hr />
+
+                            {{Form::label('inBaseUnits', trans('strings.inBaseUnits') . ':')}}
+                            {{Form::text('inBaseUnits', $unit->inBaseUnits, $attributes)}}
+                            {{Form::label('inOtherUnits', trans('strings.inOtherUnits') . ':')}}
+                            {{Form::text('inOtherUnits', $unit->inOtherUnits, $attributes)}}
+
                             @if($saveEnabled)
-                            {{Form::submit(trans('strings.save'))}}
+                                {{Form::submit(trans('strings.save'))}}
                             @endif
 
+
                             {{Form::close()}}
-                        </div>
-
-                        <div>
-
                         </div>
 
                     </div>

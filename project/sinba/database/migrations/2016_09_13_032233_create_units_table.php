@@ -17,6 +17,9 @@ class CreateUnitsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('symbol', 15)->nullable();
+            $table->string('quantity', 127)->nullable();
+            $table->string('inBaseUnits', 63)->nullable();
+            $table->string('inOtherUnits', 63)->nullable();
             $table->timestamps();
         });
     }

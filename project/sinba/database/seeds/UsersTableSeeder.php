@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'occupation' => 'Professor',
             'institution' => 'UFMS',
             'justification' => 'Eu gostaria de compartilhar meus dados com outros pesquisadores.',
-            'password' => bcrypt('dev123')
+            'password' => bcrypt('123456')
         ]);
 
         DB::table('users')->insert([
