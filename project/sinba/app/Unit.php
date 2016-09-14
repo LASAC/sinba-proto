@@ -13,4 +13,12 @@ class Unit extends Model
         'inOtherUnits',
         'inBaseUnits'
     ];
+
+    public function parameters() {
+        return $this->hasMany('App\Parameter');
+    }
+
+    public function pluckNames($orderBy = 'name') {
+        return $this->orderBy('name')->pluck('name', 'id');
+    }
 }

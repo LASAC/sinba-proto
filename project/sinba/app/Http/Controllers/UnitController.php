@@ -81,6 +81,7 @@ class UnitController extends CRUDController
             ->where('name', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orWhere('symbol', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orWhere('quantity', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->orderBy($this->collectionName())
             ->get();
         if($units->isEmpty()) {
             $this->session->flash('message_info', trans('strings.noItemsFound'));
@@ -90,8 +91,6 @@ class UnitController extends CRUDController
         if(mb_strlen($this->request->input('search')) > 0) {
             $this->session->flash('search', $this->request->input('search'));
         }
-
-
 
         return $this->index($units);
     }
