@@ -32,6 +32,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('units/search', 'UnitController@index');
         Route::post('units/search', 'UnitController@search');
         Route::resource('units', 'UnitController');
+
+        // Parameter CRUD:
+
+        Route::get('parameters/search', 'ParameterController@index');
+        Route::post('parameters/search', 'ParameterController@search');
+        Route::resource('parameters', 'ParameterController');
     });
 
     Route::get('home', function () {

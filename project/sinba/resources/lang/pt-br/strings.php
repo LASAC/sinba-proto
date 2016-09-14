@@ -32,6 +32,7 @@ return [
     'register' => 'Registrar',
     'justification' => 'Justificativa',
     'units' => 'Unidades',
+    'unit' => 'Unidade',
     'listUnits' => 'Listar Unidades',
     'unitsSystem' => 'Sistema de Unidades',
     'searchUnit' => 'Buscar Unidade',
@@ -77,5 +78,8 @@ return [
     'unauthorized' => 'Você não possui autorização para acessar esse conteúdo.',
     'beRightBack' => 'Já voltamos.',
     'back' => 'Voltar',
-    'impossibleToDeleteAnAdmin' => 'Não é possível remover um Usuário Administrador.'
+    'impossibleToDeleteAnAdmin' => 'Não é possível remover um Usuário Administrador.',
+    'searchParameter' => 'Buscar Parâmetros',
+    'listParameters' => 'Listar Parâmetros',
+    'createParameter' => 'Criar Parâmetro'
 ];

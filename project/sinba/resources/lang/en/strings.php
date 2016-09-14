@@ -32,6 +32,7 @@ return [
     'register' => 'Register',
     'justification' => 'Justification',
     'units' => 'Units',
+    'unit' => 'Unit',
     'listUnits' => 'List Units',
     'unitsSystem' => 'Unities System',
     'searchUnit' => 'Search Unit',
@@ -75,5 +76,8 @@ return [
     'unauthorized' => 'You are not allowed to access this content.',
     'beRightBack' => 'Be right back.',
     'back' => 'Back',
-    'impossibleToDeleteAnAdmin' => 'It is not possible to delete an Administrator.'
+    'impossibleToDeleteAnAdmin' => 'It is not possible to delete an Administrator.',
+    'searchParameter' => 'Search Parameters',
+    'listParameters' => 'List Parameters',
+    'createParameter' => 'Create Parameter'
 ];
