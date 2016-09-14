@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-    <style>
-        td.action {
-            width: 150px;
-        }
-    </style>
-@endsection
-
 @section('content')
 
     @include('includes.message')
@@ -23,17 +15,24 @@
 
                     <div class="panel-body">
 
-                        <div id="search_form">
+                        <div id="search_form" style="text-align: center">
                         {{ Form::open([
                             'url' => '/units/search'
                         ]) }}
                             {{Form::label('search', trans('strings.searchUnit') . ':')}}
-                            {{Form::text('search')}}
+                            {{Form::text('search', Session::get('search'))}}
                             {{Form::submit(trans('strings.search'))}}
+
+
+                            {{Form::label(count($units) . ' resultado(s)', '',[
+                                'style' => 'font-style: italic; font-size: x-small;'
+                            ])}}
                         {{ Form::close() }}
                         </div>
 
-                        <div>&nbsp;</div>
+                        <div>
+                        &nbsp;
+                        </div>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">

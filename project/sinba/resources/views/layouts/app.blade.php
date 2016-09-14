@@ -18,6 +18,10 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
+
+        td.action {
+            width: 150px;
+        }
     </style>
 
     @yield('style')

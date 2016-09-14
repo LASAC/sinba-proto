@@ -162,10 +162,22 @@ class UnitController extends Controller
 
     public function search() {
 
-        $units = $this->unit->where('name', 'LIKE', '%' . $this->request->input('search') . '%')->get();
+        $units = $this->unit
+            ->where('name', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->orWhere('symbol', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->orWhere('quantity', 'LIKE', '%' . $this->request->input('search') . '%')
+            ->get();
         if($units->isEmpty()) {
             $this->session->flash('message_info', trans('strings.noItemsFound'));
         }
+
+        $this->session->flash('search', '');
+        if(mb_strlen($this->request->input('search')) > 0) {
+            $this->session->flash('search', $this->request->input('search'));
+        }
+
+
+
         return $this->index($units);
     }
 }
