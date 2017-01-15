@@ -13,13 +13,15 @@ class CreateParametersTable extends Migration
      */
     public function up()
     {
+        Log::debug('CreateParametersTable::up - starting');
         Schema::create('parameters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->integer('unit_id')->unsigned()->nullable();
-            $table->foreign('unit_id')->references('id')->on('unit');
+            $table->foreign('unit_id')->references('id')->on('units');
             $table->timestamps();
         });
+        Log::debug('CreateParametersTable::up - finished');
     }
 
     /**
@@ -29,6 +31,8 @@ class CreateParametersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parameters');
+        Log::debug('CreateParametersTable::down - starting');
+        Schema::drop('parameters');
+        Log::debug('CreateParametersTable::down - finished');
     }
 }

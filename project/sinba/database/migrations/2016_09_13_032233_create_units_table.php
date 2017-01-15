@@ -14,6 +14,7 @@ class CreateUnitsTable extends Migration
     public function up()
     {
         Schema::create('units', function (Blueprint $table) {
+            Log::debug('CreateUnitsTable::up - starting');
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('symbol', 15)->nullable();
@@ -21,6 +22,7 @@ class CreateUnitsTable extends Migration
             $table->string('inBaseUnits', 63)->nullable();
             $table->string('inOtherUnits', 63)->nullable();
             $table->timestamps();
+            Log::debug('CreateUnitsTable::up - finished');
         });
     }
 
@@ -31,6 +33,8 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        Log::debug('CreateUnitsTable::down - starting');
+        Schema::drop('units');
+        Log::debug('CreateUnitsTable::down - finished');
     }
 }

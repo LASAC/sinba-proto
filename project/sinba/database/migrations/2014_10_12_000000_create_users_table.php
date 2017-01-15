@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Log::debug('CreateUsersTable::up - starting');
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -32,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Log::debug('CreateUsersTable::up - finished');
     }
 
     /**
@@ -41,6 +43,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Log::debug('CreateUsersTable::down - starting');
         Schema::drop('users');
+        Log::debug('CreateUsersTable::down - finished');
     }
 }

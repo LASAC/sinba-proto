@@ -140,7 +140,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Collective\Html\HtmlServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -168,7 +167,8 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, // Laravel IDE helper
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
