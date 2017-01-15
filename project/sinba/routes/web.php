@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dev', function () {
+    if(env('APP_ENV') === 'local') {
+        Log::debug('entering on dev');
+        phpinfo();
+    }
+});
+
 // Rotas de Autenticação
 Auth::routes();
 
