@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::get('/dev', function () {
     if(env('APP_ENV') === 'local') {
-        Log::debug('entering on dev');
         phpinfo();
     }
 });
