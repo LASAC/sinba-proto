@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SinbaApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,14 +19,17 @@
         }
     </style>
 
-@yield('style')
+    @yield('style')
 
-<!-- Scripts -->
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="/js/SinbaApp.js"></script>
+    @yield('script')
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -91,7 +94,5 @@
 @yield('messages')
 @yield('content')
 
-<!-- Scripts -->
-<script src="/js/app.js"></script>
 </body>
 </html>

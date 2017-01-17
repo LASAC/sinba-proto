@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('script')
+    <script src="/js/controllers/HomeCtrl.js"></script>
+@endsection
 @section('content')
     @can('manage')
     <div class="container">
@@ -20,14 +22,29 @@
         </div>
     </div>
     @endcan
-    <div class="container">
+    <div class="container" ng-controller="HomeCtrl">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
-                        {{Form::open(['url' => '/watersheds/search'])}}
-                        {{Form::text('search', '', ['title' => 'Pesquisar Bacia Hidrográfica'])}}
-                        {{Form::submit(trans('strings.search'), ['title' => 'Pesquisar Bacia Hidrográfica'])}}
+                        {{Form::open([
+                            'url' => '/watersheds/search',
+                            'ng-submit' => 'search($event)',
+                            'novalidate',
+                            'ng-model' => 'searchForm'
+                        ])}}
+                        {{Form::text('search', '', [
+                            'title' => 'Pesquisar Bacia Hidrográfica',
+                            'ng-model' => 'searchTerm',
+                            'autofocus'
+                        ])}}
+
+                        {{Form::button(trans('strings.search'), [
+                            'title' => 'Pesquisar Bacia Hidrográfica',
+                            'ng-disabled' => 'isBtnDisabled($event)',
+                            'disabled',
+                            'ng-click' => 'search()'
+                        ])}}
                         {{Form::close()}}
                     </div>
                     @if(count($watersheds) > 0)
