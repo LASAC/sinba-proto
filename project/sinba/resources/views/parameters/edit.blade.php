@@ -8,7 +8,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
                         <a href="{{ url('/parameters') }}">{{trans('strings.listParameters')}}</a> |
-                        {{$title}}
+                        {{$title}} |
+                        <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a>
                     </div>
 
                     <div class="panel-body">
@@ -27,11 +28,11 @@
                                 'class' => 'form-control'
                             ])}}
 
-                            {{Form::label('unit_id', trans('strings.symbol') . ':')}}
+                            {{Form::label('unit_id', trans('strings.unit') . ':')}}
 
-                            {{Form::select('unit_id', (new App\Unit)->pluckNames(), [
+                            {{Form::select('unit_id', collect([0 => 'Nenhum'])->merge((new App\Unit)->pluckNames()), null, [
                                 $readonly,
-                                'class' => 'selectpicker'
+                                'class' => 'form-control'
                             ])}}
 
                             <hr />

@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('parameters/search', 'ParameterController@index');
         Route::post('parameters/search', 'ParameterController@search');
         Route::resource('parameters', 'ParameterController');
+
+        // Watershed CRUD:
+        Route::resource('watersheds', 'WatershedController');
     });
 
     Route::get('home', function () {

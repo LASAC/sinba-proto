@@ -13,17 +13,16 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
+        Log::debug('CreateUnitsTable::up - starting');
         Schema::create('units', function (Blueprint $table) {
-            Log::debug('CreateUnitsTable::up - starting');
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('symbol', 15)->nullable();
-            $table->string('quantity', 127)->nullable();
             $table->string('inBaseUnits', 63)->nullable();
             $table->string('inOtherUnits', 63)->nullable();
             $table->timestamps();
-            Log::debug('CreateUnitsTable::up - finished');
         });
+        Log::debug('CreateUnitsTable::up - finished');
     }
 
     /**
