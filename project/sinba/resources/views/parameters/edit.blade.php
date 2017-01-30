@@ -30,10 +30,15 @@
 
                             {{Form::label('unit_id', trans('strings.unit') . ':')}}
 
-                            {{Form::select('unit_id', collect([0 => 'Nenhum'])->merge((new App\Unit)->pluckNames()), null, [
-                                $readonly,
-                                'class' => 'form-control'
-                            ])}}
+                            {{Form::select(
+                                'unit_id',
+                                (new App\Unit)->pluckNames(trans('strings.none')),
+                                $model->unit_id ? $model->unit_id : 0,
+                                [
+                                    $readonly,
+                                    'class' => 'form-control'
+                                ]
+                            )}}
 
                             <hr />
 

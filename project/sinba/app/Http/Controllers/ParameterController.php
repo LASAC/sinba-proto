@@ -49,9 +49,9 @@ class ParameterController extends CRUDController
     public function store()
     {
         $this->validateRequest();
-        Unit::create([
+        Parameter::create([
             'name' => $this->request->input('name'),
-            'unit_id' => $this->request->input('unit_id')
+            'unit_id' => $this->request->input('unit_id') > 0 ? $this->request->input('unit_id') : null
         ]);
 
         $this->session->flash('message_success', trans('strings.saveSuccess'));
@@ -66,7 +66,7 @@ class ParameterController extends CRUDController
 
         $updated = $this->model->update([
             'name' => $this->request->input('name'),
-            'unit_id' => $this->request->input('unit_id')
+            'unit_id' => $this->request->input('unit_id') > 0 ? $this->request->input('unit_id') : null
         ]);
 
         if($updated) {
@@ -111,5 +111,5 @@ class ParameterController extends CRUDController
         }
 
         return $this->index($units);
-}
+    }
 }

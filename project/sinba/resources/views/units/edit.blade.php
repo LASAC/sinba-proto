@@ -7,6 +7,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
+                        <a href="{{ url('/parameters/') }}">{{trans('strings.parametersManagement')}}</a> |
                         <a href="{{ url('/units') }}">{{trans('strings.listUnits')}}</a> |
                         {{$title}}
                     </div>
@@ -20,12 +21,6 @@
                             ])}}
 
                             {{Form::hidden('id', $model->id)}}
-
-                            {{Form::label('quantity', trans('strings.quantity') . ':')}}
-                            {{Form::text('quantity', $model->quantity, [
-                                $readonly,
-                                'class' => 'form-control'
-                            ])}}
 
                             {{Form::label('name', trans('strings.name') . ':')}}
                             {{Form::text('name', $model->name, [

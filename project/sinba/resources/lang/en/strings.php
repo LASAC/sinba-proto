@@ -51,6 +51,7 @@ return [
     'save' => 'Save',
     'start' => 'Start',
     'results' => 'Results',
+    'lastAccess' => 'Last Access',
     'lastSearch' => 'Last Search',
     'settings' => 'Settings',
     'watershedsManagement' => 'Watershed Management',
@@ -70,6 +71,7 @@ return [
     'users' => 'Users',
     'createUser' => 'Create Users',
     'searchUser' => 'Search Users',
+    'searchResults' => 'Search Results',
     'isAdmin' => 'Admin?',
     'yes' => 'Yes',
     'no' => 'No',
@@ -79,5 +81,18 @@ return [
     'impossibleToDeleteAnAdmin' => 'It is not possible to delete an Administrator.',
     'searchParameter' => 'Search Parameters',
     'listParameters' => 'List Parameters',
-    'createParameter' => 'Create Parameter'
+    'createParameter' => 'Create Parameter',
+    'information' => 'Information',
+
+    'none' => 'None',
+
+    // Watershed
+    'watershedName' => 'Watershed Name',
+    'watershedSearch' => 'Watershed Search',
+    'createWatershed' => 'Create Watershed',
+    'levelAbove' => 'Level Above',
+    'showData' => 'Show Data',
+    'registerData' => 'Register Data',
+    'deleteForbiddenMessage' => 'It is not possible to delete a watershed register because there are several data related to it. Edit its information if necessary.',
+    'deleteLogMessage' => 'Watershed delete attempt registered.'
 ];

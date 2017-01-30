@@ -2,7 +2,8 @@
 
 @section('links')
     {{trans('strings.listParameters')}} |
-    <a href="{{ url('/parameters/create') }}">{{trans('strings.createParameter')}}</a>
+    <a href="{{ url('/parameters/create') }}">{{trans('strings.createParameter')}}</a> |
+    <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a>
 @endsection
 
 @section('search')
@@ -29,6 +30,7 @@
         <tr>
             <th>{{trans('strings.name')}}</th>
             <th>{{trans('strings.unit')}}</th>
+            <th>{{trans('strings.symbol')}}</th>
             <th class="action">
                 {{trans('strings.actions')}}
             </th>
@@ -39,6 +41,7 @@
             <tr>
                 <td>{{$parameter->name}}</td>
                 <td>{{$parameter->unitName()}}</td>
+                <td>{{$parameter->symbol()}}</td>
                 <td class="action">
                     {{Form::open([
                         'url' => "/parameters/{$parameter->id}",

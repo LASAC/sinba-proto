@@ -22,4 +22,12 @@ class Parameter extends Model
         }
         return $this->unit->name;
     }
+
+    public function symbol() {
+
+        if(is_null($this->unit_id)) {
+            return "";
+        }
+        return $this->unit->symbol;
+    }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.crud.list')
 
 @section('links')
+    <a href="{{ url('/parameters/') }}">{{trans('strings.parametersManagement')}}</a> |
     {{trans('strings.unitsSystem')}} |
     <a href="{{ url('/units/create') }}">{{trans('strings.createUnit')}}</a>
 @endsection
@@ -27,11 +28,10 @@
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>{{trans('strings.quantity')}}</th>
             <th>{{trans('strings.name')}}</th>
             <th>{{trans('strings.symbol')}}</th>
-            <th>{{trans('strings.other')}}</th>
             <th>{{trans('strings.base')}}</th>
+            <th>{{trans('strings.other')}}</th>
             <th class="action">
                 {{trans('strings.actions')}}
             </th>
@@ -40,11 +40,10 @@
         <tbody>
         @foreach($units as $unit)
             <tr>
-                <td>{{$unit->quantity}}</td>
                 <td>{{$unit->name}}</td>
                 <td>{{$unit->symbol}}</td>
-                <td>{{$unit->inOtherUnits}}</td>
                 <td>{{$unit->inBaseUnits}}</td>
+                <td>{{$unit->inOtherUnits}}</td>
                 <td class="action">
                     {{Form::open([
                         'url' => "/units/{$unit->id}",

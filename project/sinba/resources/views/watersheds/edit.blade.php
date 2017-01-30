@@ -1,37 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-<style>
-    body{
-
-    }
-
-    h1{
-        color: #204d74;
-        font-family: "Arial";
-    }
-
-    h4{
-        color: "black";
-    }
-
-    h5{
-        color: #204d74;
-        font-family: "Arial";
-    }
-
-    p{
-        color: #1f648b;
-        text-align: justify;
-    }
-
-    #btnCadastrar{
-        margin: 0 auto;
-    }
-
-
-
-</style>
+<link href="/css/watersheds.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -46,47 +16,62 @@
 
 
         <div class="col-sm-8">
-            <h1>{{$watershed->name}}</h1>
-            <h5> Nível acima: Bacia do Rio Pardo</h5>
+        {{Form::open([
+            'url' => $url,
+            'method' => $method,
+            'files' => true
+        ])}}
+            {{Form::hidden('id', $watershed->id)}}
+
+            <h1>
+                {{ trans('strings.watershedName') }}:
+                {{Form::text('name', $watershed->name, [
+                    'class' => 'form-control'
+                ])}}
+            </h1>
+            <h5>
+                {{ trans('strings.levelAbove') }}:
+                {{Form::select(
+                    'parent_id',
+                    $watershed->pluckOtherNames(trans('strings.none')),
+                    $watershed->parent_id ? $watershed->parent_id : 0,
+                    [
+                        'class' => 'form-control'
+                    ]
+                )}}
+            </h5>
 
             <hr />
 
-            <h4>Informações</h4>
+            <h4>{{ trans('strings.information') }}</h4>
 
-            </br>
+            <br>
 
-            <p>A bacia do Córrego Guariroba possui extensão de aproximadamente 37.000 ha e situa-se entre os paralelos
-            20º29'30”(N), 20º46'05”(S) e meridianos 54º19'39”(L) e 54º28'30”(O), com altitude variando de 440 m a
-            640 m. Está localizada na grande unidade geológica denominada Bacia Sedimentar do Paraná e encontra-se
-            inserida na sub-bacia hidrográfica do Rio Pardo.
-            De acordo com o projeto RADAMBRASIL (BRASIL, 1982), a bacia hidrográfica do Guariroba encontra-se
-            geomorfologicamente inserida no Planalto de Maracaju -Campo Grande, possuindo superfície de aplanamento,
-            elaborada por processos de pediplanação, cortando litologias pré-cambrianas do Grupo Cuiabá e Corumbá,
-            rochas devonianas e permocarboníferas da Bacia Sedimentar do Paraná. Os relevos de topo convexo, com
-            diferentes ordens de grandeza e de aprofundamento de drenagem, são separados por vales de fundo plano
-            ou em forma de “V” (ALVES SOBRINHO, 2010).
+            <p>
+            {{Form::textarea('description', $watershed->description, [
+                'class' => 'form-control'
+            ])}}
             </p>
 
-            </br>
+            <br>
 
-            <img src="{{URL::asset('/img/guariroba.gif')}}" height="400" width="600" class="img-responsive center-block">
+            @if($watershed->image)
+                <img src="{{Storage::disk('public')->url($watershed->image)}}" height="400" width="600" class="img-responsive center-block">
+            @endif
+            {{Form::file('image', [
+                'class' => 'form-control'
+            ])}}
 
-            </br>
-            </br>
+            <br>
+            <br>
 
             <div align="center">
-                <button id="btnCadastrar" type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="{{url('watersheds/model/1')}}">Cadastrar Dados</a>
-                </button>
-
-                </br>
-                </br>
-
-                <button type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="/">Visualizar Dados</a>
-                </button>
+                {{Form::submit(trans('strings.save'), [
+                    'class' => 'btn btn-primary'
+                ])}}
             </div>
 
+        {{Form::close()}}
         </div>
 
             <div class="col-sm-1">

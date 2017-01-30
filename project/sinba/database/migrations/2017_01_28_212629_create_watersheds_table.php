@@ -19,6 +19,7 @@ class CreateWatershedsTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->integer('parent_id')->unsigned()->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('parent_id')->references('id')->on('watersheds');

@@ -19,7 +19,6 @@ class UnitController extends CRUDController
         $this->validate($this->request, [
             'name' => 'required|max:255|unique:units,name' . $id,
             'symbol' => 'max:15',
-            'quantity' => 'max:127',
             'inBaseUnits' => 'max:63',
             'inOtherUnits' => 'max:63'
         ]);
@@ -36,7 +35,6 @@ class UnitController extends CRUDController
         Unit::create([
             'name' => $this->request->input('name'),
             'symbol' => $this->request->input('symbol'),
-            'quantity' => $this->request->input('quantity'),
             'inBaseUnits' => $this->request->input('inBaseUnits'),
             'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
@@ -60,7 +58,6 @@ class UnitController extends CRUDController
         $updated = $this->model->update([
             'name' => $this->request->input('name'),
             'symbol' => $this->request->input('symbol'),
-            'quantity' => $this->request->input('quantity'),
             'inBaseUnits' => $this->request->input('inBaseUnits'),
             'inOtherUnits' => $this->request->input('inOtherUnits')
         ]);
@@ -80,7 +77,6 @@ class UnitController extends CRUDController
         $units = $this->model
             ->where('name', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orWhere('symbol', 'LIKE', '%' . $this->request->input('search') . '%')
-            ->orWhere('quantity', 'LIKE', '%' . $this->request->input('search') . '%')
             ->orderBy($this->collectionName())
             ->get();
         if($units->isEmpty()) {

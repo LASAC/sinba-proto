@@ -14,7 +14,7 @@
                         <li><a href="{{ url('/users') }}">{{trans('strings.usersManagement')}}</a></li>
                         <li><a href="{{ url('/units') }}">{{trans('strings.unitsSystem')}}</a></li>
                         <li><a href="{{ url('/parameters') }}">{{trans('strings.parametersManagement')}}</a></li>
-                        <li><a href="{{ url('/watersheds') }}">{{trans('strings.watershedsManagement')}}</a></li>
+                        <li><a href="{{ url('/watersheds/create') }}">{{trans('strings.createWatershed')}}</a></li>
                     </div>
 
                 </div>
@@ -29,31 +29,28 @@
                     <div class="panel-heading" style="text-align: center">
                         {{Form::open([
                             'url' => '/watersheds/search',
-                            'ng-submit' => 'search($event)',
-                            'novalidate',
-                            'ng-model' => 'searchForm'
+                            'method' => 'post'
                         ])}}
                         {{Form::text('search', '', [
-                            'title' => 'Pesquisar Bacia Hidrográfica',
+                            'title' => trans('strings.watershedSearch'),
                             'ng-model' => 'searchTerm',
                             'autofocus'
                         ])}}
 
-                        {{Form::button(trans('strings.search'), [
-                            'title' => 'Pesquisar Bacia Hidrográfica',
+                        {{Form::submit(trans('strings.search'), [
+                            'title' => trans('strings.watershedSearch'),
                             'ng-disabled' => 'isBtnDisabled($event)',
-                            'disabled',
-                            'ng-click' => 'search()'
+                            'disabled'
                         ])}}
                         {{Form::close()}}
                     </div>
-                    @if(count($watersheds) > 0)
+                    @if($watersheds && count($watersheds) > 0)
                     <div class="panel-body">
 
-                        {{$resultLabel}}:
+                        {{ $resultLabel }}:
 
                         @foreach($watersheds as $watershed)
-                            <li><a href="{{url("/watersheds/edit/{$watershed->id}")}}">{{$watershed->name}}</a></li>
+                            <li><a href="{{url("/watersheds/{$watershed->id}")}}">{{$watershed->name}}</a></li>
                         @endforeach
 
                     </div>

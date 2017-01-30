@@ -1,0 +1,26 @@
+body{
+
+}
+
+h1{
+    color: #204d74;
+    font-family: "Arial";
+}
+
+h4{
+    color: black;
+}
+
+h5{
+    color: #204d74;
+    font-family: "Arial";
+}
+
+p{
+    color: #1f648b;
+    text-align: justify;
+}
+
+#btnCadastrar{
+    margin: 0 auto;
+}

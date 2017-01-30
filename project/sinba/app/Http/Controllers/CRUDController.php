@@ -13,7 +13,7 @@ abstract class CRUDController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->session = Session();
+        $this->session = session();
     }
 
     protected abstract function listView();

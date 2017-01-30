@@ -46,29 +46,33 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('parameters', 'ParameterController');
 
         // Watershed CRUD:
+
+        Route::get('watersheds/search', 'WatershedController@index');
+        Route::post('watersheds/search', 'WatershedController@search');
         Route::resource('watersheds', 'WatershedController');
     });
 
     Route::get('home', function () {
 
-        $watersheds = [
-            (object)['id' => 1, 'name' => 'Bacia 01'],
-            (object)['id' => 2, 'name' => 'Bacia 02'],
-        ];
+        // get last accessed watershed.
+        $access = new \App\WatershedAccess();
+        $watershed = $access->lastWatershedAccessedBy(Auth::id());
+        if(!$watershed) {
+            $watershed = new \App\Watershed();
+        }
 
         return view('home', [
-            'isAdmin' => true,
-            'resultLabel' => trans('strings.results'),
-            'watersheds' => $watersheds
+            'resultLabel' => trans('strings.lastAccess'),
+            'watersheds' => [$watershed]
         ]);
     });
 
-    Route::get('watersheds/edit/{id}' , function ($id) {
-        $watershed = (object)['id' => $id, 'name' => 'Bacia do Guariroba'];
-        return view('watersheds.edit', [
-            'watershed' => $watershed
-        ]);
-    });
+//    Route::get('watersheds/edit/{id}' , function ($id) {
+//        $watershed = (object)['id' => $id, 'name' => 'Bacia do Guariroba'];
+//        return view('watersheds.edit', [
+//            'watershed' => $watershed
+//        ]);
+//    });
 
     Route::get('watersheds/model/{id}', function ($id) {
         return view('watersheds.model');

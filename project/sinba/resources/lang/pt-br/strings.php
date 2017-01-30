@@ -55,6 +55,7 @@ return [
     'start' => 'Iniciar',
     'results' => 'Resultados',
     'lastSearch' => 'Última Pesquisa',
+    'lastAccess' => 'Último Acesso',
     'settings' => 'Configurações',
     'watershedsManagement' => 'Gerenciar Bacias Hidrográficas',
     'usersManagement' => 'Gerenciar Usuários',
@@ -72,6 +73,7 @@ return [
     'users' => 'Usuários',
     'createUser' => 'Criar Usuário',
     'searchUser' => 'Buscar Usuários',
+    'searchResults' => 'Resultado(s) da Busca',
     'isAdmin' => 'Admin?',
     'yes' => 'Sim',
     'no' => 'Não',
@@ -81,5 +83,18 @@ return [
     'impossibleToDeleteAnAdmin' => 'Não é possível remover um Usuário Administrador.',
     'searchParameter' => 'Buscar Parâmetros',
     'listParameters' => 'Listar Parâmetros',
-    'createParameter' => 'Criar Parâmetro'
+    'createParameter' => 'Criar Parâmetro',
+    'information' => 'Informações',
+
+    'none' => 'Nenhum',
+
+    // Watershed
+    'watershedName' => 'Nome da Bacia',
+    'watershedSearch' => 'Pesquisar Bacia Hidrográfica',
+    'createWatershed' => 'Cadastrar Bacia Hidrográfica',
+    'levelAbove' => 'Nível Acima',
+    'showData' => 'Visualizar Dados',
+    'registerData' => 'Cadastrar Dados',
+    'deleteForbiddenMessage' => 'Não é possível remover o registro de bacia, pois, vários dados são relacionados a ele. Caso necessário, edite suas informações.',
+    'deleteLogMessage' => 'Tentativa de exclusão de bacia registrada.'
 ];

@@ -160,7 +160,7 @@ class UnitsTableSeeder extends Seeder
         }
         try {
             DB::table('units')->insert([
-                'name' => 'te   sla',
+                'name' => 'tesla',
                 'symbol' => 'T',
                 'inBaseUnits' => 'kg/(s²·A)',
                 'inOtherUnits' => 'Wb/m²'
