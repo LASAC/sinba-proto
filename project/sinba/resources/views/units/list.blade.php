@@ -1,8 +1,7 @@
 @extends('layouts.crud.list')
 
 @section('links')
-    <a href="{{ url('/parameters/') }}">{{trans('strings.parametersManagement')}}</a> |
-    {{trans('strings.unitsSystem')}} |
+    <h2>{{trans('strings.units')}}</h2> |
     <a href="{{ url('/units/create') }}">{{trans('strings.createUnit')}}</a>
 @endsection
 
@@ -16,8 +15,6 @@
         'class' => 'btn btn-primary',
         'style' => 'padding: 2px 2px'
     ])}}
-
-
     {{Form::label(count($units) . ' resultado(s)', '',[
         'style' => 'font-style: italic; font-size: x-small;'
     ])}}
@@ -25,7 +22,7 @@
 @endsection
 
 @section('table')
-    <table class="table table-striped table-bordered">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>{{trans('strings.name')}}</th>
@@ -50,15 +47,13 @@
                         'method' => 'delete'
                     ])}}
                     <a href="{{url("/units/{$unit->id}/edit")}}">
-                        <button type="button" class="btn btn-success"
-                                style="padding: 1px 1px">
+                        <button type="button" class="btn btn-success">
                             {{trans('strings.edit')}}
                         </button>
                     </a>
                     {{Form::submit(trans('strings.delete'), [
                         'class' => 'btn btn-warning',
-                        'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");',
-                        'style' => 'padding: 1px 1px'
+                        'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");'
                     ])}}
                     {{Form::close()}}
                 </td>

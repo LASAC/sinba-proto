@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center">
-                        <a href="{{ url('/parameters') }}">{{trans('strings.listParameters')}}</a> |
+                        <a href="{{ url('/parameters') }}">{{trans('strings.Parameters')}}</a> |
                         {{$title}} |
                         <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a>
                     </div>

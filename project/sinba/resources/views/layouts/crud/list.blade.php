@@ -1,27 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="text-align: center">
-                        @yield('links')
-                    </div>
-
-                    <div class="panel-body">
-                        <div id="search_form" style="text-align: center">
-                            @yield('search')
-                        </div>
-                    </div>
-
-                    <hr />
-
-                    <div class="table-responsive">
-                        @yield('table')
+<div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+              <div class="x_title">
+                  @yield('links')
+              </div>
+            <br/>
+              <div class="row">
+                <div class="panel-body">
+                    <div id="search_form" style="text-align: center">
+                        @yield('search')
                     </div>
                 </div>
+             </div>
+              <div class="x-panel">
+                <div class="x_content">
+                  @yield('table')
+                </div>
             </div>
-        </div>
-    </div>
+          </div>
+      </div>
 @endsection

@@ -1,8 +1,12 @@
 @extends('layouts.crud.list')
 
+@section('title')
+  {{trans('strings.users')}}
+@endsection
+
 @section('links')
-    {{trans('strings.users')}} |
-    <a href="{{ url('/units/create') }}">{{trans('strings.createUser')}}</a>
+    <h2>{{trans('strings.users')}}</h2> |
+    <a href="{{ url('/users/create') }}">{{trans('strings.createUser')}}</a>
 @endsection
 
 @section('search')
@@ -10,13 +14,13 @@
         'url' => '/users/search'
     ]) }}
     {{Form::label('search', trans('strings.searchUser') . ':')}}
-    {{Form::text('search', Session::get('search'))}}
+    {{Form::text('search', Session::get('search'), [
+        'placeholder' => 'Buscar usuário...'
+    ])}}
     {{Form::submit(trans('strings.search'), [
         'class' => 'btn btn-primary',
         'style' => 'padding: 2px 2px'
     ])}}
-
-
     {{Form::label(count($users) . ' resultado(s)', '',[
         'style' => 'font-style: italic; font-size: x-small;'
     ])}}
@@ -24,7 +28,7 @@
 @endsection
 
 @section('table')
-    <table class="table table-striped table-bordered">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>{{trans('strings.name')}}</th>
@@ -51,14 +55,12 @@
                         'method' => 'delete'
                     ])}}
                     <a href="{{url("/users/{$user->id}/edit")}}">
-                        <button type="button" class="btn btn-success"
-                                style="padding: 1px 1px">
+                        <button type="button" class="btn btn-success">
                             {{trans('strings.edit')}}
                         </button>
                     </a>
                     <a href="{{url("/users/{$user->id}")}}">
-                        <button type="button" class="btn btn-info"
-                                style="padding: 1px 1px">
+                        <button type="button" class="btn btn-info">
                             {{trans('strings.view')}}
                         </button>
                     </a>
