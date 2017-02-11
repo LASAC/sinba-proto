@@ -45,6 +45,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('parameters/search', 'ParameterController@search');
         Route::resource('parameters', 'ParameterController');
 
+        // Watershed Models
+
+        Route::resource('watersheds/model', 'WatershedModelController');
+
         // Watershed CRUD:
 
         Route::get('watersheds/search', 'WatershedController@index');
@@ -65,17 +69,6 @@ Route::group(['middleware' => 'auth'], function(){
             'resultLabel' => trans('strings.lastAccess'),
             'watersheds' => [$watershed]
         ]);
-    });
-
-//    Route::get('watersheds/edit/{id}' , function ($id) {
-//        $watershed = (object)['id' => $id, 'name' => 'Bacia do Guariroba'];
-//        return view('watersheds.edit', [
-//            'watershed' => $watershed
-//        ]);
-//    });
-
-    Route::get('watersheds/model/{id}', function ($id) {
-        return view('watersheds.model');
     });
 
 });

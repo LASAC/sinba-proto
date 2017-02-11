@@ -18,7 +18,7 @@
         <div class="col-sm-8">
             <h1>{{$watershed->name}}</h1>
             <h5>
-                Nível acima:
+                {{trans('strings.levelAbove')}}:
                 @if($parent)
                     <a href="{{ url('watersheds/' . $parent->id) }}">{{ $parent->name }}</a>
                 @else

@@ -14,7 +14,7 @@ class Watershed extends Model
     ];
 
     public function parent() {
-        return $this->belongsTo('App\Watershed');
+        return $this->belongsTo('App\Watershed', 'parent_id');
     }
 
     public function pluckOtherNames($noneValue = null) {

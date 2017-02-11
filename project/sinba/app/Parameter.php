@@ -30,4 +30,27 @@ class Parameter extends Model
         }
         return $this->unit->symbol;
     }
+
+    public function nameAndSymbol() {
+        $symbol = $this->symbol();
+        return $this->name . (strlen($this->symbol()) ? " ($symbol)" : '');
+    }
+
+    public function pluckNames($noneValue = null) {
+        $plucks = $this->orderBy('name')->pluck('name', 'id');
+        $array = $plucks->toArray();
+        if($noneValue) {
+            $array[0] = $noneValue;
+        }
+        return $array;
+    }
+
+    public function pluckNamesAndSymbols($noneValue = null) {
+        $parameters = $this->orderBy('name')->get();
+        $paramArray = [];
+        foreach($parameters as $parameter) {
+            $paramArray[$parameter->id] = $parameter->nameAndSymbol();
+        }
+        return $paramArray;
+    }
 }

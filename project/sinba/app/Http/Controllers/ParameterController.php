@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Parameter;
+use Illuminate\Support\Facades\Log;
 
 class ParameterController extends CRUDController
 {
@@ -86,10 +87,17 @@ class ParameterController extends CRUDController
      * @return \Illuminate\Http\Response
      */
     public function index($models = null) {
-
+        Log::debug("PARAMETER CONTROLLER - INDEX $this->request");
         if(!isset($models)) {
             $models = $this->model->orderBy($this->columnToSort())->with('unit')->get();
         }
+
+        if($this->request->expectsJson()) {
+            Log::debug("PARAMETER CONTROLLER - SENDING JSON:");
+            Log::debug($models->toJson());
+            return $models;
+        }
+
         return view($this->listView(), [
             $this->collectionName() => $models
         ]);

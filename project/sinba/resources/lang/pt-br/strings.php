@@ -95,6 +95,13 @@ return [
     'levelAbove' => 'Nível Acima',
     'showData' => 'Visualizar Dados',
     'registerData' => 'Cadastrar Dados',
+    'dataRegister' => 'Cadastro de Dados',
     'deleteForbiddenMessage' => 'Não é possível remover o registro de bacia, pois, vários dados são relacionados a ele. Caso necessário, edite suas informações.',
-    'deleteLogMessage' => 'Tentativa de exclusão de bacia registrada.'
+
+    // Watershed Model
+    'deleteLogMessage' => 'Tentativa de exclusão de bacia registrada.',
+    'importDataFromExistingSheet' => 'Importar dados de uma planilha existente',
+    'createNewSheet' => 'Criar nova planilha',
+    'warning' => 'Atenção',
+    'selectParameter' => 'Selecionar parâmetro'
 ];
