@@ -45,7 +45,7 @@
 
             <div align="center">
                 <button id="btnCadastrar" type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="{{url('watersheds/model/1')}}">{{ trans('strings.registerData') }}</a>
+                    <a href="{{url('watersheds/models/1')}}">{{ trans('strings.registerData') }}</a>
                 </button>
 
                 <br>

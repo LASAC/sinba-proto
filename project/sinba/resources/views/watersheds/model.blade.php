@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('script')
+    <script src="/js/services/Notify.js"></script>
     <script src="/js/controllers/WatershedModelCtrl.js"></script>
 @endsection
 @section('style')
     <link href="/css/watersheds/model.css" rel="stylesheet">
 @endsection
-
 @section('content')
     <div class="row" ng-controller="WatershedModelCtrl" ng-init="init()">
         <div class="col-sm-1">
@@ -23,13 +23,12 @@
                 @endif
             </h5>
 
-            <h4>{{trans('strings.dataRegister')}}</h4>
-
             <hr />
 
             <div class="checkbox">
                 <label style="font-weight: bold">
-                    <input ng-model="importData" type="checkbox"> {{trans('strings.importDataFromExistingSheet')}}
+                    <input ng-model="importData" type="checkbox" disabled>
+                    {{trans('strings.importDataFromExistingSheet')}}
                 </label>
             </div>
 
@@ -87,45 +86,57 @@
 
             <div class="checkbox">
                 <label style="font-weight: bold">
-                    <input ng-model="createNewSheet" type="checkbox"> {{trans('strings.createNewSheet')}}
+                    <input ng-model="createNewSheet" type="checkbox">
+                    {{trans('strings.createNewSheet')}}
                 </label>
             </div>
 
             <div ng-show="createNewSheet">
-                <br />
+                <br>
 
                 <div>
-                    <form action="action_page.php">
-                        <label for="fname">Nome do Modelo</label>
-                        <input type="text" id="fname" name="nomeModelo">
+                    <form class="form-group" action="action_page.php">
+                        <label for="modelName">{{trans('strings.modelName')}}:</label>
+                        <input class="form-control" type="text" id="modelName" name="modelName" ng-model="modelName">
                     </form>
                 </div>
 
 
-                </br>
+                <br>
 
-                <div class="form-group">
-                    <label for="parameter_id">{{trans('strings.selectParameter')}}:</label>
-                    <select id="parameter_id"
-                            ng-model="selectedParameter"
-                            ng-options="nameAndSymbol(parameter) for parameter in parameterList"
-                            ng-change="parameterListChanged()"></select>
+                <div class="white-box-container">
+                    <div class="form-group">
+                        <label for="parameter_id">{{trans('strings.selectParameter')}}:</label>
+                        <select multiple id="parameter_id" class="form-control"
+                                ng-model="availableSelected"
+                                ng-options="nameAndSymbol(parameter) for parameter in availableParameters | orderBy:'name':false:localeSensitiveComparator"
+                        >
+                        </select>
+                    </div>
+
+                    <div class="white-box-buttons">
+                        <button ng-click="add()" type="button" class="btn btn-default">{{trans('strings.add')}}</button>
+                        <button ng-click="remove()" type="button" class="btn btn-default">{{trans('strings.remove')}}</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectedParametersDisplay">{{trans('strings.selectedParameters')}}:</label>
+                        <select multiple id="chosenSelected" class="form-control"
+                                ng-model="chosenSelected"
+                                ng-options="nameAndSymbol(parameter) for parameter in chosenParameters | orderBy:'name':false:localeSensitiveComparator"
+                        ></select>
+                    </div>
+
                 </div>
 
-                <button type="button" class="btn btn-default">Adicionar</button>
-
-                <div class="form-group">
-                    <label for="comment">Parâmetros e Unidades selecionados:</label>
-                    <textarea id="textareaParameters" class="form-control" rows="5"
-                              ng-model="textareaParameters" disabled
-                    ></textarea>
+                <div class="white-box-container">
+                    {{--<button type="button" class="btn btn-default">Definir Linha e Coluna Inicial</button>--}}
+                    {{--<button type="button" class="btn btn-default">Visualizar Modelo</button>--}}
+                    <button ng-click="exportModel()" type="button" class="btn btn-default">{{trans('strings.exportModel')}}</button>
                 </div>
 
-                </br>
+                <br>
 
-                <button type="button" class="btn btn-default">Definir Linha e Coluna Inicial</button>
-                <button type="button" class="btn btn-default">Visualizar Modelo</button>
-                <button type="button" class="btn btn-default">Exportar Modelo</button>
             </div>
 
         </div>

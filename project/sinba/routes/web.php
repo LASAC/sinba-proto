@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         // Watershed Models
 
-        Route::resource('watersheds/model', 'WatershedModelController');
+        Route::resource('watersheds/models', 'WatershedModelController');
 
         // Watershed CRUD:
 

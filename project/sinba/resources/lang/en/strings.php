@@ -99,5 +99,11 @@ return [
     'importDataFromExistingSheet' => 'Import data from existing sheet',
     'createNewSheet' => 'Create new sheet',
     'warning' => 'Warning',
-    'selectParameter' => 'Select parameter'
+    'selectParameter' => 'Select parameter',
+    'add' => 'Add',
+    'remove' => 'Remover',
+    'selectedParameters' => 'Selected parameters',
+    'modelName' => 'Model Name',
+    'exportModel' => 'Export Model',
+    'modelExportSuccess' => 'Modelo exportado com sucesso!'
 ];

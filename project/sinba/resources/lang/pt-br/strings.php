@@ -103,5 +103,11 @@ return [
     'importDataFromExistingSheet' => 'Importar dados de uma planilha existente',
     'createNewSheet' => 'Criar nova planilha',
     'warning' => 'Atenção',
-    'selectParameter' => 'Selecionar parâmetro'
+    'selectParameter' => 'Selecionar parâmetro',
+    'add' => 'Adicionar',
+    'remove' => 'Remover',
+    'selectedParameters' => 'Parâmetros Selecionados',
+    'modelName' => 'Nome do Modelo',
+    'exportModel' => 'Exportar Modelo',
+    'modelExportSuccess' => 'Modelo exportado com sucesso!'
 ];

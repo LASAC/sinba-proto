@@ -49,7 +49,12 @@ class WatershedModelController extends Controller
      */
     public function store()
     {
+        Log::debug("STORE MODEL: $this->request");
 
+        // criar modelo no banco de dados (tabela: models)
+        // adicionar parâmetros relacionados ao modelo no banco de dados (tabela: model_parameters)
+
+        return response(['message' => trans('strings.modelExportSuccess')]);
     }
 
     /**
