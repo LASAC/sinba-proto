@@ -101,13 +101,23 @@ return [
     // Watershed Model
     'deleteLogMessage' => 'Tentativa de exclusão de bacia registrada.',
     'importDataFromExistingSheet' => 'Importar dados de uma planilha existente',
-    'createNewSheet' => 'Criar nova planilha',
+    'createNewSheet' => 'Criar nova planilha modelo',
     'warning' => 'Atenção',
-    'selectParameter' => 'Selecionar parâmetro',
+    'selectedParameters' => 'Parâmetros selecionados',
+    'availableParameteres' => 'Parâmetros disponíveis',
     'add' => 'Adicionar',
     'remove' => 'Remover',
-    'selectedParameters' => 'Parâmetros Selecionados',
-    'modelName' => 'Nome do Modelo',
+    'modelName' => 'Nome da Planilha Modelo',
     'exportModel' => 'Exportar Modelo',
-    'modelExportSuccess' => 'Modelo exportado com sucesso!'
+    'modelExportSuccess' => 'Modelo exportado com sucesso!',
+    'step' => 'Passo',
+    'nextStep' => 'Próximo passo',
+    'previousStep' => 'Passo anterior',
+    'invert' => 'Inverter',
+    'moveUp' => 'Subir',
+    'moveDown' => 'Descer',
+    'columnLabels' => 'Títulos para colunas/linhas',
+    'orderedColumns' => 'Colunas/linhas ordenadas',
+    'layout' => 'Disposição',
+    'headerOnFirst' => 'Cabeçalho na primeira'
 ];

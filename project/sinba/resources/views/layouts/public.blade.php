@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="SinbaApp">
+<html lang="{{ config('app.locale') }}" ng-app="SinbaApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,13 +22,14 @@
     @yield('style')
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="/js/libs/angular.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
     <script src="/js/SinbaApp.js"></script>
+    <script src="/js/services/locale/{{ config('app.locale') }}/Locale.js?<?=date('YmdHis')?>"></script>
     @yield('script')
 </head>
 <body>
