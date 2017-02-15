@@ -26,7 +26,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
     // Sheet model being created
     $scope.model = {
         name: '',
-        layout: MODEL_LAYOUTS.LINE,
+        layout_header_in_first_column: MODEL_LAYOUTS.LINE,
         parameters: [],
         labels: []
     }
@@ -54,7 +54,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
     }
 
     const getLayout = function () {
-        if ($scope.model.layout === MODEL_LAYOUTS.LINE) {
+        if ($scope.model.layout_header_in_first_column === MODEL_LAYOUTS.LINE) {
             return locale.str('line')
         }
         return locale.str('column')
@@ -217,7 +217,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
         $scope.labels.all = $scope.reorderedParameter.all.map(function (parameter, index) {
             return ($scope.labels.all[index])
                 ? $scope.labels.all[index]
-                : {id: parameter.id, label: nameAndSymbol(parameter)}
+                : {parameterId: parameter.id, label: nameAndSymbol(parameter)}
         })
     }
 
@@ -225,7 +225,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
         var newLabelsAll = []
         $scope.reorderedParameter.all.map(function (parameter, index) {
             newLabelsAll[index] =  $scope.labels.all.find(function (label) {
-                return label.id === parameter.id
+                return label.parameterId === parameter.id
             })
         })
         $scope.labels.all = newLabelsAll
@@ -368,11 +368,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
     }
 
     const exportModel = function () {
-        $log.debug('EXPORT MODEL', $scope.chosenParameters.all)
-        // notify.showDanger('Showing Danger')
-        // notify.showSuccess('Showing Success')
-        // notify.showWarning('Showing Warning')
-        // notify.showInfo('Showing Info')
+        $log.debug('EXPORT MODEL', $scope.model)
 
         if (validateForm()) {
             $http({
@@ -384,7 +380,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
                 notify.showSuccess(response.data.message)
             }).catch(function (response) {
                 $log.debug('POST ERROR:', response)
-                notify.showDanger('POST ERROR: ' + JSON.stringify(response.data))
+                notify.showDanger(response.data.error.message)
             })
         }
     }

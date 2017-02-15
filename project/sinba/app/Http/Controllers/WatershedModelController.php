@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model;
 use App\Parameter;
 use App\Watershed;
 use Illuminate\Http\Request;
@@ -12,13 +13,15 @@ class WatershedModelController extends Controller
     protected $request;
     protected $session;
     protected $watershed;
+    protected $model;
     protected $parameter;
 
-    public function __construct(Request $request, Watershed $watershed, Parameter $parameter)
+    public function __construct(Request $request, Watershed $watershed, Model $model, Parameter $parameter)
     {
         $this->request = $request;
         $this->session = session();
         $this->watershed = $watershed;
+        $this->model = $model;
         $this->parameter = $parameter;
     }
 
@@ -52,9 +55,18 @@ class WatershedModelController extends Controller
         Log::debug("STORE MODEL: $this->request");
 
         // criar modelo no banco de dados (tabela: models)
-        // adicionar parâmetros relacionados ao modelo no banco de dados (tabela: model_parameters)
+        $this->model->name = $this->request->name;
+        $this->model->layout_header_in_first_column = $this->request->layout_header_in_first_column;
+        $this->model->save();
 
-        return response(['message' => trans('strings.modelExportSuccess')]);
+        $toSync = [];
+        foreach ($this->request->labels as $sequence => $label) {
+            $toSync[$label['parameterId']] = ['label' => $label['label'], 'sequence' => $sequence];
+        }
+
+        $this->model->parameters()->sync($toSync);
+
+        return response(['message' => trans('strings.modelExportSuccess'), 'synced' => $toSync]);
     }
 
     /**

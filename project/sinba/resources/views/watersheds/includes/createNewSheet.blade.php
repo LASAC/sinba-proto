@@ -92,7 +92,7 @@
             <p>{{trans('strings.layout')}}: {{trans('strings.headerOnFirst')}} <b><[getLayout()]></b></p>
             <div class="checkbox">
                 <label style="font-weight: bold">
-                    <input ng-model="model.layout" type="checkbox">
+                    <input ng-model="model.layout_header_in_first_column" type="checkbox">
                     {{trans('strings.invert')}} {{trans('strings.layout')}}
                 </label>
             </div>
