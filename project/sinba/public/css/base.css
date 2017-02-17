@@ -1,0 +1,9 @@
+.centered-spaced-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.centered-spaced-buttons > a, button {
+    margin: 0 10px;
+    padding-bottom: 20px;
+}

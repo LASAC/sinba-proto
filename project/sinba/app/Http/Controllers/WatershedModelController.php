@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model;
 use App\Parameter;
+use App\Transformers\ModelTransformer;
 use App\Watershed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,14 +15,22 @@ class WatershedModelController extends Controller
     protected $session;
     protected $watershed;
     protected $model;
+    protected $modelTransformer;
     protected $parameter;
 
-    public function __construct(Request $request, Watershed $watershed, Model $model, Parameter $parameter)
+    public function __construct(
+        Request $request,
+        Watershed $watershed,
+        Model $model,
+        ModelTransformer $modelTransformer,
+        Parameter $parameter
+    )
     {
         $this->request = $request;
         $this->session = session();
         $this->watershed = $watershed;
         $this->model = $model;
+        $this->modelTransformer = $modelTransformer;
         $this->parameter = $parameter;
     }
 
@@ -32,7 +41,14 @@ class WatershedModelController extends Controller
      */
     public function index()
     {
-
+        if($this->request->expectsJson()) {
+            $models = $this->model->with('parameters')->get();
+            $modelsTransformed = $this->modelTransformer->transformModels($models);
+            Log::debug("WATERSHED MODEL CONTROLLER - SENDING JSON:");
+            Log::debug(json_encode($modelsTransformed));
+            return response()->json($modelsTransformed, 200);
+        }
+        return view('home');
     }
 
     /**

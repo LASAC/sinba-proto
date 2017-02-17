@@ -1,10 +1,9 @@
-angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $http, $log, notify, locale) {
-    $log.debug('WatershedModelCtrl')
+angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http, $log, notify, locale) {
+    $log.debug('CreateModelCtrl')
 
     //
     // Constants
     //
-
     const STEPS = {
         SELECT_PARAMETERS: 1,
         ORDER_LABELS_AND_LAYOUT: 2,
@@ -16,11 +15,11 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
         LINE: false,
         COLUMN: true
     }
+
     //
     // Public Properties
     //
-    $scope.importData = false
-    $scope.createNewSheet = true
+    $scope.createNewSheet = false
     $scope.step = MIN_STEP
 
     // Sheet model being created
@@ -33,7 +32,7 @@ angular.module('SinbaApp').controller('WatershedModelCtrl', function ($scope, $h
 
     // Methods
     const init = function () {
-        $log.debug('WatershedModelCtrl.init')
+        $log.debug('CreateModelCtrl.init')
         $scope.availableParameters = {
             all: [],
             selected: []

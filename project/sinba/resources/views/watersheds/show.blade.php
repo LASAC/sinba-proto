@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('style')
-<link href="/css/watersheds.css" rel="stylesheet">
+<?php $version = date('YmdHis') ?>
+<link href="/css/watersheds.css?<?=$version?>" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -43,24 +44,18 @@
             <br>
             <br>
 
-            <div align="center">
-                <button id="btnCadastrar" type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="{{url('watersheds/models/1')}}">{{ trans('strings.registerData') }}</a>
-                </button>
+            <div class="centered-spaced-buttons">
+                <a href="/watersheds/models/{{ $watershed->id }}">
+                    <button id="btnCadastrar" type="button" class="btn btn-default" style="padding: 9px 9px">
+                        {{ trans('strings.manageData') }}
+                    </button>
+                </a>
 
-                <br>
-                <br>
-
-                <button type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="/">{{ trans('strings.showData') }}</a>
-                </button>
-
-                <br>
-                <br>
-
-                <button type="button" class="btn btn-default" style="padding: 9px 9px">
-                    <a href="/watersheds/{{ $watershed->id }}/edit">{{ trans('strings.edit') }}</a>
-                </button>
+                <a href="/watersheds/{{ $watershed->id }}/edit">
+                    <button type="button" class="btn btn-default" style="padding: 9px 9px">
+                        {{ trans('strings.updateWatershed') }}
+                    </button>
+                </a>
             </div>
 
         </div>

@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('script')
-    <?php $version = date('YmdHis') ?>
-    <script src="/js/services/Notify.js?<?=$version?>"></script>
-    <script src="/js/controllers/WatershedModelCtrl.js?<?=$version?>"></script>
+    <script src="/js/services/Notify.js?<?=date('YmdHis')?>"></script>
+    <script src="/js/controllers/CreateModelCtrl.js?<?=date('YmdHis')?>"></script>
+    <script src="/js/controllers/ImportDataCtrl.js?<?=date('YmdHis')?>"></script>
+    <script src="/js/directives/ModelDisplay.js?<?=date('YmdHis')?>"></script>
+    <script src="/js/directives/FileRead.js?<?=date('YmdHis')?>"></script>
 @endsection
 @section('style')
-    <link href="/css/watersheds/model.css?<?=$version?>" rel="stylesheet">
+    <link href="/css/watersheds/model.css?<?=date('YmdHis')?>" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row" ng-controller="WatershedModelCtrl" ng-init="init()">
+    <div class="row">
         <div class="col-sm-1">
         </div>
         <div class="col-sm-1">

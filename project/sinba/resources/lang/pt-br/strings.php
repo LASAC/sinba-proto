@@ -89,12 +89,15 @@ return [
     'none' => 'Nenhum',
 
     // Watershed
+    'watershed' => 'Bacia Hidrográfica',
     'watershedName' => 'Nome da Bacia',
     'watershedSearch' => 'Pesquisar Bacia Hidrográfica',
     'createWatershed' => 'Cadastrar Bacia Hidrográfica',
+    'updateWatershed' => 'Atualizar Bacia Hidrográfica',
     'levelAbove' => 'Nível Acima',
     'showData' => 'Visualizar Dados',
-    'registerData' => 'Cadastrar Dados',
+    'manageData' => 'Gerenciar Dados',
+    'registerData' => 'Lançar Dados',
     'dataRegister' => 'Cadastro de Dados',
     'deleteForbiddenMessage' => 'Não é possível remover o registro de bacia, pois, vários dados são relacionados a ele. Caso necessário, edite suas informações.',
 
@@ -109,6 +112,9 @@ return [
     'remove' => 'Remover',
     'modelName' => 'Nome da Planilha Modelo',
     'exportModel' => 'Exportar Modelo',
+    'selectModel' => 'Selecione o Modelo',
+    'pickFile' => 'Selecionar Arquivo',
+    'additionalInfo' => 'Informações adicionais',
     'modelExportSuccess' => 'Modelo exportado com sucesso!',
     'step' => 'Passo',
     'nextStep' => 'Próximo passo',

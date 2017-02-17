@@ -87,11 +87,14 @@ return [
     'none' => 'None',
 
     // Watershed
+    'watershed' => 'Watershed',
     'watershedName' => 'Watershed Name',
     'watershedSearch' => 'Watershed Search',
     'createWatershed' => 'Create Watershed',
+    'updateWatershed' => 'Update Watershed',
     'levelAbove' => 'Level Above',
     'showData' => 'Show Data',
+    'manageData' => 'Manage Data',
     'registerData' => 'Register Data',
     'dataRegister' => 'Data Register',
     'deleteForbiddenMessage' => 'It is not possible to delete a watershed register because there are several data related to it. Edit its information if necessary.',
@@ -105,6 +108,9 @@ return [
     'remove' => 'Remove',
     'modelName' => 'Sheet Model Name',
     'exportModel' => 'Export Model',
+    'selectModel' => 'Select a Model',
+    'pickFile' => 'Pick File',
+    'additionalInfo' => 'Additional information',
     'modelExportSuccess' => 'Model successfully exported!',
     'step' => 'Step',
     'nextStep' => 'Next step',
@@ -113,6 +119,8 @@ return [
     'moveUp' => 'Move up',
     'moveDown' => 'Move down',
     'columnLabels' => 'Labels for lines/columns',
+    'orderedColumns' => 'Ordered columns/lines',
     'layout' => 'Layout',
-    'headerOnFirst' => 'Header on first'
+    'headerOnFirst' => 'Header on first',
+    'upload' => 'Upload'
 ];

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/base.css?<?=date('YmdHis')?>" rel="stylesheet">
 
     <style>
         td.action {
