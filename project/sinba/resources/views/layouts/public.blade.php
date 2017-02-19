@@ -15,7 +15,7 @@
     <link href="/css/base.css?<?=date('YmdHis')?>" rel="stylesheet">
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/custom.css?<?=date('YmdHis')?>" rel="stylesheet">
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
         td.action {

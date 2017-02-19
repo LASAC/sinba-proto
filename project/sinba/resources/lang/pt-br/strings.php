@@ -108,7 +108,7 @@ return [
 
     // Watershed Model
     'deleteLogMessage' => 'Tentativa de exclusão de bacia registrada.',
-    'importDataFromExistingSheet' => 'Importar dados de uma planilha existente',
+    'importDataFromExistingSheet' => 'Importar/exportar dados de uma planilha existente',
     'createNewSheet' => 'Criar nova planilha modelo',
     'warning' => 'Atenção',
     'parameters' => 'Parâmetros',

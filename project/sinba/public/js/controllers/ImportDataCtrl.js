@@ -81,6 +81,16 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
             notify.showDanger(JSON.stringify(response))
         })
     }
+
+    const downloadModel = function () {
+        // TODO: downloadModel
+        $log.debug('TODO: downloadModel')
+    }
+
+    const deleteModel = function () {
+        // TODO: deleteModel
+        $log.debug('TODO: deleteModel')
+    }
     
     const postSheet = function () {
         $log.debug(
@@ -100,6 +110,8 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
         // Public Methods
         init: init,
         chooseModel: chooseModel,
-        uploadSheet: uploadSheet
+        uploadSheet: uploadSheet,
+        downloadModel: downloadModel,
+        deleteModel: deleteModel
     })
 })

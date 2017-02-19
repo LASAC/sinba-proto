@@ -7,3 +7,7 @@
     margin: 0 10px;
     padding-bottom: 20px;
 }
+
+.fixed-width > button {
+    width: 110px
+}

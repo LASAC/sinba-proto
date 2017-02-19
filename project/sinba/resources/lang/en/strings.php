@@ -105,7 +105,7 @@ return [
     'dataRegister' => 'Data Register',
     'deleteForbiddenMessage' => 'It is not possible to delete a watershed register because there are several data related to it. Edit its information if necessary.',
     'deleteLogMessage' => 'Watershed delete attempt registered.',
-    'importDataFromExistingSheet' => 'Import data from existing sheet',
+    'importDataFromExistingSheet' => 'Import/export data from existing sheet',
     'createNewSheet' => 'Create new sheet',
     'warning' => 'Warning',
     'selectedParameters' => 'Selected parameters',

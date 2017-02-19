@@ -10,24 +10,25 @@
 
         <br />
 
-        <label>
+        <label ng-if="!!models.selected.name">
             {{trans('strings.selectModel')}}: <[models.selected.name]>
         </label>
 
-        <div ng-show="models.all.length" class="centered-spaced-buttons">
+        <div class="centered-spaced-buttons">
             <!-- Trigger the modal with a button -->
             <button
+                ng-if="!models.selected"
                 ng-repeat="model in models.all"
                 ng-click="chooseModel(model)"
                 ng-disabled="models.selected"
                 type="button"
-                class="btn btn-info btn-lg"
+                class="btn btn-info"
             >
                 <[model.name]>
             </button>
         </div>
 
-        <div>
+        <div ng-if="!!models.selected">
             <model-display model="models.selected" />
         </div>
 
@@ -47,17 +48,41 @@
             />
         </div>
 
-        <div class="form-group">
+        <div ng-if="!!uploadLabel" class="form-group">
+        </div>
+
+        <div class="centered-spaced-buttons fixed-width">
             <button
                 type="submit"
-                class="form-control"
-                style="margin: 0;"
+                class="btn btn-success"
                 ng-click="uploadSheet()"
                 ng-disabled="disabledUpload"
+                ng-if="models.selected"
             >
                 <[uploadLabel]>
             </button>
+
+            <button
+                type="submit"
+                class="btn btn-warning"
+                ng-click="downloadModel()"
+                ng-if="models.selected"
+            >
+                Download
+            </button>
+            @can('manage')
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    ng-click="deleteModel()"
+                    ng-if="models.selected"
+                >
+                    <[locale.str('delete')]>
+                </button>
+            @endcan
         </div>
+
+
 
     </div>
 </div>

@@ -8,6 +8,7 @@ angular.module('SinbaApp').factory("locale", function() {
         'columnLabels': 'Labels for lines/columns',
         'orderedColumns': 'Ordered columns/lines',
         'modelName': 'Model Name',
+        'model': 'Model',
         'layout': 'Layout',
         'headerOnFirst': 'Header on First',
         'line': 'line',
@@ -20,7 +21,8 @@ angular.module('SinbaApp').factory("locale", function() {
         'upload': 'Upload',
         'uploading': 'Uploading...',
         'uploaded': 'Uploaded!',
-        'successfullyUploaded': 'Successfully Uploaded!'
+        'successfullyUploaded': 'Successfully Uploaded!',
+        'delete': 'Delete'
     }
     const str = function (key) {
         const term = dictionary[key]
