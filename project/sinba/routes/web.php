@@ -60,14 +60,12 @@ Route::group(['middleware' => 'auth'], function(){
 
         // get last accessed watershed.
         $access = new \App\WatershedAccess();
-        $watershed = $access->lastWatershedAccessedBy(Auth::id());
-        if(!$watershed) {
-            $watershed = new \App\Watershed();
-        }
+        $watersheds = $access->watershedsAccessedBy(Auth::id());
+        \Illuminate\Support\Facades\Log::debug("HOME - ACCESSES: {$watersheds->toJson()}");
 
         return view('home', [
             'resultLabel' => trans('strings.lastAccess'),
-            'watersheds' => [$watershed]
+            'watersheds' => $watersheds
         ]);
     });
 

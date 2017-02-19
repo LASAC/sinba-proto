@@ -143,7 +143,5 @@
             <button ng-if="step === 3" ng-click="exportModel()" type="button" class="btn btn-default">{{trans('strings.exportModel')}}</button>
         </div>
 
-        <br>
-
     </div>
 </div>

@@ -4,15 +4,13 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <div class="x_panel">
                     <div class="panel-heading" style="text-align: center">
                         <a href="{{ url('/users') }}">{{trans('strings.listUsers')}}</a> |
                         {{$title}}
                     </div>
-
-                    <div class="panel-body">
-
+                    <div class="x_content">
                         <div id="user">
                             {{Form::open([
                                 'url' => $url,
@@ -119,7 +117,6 @@
 
                             {{Form::close()}}
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -13,6 +13,8 @@ return [
     'contact' => [
         'us' => 'Contact us via email'
     ],
+    'login' => 'Login',
+    'logout' => 'Logout',
     'name' => 'First Name',
     'lastName' => 'Last Name',
     'birthDate' => 'Birthday Date',
@@ -50,7 +52,7 @@ return [
     'search' => 'Search',
     'save' => 'Save',
     'start' => 'Start',
-    'results' => 'Results',
+    'results' => 'result(s)',
     'lastAccess' => 'Last Access',
     'lastSearch' => 'Last Search',
     'settings' => 'Settings',
@@ -58,6 +60,7 @@ return [
     'parametersManagement' => 'Parameters Management',
     'usersManagement' => 'Users Management',
     'documentation' => 'Documentation',
+    'entries' => 'Entries',
     'saveSuccess' => 'Successfully Saved',
     'updatedSuccess' => 'Successfully Updated',
     'deletedSuccess' => 'Successfully Deleted',
@@ -79,6 +82,7 @@ return [
     'beRightBack' => 'Be right back.',
     'back' => 'Back',
     'impossibleToDeleteAnAdmin' => 'It is not possible to delete an Administrator.',
+    'parameters' => 'Parameters',
     'searchParameter' => 'Search Parameters',
     'listParameters' => 'List Parameters',
     'createParameter' => 'Create Parameter',
@@ -88,12 +92,14 @@ return [
 
     // Watershed
     'watershed' => 'Watershed',
+    'watersheds' => 'Watersheds',
     'watershedName' => 'Watershed Name',
     'watershedSearch' => 'Watershed Search',
     'createWatershed' => 'Create Watershed',
     'updateWatershed' => 'Update Watershed',
     'levelAbove' => 'Level Above',
     'showData' => 'Show Data',
+    'manage' => 'Manage',
     'manageData' => 'Manage Data',
     'registerData' => 'Register Data',
     'dataRegister' => 'Data Register',
@@ -122,5 +128,5 @@ return [
     'orderedColumns' => 'Ordered columns/lines',
     'layout' => 'Layout',
     'headerOnFirst' => 'Header on first',
-    'upload' => 'Upload'
+    'hello' => 'Hello'
 ];

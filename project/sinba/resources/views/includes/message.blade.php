@@ -54,7 +54,7 @@
                 {{ Session::forget('message_danger') }}
             </div>
 
-            @if(count($errors) > 0))
+            @if(count($errors) > 0)
                 <div class="alert alert-danger fade in">
                     <button class="close" data-dismiss="alert">
                         X

@@ -27,16 +27,13 @@ class WatershedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($watersheds = [], $resultLabel = null)
+    public function index($watersheds = [])
     {
-        if(!$resultLabel) {
-            $resultLabel = trans('strings.lastAccess');
+        if(count($watersheds) === 0) {
+            $watersheds = Watershed::all();
         }
-        // por enquanto a página inicial do sistema
-        // é a listagem de bacias também.
 
-        return view('home', [
-            'resultLabel' => $resultLabel,
+        return view('watersheds.list', [
             'watersheds' => $watersheds
         ]);
     }

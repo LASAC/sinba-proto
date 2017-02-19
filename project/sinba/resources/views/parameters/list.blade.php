@@ -1,9 +1,8 @@
 @extends('layouts.crud.list')
 
 @section('links')
-    {{trans('strings.listParameters')}} |
-    <a href="{{ url('/parameters/create') }}">{{trans('strings.createParameter')}}</a> |
-    <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a>
+    <h2>{{trans('strings.listParameters')}}</h2> |
+    <a href="{{ url('/units/create') }}">{{trans('strings.createParameter')}}</a>
 @endsection
 
 @section('search')
@@ -25,7 +24,7 @@
 @endsection
 
 @section('table')
-    <table class="table table-striped table-bordered">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>{{trans('strings.name')}}</th>

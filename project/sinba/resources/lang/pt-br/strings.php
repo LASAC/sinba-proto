@@ -13,6 +13,8 @@ return [
     'contact' => [
         'us' => 'Entre em contato conosco via email'
     ],
+    'login' => 'Entrar',
+    'logout' => 'Sair',
     'name' => 'Nome',
     'lastName' => 'Sobrenome',
     'birthDate' => 'Data de Nascimento',
@@ -53,7 +55,7 @@ return [
     'delete' => 'Excluir',
     'save' => 'Salvar',
     'start' => 'Iniciar',
-    'results' => 'Resultados',
+    'results' => 'resultado(s)',
     'lastSearch' => 'Última Pesquisa',
     'lastAccess' => 'Último Acesso',
     'settings' => 'Configurações',
@@ -61,6 +63,7 @@ return [
     'usersManagement' => 'Gerenciar Usuários',
     'parametersManagement' => 'Gerenciar Parâmetros',
     'documentation' => 'Documentação',
+    'entries' => 'Cadastros',
     'saveSuccess' => 'Cadastro Realizado com Sucesso',
     'updatedSuccess' => 'Cadastro Atualizado com Sucesso',
     'deletedSuccess' => 'Cadastro Removido com Sucesso',
@@ -90,12 +93,14 @@ return [
 
     // Watershed
     'watershed' => 'Bacia Hidrográfica',
+    'watersheds' => 'Bacias Hidrográficas',
     'watershedName' => 'Nome da Bacia',
-    'watershedSearch' => 'Pesquisar Bacia Hidrográfica',
+    'watershedSearch' => 'Pesquisar Bacias Hidrográficas',
     'createWatershed' => 'Cadastrar Bacia Hidrográfica',
     'updateWatershed' => 'Atualizar Bacia Hidrográfica',
     'levelAbove' => 'Nível Acima',
     'showData' => 'Visualizar Dados',
+    'manage' => 'Gerenciar',
     'manageData' => 'Gerenciar Dados',
     'registerData' => 'Lançar Dados',
     'dataRegister' => 'Cadastro de Dados',
@@ -106,6 +111,7 @@ return [
     'importDataFromExistingSheet' => 'Importar dados de uma planilha existente',
     'createNewSheet' => 'Criar nova planilha modelo',
     'warning' => 'Atenção',
+    'parameters' => 'Parâmetros',
     'selectedParameters' => 'Parâmetros selecionados',
     'availableParameteres' => 'Parâmetros disponíveis',
     'add' => 'Adicionar',
@@ -125,5 +131,6 @@ return [
     'columnLabels' => 'Títulos para colunas/linhas',
     'orderedColumns' => 'Colunas/linhas ordenadas',
     'layout' => 'Disposição',
-    'headerOnFirst' => 'Cabeçalho na primeira'
+    'headerOnFirst' => 'Cabeçalho na primeira',
+    'hello' => 'Olá'
 ];

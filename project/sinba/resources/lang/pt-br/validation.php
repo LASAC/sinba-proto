@@ -127,7 +127,8 @@ return [
         'address' => 'Endereço',
         'phone' => 'Telefone',
         'cellphone' => 'Celular',
-        'password' => 'Senha'
+        'password' => 'Senha',
+        'image' => 'Imagem'
     ],
 
 ];

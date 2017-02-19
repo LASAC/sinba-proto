@@ -1,0 +1,16 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.margin-horizontal {
+    margin: 0 20px;
+}
+
+@media screen and (max-width: 995px) {
+    .panel-body > .form-horizontal > .form-group {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+}

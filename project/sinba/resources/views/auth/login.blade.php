@@ -1,11 +1,49 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}" ng-app="SinbaApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/login.css?<?=date('YmdHis')?>" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        td.action {
+            width: 250px;
+        }
+    </style>
+
+    @yield('style')
+
+    <!-- Scripts -->
+    <script src="/js/libs/angular.min.js"></script>
+    <script>
+        window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+    <script src="/js/SinbaApp.js"></script>
+    <script src="/js/services/locale/{{ config('app.locale') }}/Locale.js?<?=date('YmdHis')?>"></script>
+    @yield('script')
+</head>
+<body>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="absolute-center is-responsive">
+        <div class="col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3" style="top: 200px">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading" style="text-align: center">
+                    <span>SINBA</span>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -48,21 +86,22 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                        <div class="form-group flex-center">
+                            {{--<div class="col-xs-8 col-xs-offset-4 col-md-8 col-md-offset-4">--}}
                                 <button type="submit" class="btn btn-primary">
-                                    Login
+                                    {{ trans('strings.login') }}
                                 </button>
-
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     {{trans('strings.forgotYourPassword')}}
                                 </a>
-                            </div>
+                            {{--</div>--}}
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        </div>
     </div>
 </div>
-@endsection
+</body>
+</html>
