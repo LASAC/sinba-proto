@@ -6,9 +6,9 @@
         </label>
     </div>
 
-    <div ng-show="createNewSheet">
+    <div ng-if="createNewSheet">
         <br>
-        <h3>{{trans('strings.step')}} <[ step ]>: <[ getStepDescription() ]></h3>
+        <h3 ng-if="step">{{trans('strings.step')}} <[ step ]>: <[ getStepDescription() ]></h3>
 
         <!-- STEP 1 -->
         <div ng-show="step === 1">
