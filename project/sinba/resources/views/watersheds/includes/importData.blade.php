@@ -22,7 +22,7 @@
                 ng-click="chooseModel(model)"
                 ng-disabled="models.selected"
                 type="button"
-                class="btn btn-info"
+                class="btn btn-info btn-margins"
             >
                 <[model.name]>
             </button>
@@ -54,7 +54,7 @@
         <div class="centered-spaced-buttons fixed-width">
             <button
                 type="submit"
-                class="btn btn-success"
+                class="btn btn-success btn-margins"
                 ng-click="uploadSheet()"
                 ng-disabled="disabledUpload"
                 ng-if="models.selected"
@@ -64,7 +64,7 @@
 
             <button
                 type="submit"
-                class="btn btn-warning"
+                class="btn btn-warning btn-margins"
                 ng-click="downloadModel()"
                 ng-if="models.selected"
             >
@@ -73,7 +73,7 @@
             @can('manage')
                 <button
                     type="submit"
-                    class="btn btn-danger"
+                    class="btn btn-danger btn-margins"
                     ng-click="deleteModel()"
                     ng-if="models.selected"
                 >

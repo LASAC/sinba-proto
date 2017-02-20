@@ -1,6 +1,8 @@
 @charset "UTF-8";
 .left_col {
-  background: #2A3F54; }
+  /*background: #2A3F54;*/
+  background: #2A3F54; 
+  }
 
 .nav-sm .container.body .col-md-3.left_col {
   width: 70px;
@@ -328,7 +330,7 @@ body .container.body .right_col {
 body {
   color: #73879C;
   background: #2A3F54;
-  font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+  font-family: "Raleway", "Helvetica Neue", Arial, "Droid Sans", sans-serif !important;
   font-size: 13px;
   font-weight: 400;
   line-height: 1.471; }
@@ -1788,7 +1790,7 @@ a.star {
   text-align: left;
   width: 100%; }
 
-.buttons, button, .btn {
+.btn-margins {
   margin-bottom: 5px;
   margin-right: 5px; }
 
@@ -1943,6 +1945,7 @@ span.section {
   border: 0;
   border-bottom: 1px solid #e5e5e5; }
 
+ /*
 .form-control {
   border-radius: 0;
   width: 100%; }
@@ -1985,7 +1988,7 @@ legend {
 
 .form-group {
   margin-bottom: 10px; }
-
+*/
 .validate {
   margin-top: 10px; }
 
@@ -2266,7 +2269,7 @@ span.tag {
   margin-right: 5px;
   font-weight: 500;
   margin-bottom: 5px;
-  font-family: helvetica; }
+  font-family: "Raleway", helvetica; }
 
 span.tag a {
   color: #F1F6F7 !important; }
@@ -2280,7 +2283,7 @@ span.tag a {
 .tagsinput input {
   width: 80px;
   margin: 0px;
-  font-family: helvetica;
+  font-family: "Raleway", helvetica;
   font-size: 13px;
   border: 1px solid transparent;
   padding: 3px;
@@ -2935,7 +2938,7 @@ ul.project_files li a i {
   padding: 0 4px; }
 
 .view p {
-  font-family: Georgia, serif;
+  font-family: "Raleway", Georgia, serif;
   font-style: italic;
   font-size: 12px;
   position: relative;
@@ -4310,4 +4313,38 @@ ul.notifications {
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+
+/* Custom css from less files */
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Custom table layout */
+.table>tbody>tr>td {
+  vertical-align: middle;
+  padding: 6px;
+}
+
+.container-fluid {
+  margin-top: 15px;
+}
+
+/* Custom login page */
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.absolute-center.is-responsive {
+  height: 50%;
+  width: 80%;
+  padding: 40px;
 }

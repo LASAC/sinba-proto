@@ -22,7 +22,8 @@ angular.module('SinbaApp').factory("locale", function() {
         'uploading': 'Uploading...',
         'uploaded': 'Uploaded!',
         'successfullyUploaded': 'Successfully Uploaded!',
-        'delete': 'Delete'
+        'delete': 'Delete',
+        'modelSuccessfullyDeleted': 'Model Successfully Deleted!'
     }
     const str = function (key) {
         const term = dictionary[key]

@@ -75,9 +75,9 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
             Accept: 'application/json'
         }).then(function (response) {
             $scope.models.all = response.data
-            $log.debug('OK:', response)
+            $log.debug('GET OK:', response)
         }).catch(function (response) {
-            $log.debug('ERROR:', response)
+            $log.debug('GET ERROR:', response)
             notify.showDanger(JSON.stringify(response))
         })
     }
@@ -88,8 +88,21 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
     }
 
     const deleteModel = function () {
-        // TODO: deleteModel
-        $log.debug('TODO: deleteModel')
+        $log.debug('DELETING:', $scope.models.selected.id)
+        // if(confirm(locale.str('confirmDelete'))) {
+        //     $http({
+        //         method: 'DELETE',
+        //         url: '/watersheds/models/',
+        //         Accept: 'application/json'
+        //     }).then(function (response) {
+        //         $scope.models.all = response.data
+        //         notify.showSuccess(locale.str('modelSuccessfullyDeleted'))
+        //         $log.debug('DELETE OK:', response)
+        //     }).catch(function (response) {
+        //         $log.debug('DELETE ERROR:', response)
+        //         notify.showDanger(JSON.stringify(response))
+        //     })
+        // }
     }
     
     const postSheet = function () {

@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/base.css?<?=date('YmdHis')?>" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/custom.css?<?=date('YmdHis')?>" rel="stylesheet">
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -22,6 +22,7 @@
             width: 250px;
         }
     </style>
+    @yield('style')
 
     <!-- Scripts -->
     <script src="/js/libs/angular.min.js"></script>
@@ -39,7 +40,7 @@
             <div class="left_col scroll_view">
                 <div class="navbar nav_title" style="border: 0;">
                     <a href="{{ url('/home') }}" class="site_title">
-                        <i class="fa fa-cloud"></i> {{ config('app.name', 'Laravel') }}
+                        <i class="fa fa-share-alt"></i> {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
                 <div class="clearfix">
@@ -205,7 +206,6 @@
         </footer>
     </div>
 </div>
-@yield('style')
 
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>

@@ -6,19 +6,18 @@
 @endsection
 
 @section('search')
-    {{ Form::open([
-        'url' => '/units/search'
-    ]) }}
-    {{Form::label('search', trans('strings.searchUnit') . ':')}}
-    {{Form::text('search', Session::get('search'))}}
-    {{Form::submit(trans('strings.search'), [
-        'class' => 'btn btn-primary',
-        'style' => 'padding: 2px 2px'
-    ])}}
-    {{Form::label(count($units) . ' resultado(s)', '',[
-        'style' => 'font-style: italic; font-size: x-small;'
-    ])}}
-    {{ Form::close() }}
+{{ Form::open(['url' => '/units/search', 'class' => 'form-inline']) }}
+<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="form-group">
+                <i class="fa fa-search fa-lg"></i>
+                {{Form::text('search', Session::get('search'), ['class' => 'form-control', 'placeholder' => 'Buscar Unidade'])}}
+                {{Form::submit(trans('strings.search'), ['class' => 'btn btn-primary'])}}
+                {{Form::label(count($units) . ' resultado(s)', '',['style' => 'font-style: italic; font-size: x-small;'])}}
+            </div>
+        </div>
+</div>
+{{ Form::close() }}
 @endsection
 
 @section('table')
@@ -47,12 +46,14 @@
                         'method' => 'delete'
                     ])}}
                     <a href="{{url("/units/{$unit->id}/edit")}}">
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-edit"></i>
                             {{trans('strings.edit')}}
                         </button>
                     </a>
-                    {{Form::submit(trans('strings.delete'), [
-                        'class' => 'btn btn-warning',
+                    {{Form::button("<i class='fa fa-trash-o'></i> " . trans('strings.delete'), [
+                        'type' => 'submit',
+                        'class' => 'btn btn-danger btn-sm',
                         'onclick' => 'return confirm("' . trans('strings.confirmDelete') .'");'
                     ])}}
                     {{Form::close()}}
