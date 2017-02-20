@@ -1,4 +1,4 @@
-angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http, $log, notify, locale) {
+angular.module('SinbaApp').controller('CreateModelCtrl', function ($rootScope, $scope, $http, $log, notify, locale) {
     $log.debug('CreateModelCtrl')
 
     //
@@ -20,9 +20,11 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
     // Public Properties
     //
     $scope.createNewSheet = false
+    $scope.editMode = false
     $scope.step = MIN_STEP
 
-    // Sheet model being created
+    // Sheet model being created/updated
+    $scope.modelId = 0
     $scope.model = {
         name: '',
         layout_header_in_first_column: MODEL_LAYOUTS.LINE,
@@ -30,9 +32,18 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         labels: []
     }
 
+    $rootScope.initCreateModelCtrl = function () {
+        $scope.createNewSheet = true
+        init()
+    }
+
     // Methods
     const init = function () {
-        $log.debug('CreateModelCtrl.init')
+        $scope.locale = locale
+        $scope.editMode = !!parseInt(angular.element( document.querySelector( '#editMode' ) )[0].value);
+        $scope.modelId = parseInt(angular.element( document.querySelector( '#modelId' ) )[0].value);
+        $log.debug('CreateModelCtrl.init(modelId, editMode):', $scope.modelId, $scope.editMode)
+
         $scope.availableParameters = {
             all: [],
             selected: []
@@ -50,6 +61,11 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
             text: ''
         }
         getParameters()
+
+        if ($scope.modelId) {
+            $log.debug('GET MODEL CALLED')
+            getModel()
+        }
     }
 
     const getLayout = function () {
@@ -111,10 +127,6 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
 
         // Compare strings alphabetically, taking locale into account
         return v1.value.localeCompare(v2.value)
-    }
-
-    const showError = function () {
-        return containsError
     }
 
     const add = function (step) {
@@ -193,6 +205,12 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         }
     }
 
+    const loadReorderedParameters = function () {
+        $log.debug('loadReorderedParameters')
+        $scope.reorderedParameter.all = $scope.chosenParameters.all.slice()
+    }
+
+
     const loadLabels = function () {
         $log.debug('loadLabels(labels, reorderedParameter):', $scope.labels, $scope.reorderedParameter)
         loadEmptyLabels()
@@ -203,13 +221,6 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         $log.debug('updateLabels')
         updateLabelsArray()
         updateLabelsText()
-    }
-
-    const fulfillModel = function () {
-        $scope.model = Object.assign({}, $scope.model, {
-            parameters: $scope.reorderedParameter.all,
-            labels: $scope.labels.all
-        })
     }
 
     const loadEmptyLabels = function () {
@@ -249,6 +260,13 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         })
     }
 
+    const fulfillModel = function () {
+        $scope.model = Object.assign({}, $scope.model, {
+            parameters: $scope.reorderedParameter.all,
+            labels: $scope.labels.all
+        })
+    }
+
     //
     // Re-ordering operations
     //
@@ -257,12 +275,6 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         $log.debug('loadChosenParameters')
         $scope.chosenParameters.all = $scope.reorderedParameter.all.slice()
     }
-
-    const loadReorderedParameters = function () {
-        $log.debug('loadReorderedParameters')
-        $scope.reorderedParameter.all = $scope.chosenParameters.all.slice()
-    }
-
     const swap = function () {
         $log.debug('swapping', $scope.reorderedParameter.selected)
         var selected = $scope.reorderedParameter.selected
@@ -346,13 +358,64 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         }
     }
 
-    const updateColumnLabels = function () {
-        $log.debug('TODO: updateColumnLabels')
-    }
-
     //
     // Requests
     //
+
+    const getModel = function () {
+        $http({
+            method: 'GET',
+            url: '/watersheds/models/' + $scope.modelId,
+            Accept: 'application/json'
+        }).then(function (response) {
+            $log.debug('SUCCESSFULLY RETRIEVED MODELS(response):', response)
+
+            $scope.model = response.data
+            $log.debug('MODEL OBJECT($scope.model):', $scope.model)
+
+            $log.debug('PREPARING SELECTED...')
+            // Pré-requisito do ADD: colocar parâmetros escolhidos em $scope.availableParameters.selected
+            $scope.model.parameters.forEach(function (param) {
+                $scope.availableParameters.selected.push(
+                    $scope.availableParameters.all.find(function (available) {
+                        return available.id === param.id
+                    })
+                )
+            })
+            $log.debug('AVAILABLE PARAMETERS($scope.availableParameters.all):', $scope.availableParameters.all)
+            $log.debug('SELECTED PARAMETERS($scope.availableParameters.selected):', $scope.availableParameters.selected)
+
+            $log.debug('ADDING...')
+            add()
+            $log.debug('CHOSEN PARAMETERS($scope.chosenParameters.all):', $scope.chosenParameters.all)
+
+            $log.debug('SETTING UP REORDERED AND LABELS...')
+            $scope.model.labels.forEach(function (label) {
+                $scope.reorderedParameter.all[label.sequence] =
+                    $scope.chosenParameters.all.find(function (chosen) {
+                        $log.debug('label:', label)
+                        $log.debug('chosen:', chosen)
+                        return chosen.id === label.parameterId
+                    })
+
+                $scope.labels.all[label.sequence] = {
+                    parameterId: label.parameterId,
+                    label: label.label
+                }
+            })
+
+            $log.debug('REORDERED PARAMETERS($scope.reorderedParameter.all):', $scope.reorderedParameter.all)
+            $log.debug('LABELS($scope.labels.all):', $scope.labels.all)
+
+            $log.debug('SETTING UP LABELS TEXT...')
+            updateLabelsText()
+            $log.debug('LABELS($scope.labels.text):', $scope.labels.text)
+
+        }).catch(function (response) {
+            $log.debug('ERROR:', response)
+            notify.showDanger(response.data.error.message)
+        })
+    }
 
     const getParameters = function () {
         $http({
@@ -366,17 +429,28 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         })
     }
 
-    const exportModel = function () {
+    const saveModel = function () {
         $log.debug('EXPORT MODEL', $scope.model)
 
         if (validateForm()) {
+            var method = 'POST'
+            var url = '/watersheds/models' //$socope.model.id ? '/watersheds/models/' + $scope.model.id : '/watersheds/models'
+
+            if($scope.model.id) {
+                method = 'PATCH'
+                url = '/watersheds/models/' + $scope.model.id
+            }
+
+            $log.debug('METHOD:', method)
+            $log.debug('URL:', url)
             $http({
-                method: 'POST',
-                url: '/watersheds/models',
+                method: method,
+                url: url,
                 data: $scope.model
             }).then(function (response) {
                 $log.debug('POST SUCCESS:', response)
                 notify.showSuccess(response.data.message)
+                $scope.createNewSheet = false
             }).catch(function (response) {
                 $log.debug('POST ERROR:', response)
                 notify.showDanger(response.data.error.message)
@@ -390,17 +464,17 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($scope, $http
         init: init,
         getLayout: getLayout,
         getStepDescription: getStepDescription,
-        showError: showError,
         nameAndSymbol: nameAndSymbol,
         add: add,
         remove: remove,
         localeSensitiveComparator: localeSensitiveComparator,
-        exportModel: exportModel,
+        saveModel: saveModel,
         nextStep: nextStep,
         previousStep: previousStep,
         swap: swap,
         moveUp: moveUp,
         moveDown: moveDown,
-        updateLabelsFromText: updateLabelsFromText
+        updateLabelsFromText: updateLabelsFromText,
+        testing: testing
     })
 })

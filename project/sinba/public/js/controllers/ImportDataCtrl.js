@@ -3,6 +3,7 @@
  */
 
 angular.module('SinbaApp').controller('ImportDataCtrl', function (
+    $rootScope,
     $scope,
     $http,
     $log,
@@ -18,13 +19,14 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
     //
     // Public Properties
     //
-    $scope.importData = true
+    $scope.importData = false
 
     //
     // Methods
     //
     const init = function () {
         $log.debug('ImportDataCtrl.init')
+        $scope.modelsLoaded = false
 
         $scope.locale = locale
 
@@ -75,10 +77,12 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
             Accept: 'application/json'
         }).then(function (response) {
             $scope.models.all = response.data
+            $scope.modelsLoaded = true
             $log.debug('GET OK:', response)
         }).catch(function (response) {
             $log.debug('GET ERROR:', response)
-            notify.showDanger(JSON.stringify(response))
+            notify.showDanger(response.data.message)
+            $scope.modelsLoaded = true
         })
     }
 
@@ -89,20 +93,45 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
 
     const deleteModel = function () {
         $log.debug('DELETING:', $scope.models.selected.id)
-        // if(confirm(locale.str('confirmDelete'))) {
-        //     $http({
-        //         method: 'DELETE',
-        //         url: '/watersheds/models/',
-        //         Accept: 'application/json'
-        //     }).then(function (response) {
-        //         $scope.models.all = response.data
-        //         notify.showSuccess(locale.str('modelSuccessfullyDeleted'))
-        //         $log.debug('DELETE OK:', response)
-        //     }).catch(function (response) {
-        //         $log.debug('DELETE ERROR:', response)
-        //         notify.showDanger(JSON.stringify(response))
-        //     })
-        // }
+        if(confirm(locale.str('confirmDelete'))) {
+            $http({
+                method: 'DELETE',
+                url: '/watersheds/models/' + $scope.models.selected.id,
+                Accept: 'application/json'
+            }).then(function (response) {
+                $scope.models.all = response.data
+                notify.showSuccess(response.data.message)
+                $log.debug('DELETE OK:', response)
+
+                // reinicia o processo
+                init()
+
+            }).catch(function (response) {
+                $log.debug('DELETE ERROR:', response)
+                notify.showDanger(response.data.message)
+            })
+        }
+    }
+
+    const editModel = function () {
+        $log.debug('EDIT MODEL(selected):', $scope.models.selected)
+        if ($scope.models.selected) {
+            $log.debug('editing...')
+            var editModeHiddenInput = angular.element( document.querySelector( '#editMode' ) )[0];
+            var modelIdHiddenInput = angular.element( document.querySelector( '#modelId' ) )[0];
+            var createNewSheet = angular.element( document.querySelector( '#createNewSheet' ) )[0];
+
+            editModeHiddenInput.value = 1
+            modelIdHiddenInput.value = $scope.models.selected.id
+            createNewSheet.checked = true
+
+            $log.debug('editModeHiddenInput:', editModeHiddenInput.value)
+            $log.debug('modelIdHiddenInput:', modelIdHiddenInput.value)
+            $log.debug('createNewSheet:', createNewSheet.checked)
+
+            $scope.importData = false
+            $rootScope.initCreateModelCtrl()
+        }
     }
     
     const postSheet = function () {
@@ -125,6 +154,7 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
         chooseModel: chooseModel,
         uploadSheet: uploadSheet,
         downloadModel: downloadModel,
-        deleteModel: deleteModel
+        deleteModel: deleteModel,
+        editModel: editModel
     })
 })

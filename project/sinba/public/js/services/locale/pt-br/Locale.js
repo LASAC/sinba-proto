@@ -23,8 +23,12 @@ angular.module('SinbaApp').factory("locale", function() {
         'uploaded': 'Enviado!',
         'successfullyUploaded': 'Planilha Enviada com Sucesso!',
         'delete': 'Excluir',
-        'modelSuccessfullyDeleted': 'Modelo Excluído com Sucesso!',
-        'confirmDelete': 'Tem certe'
+        'confirmDelete': 'Tem certeza que deseja excluir o modelo?',
+        'noModelRegistered': 'Nenhum modelo de planilha cadastrado!',
+        'createNewModel': 'Criar nova planilha modelo',
+        'editModel': 'Editar planilha modelo',
+        'edit': 'Editar',
+        'loadingModels': 'Carregando modelos de planilha...'
     }
     const str = function (key) {
         const term = dictionary[key]

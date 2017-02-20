@@ -13,8 +13,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
-    <link href="/css/login.css?<?=date('YmdHis')?>" rel="stylesheet">
+    <link href="/css/custom.css?<?=date('YmdHis')?>" rel="stylesheet">
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
         td.action {
@@ -39,7 +38,7 @@
 <div class="container">
     <div class="row">
         <div class="absolute-center is-responsive">
-        <div class="col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3" style="top: 200px">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: center">
                     <span>SINBA</span>
@@ -86,15 +85,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group flex-center">
-                            {{--<div class="col-xs-8 col-xs-offset-4 col-md-8 col-md-offset-4">--}}
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ trans('strings.login') }}
                                 </button>
+
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     {{trans('strings.forgotYourPassword')}}
                                 </a>
-                            {{--</div>--}}
+                            </div>
                         </div>
                     </form>
                 </div>

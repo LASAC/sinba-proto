@@ -1,23 +1,27 @@
 <div ng-controller="ImportDataCtrl" ng-init="init()">
     <div class="checkbox">
         <label style="font-weight: bold">
-            <input ng-model="importData" type="checkbox">
-            {{trans('strings.importDataFromExistingSheet')}}
+            <input ng-model="importData" type="checkbox" ng-click="init()">
+            {{ trans('strings.importDataFromExistingSheet') }}
         </label>
     </div>
 
     <div ng-show="importData">
 
         <br />
+        <p ng-if="!modelsLoaded"><[locale.str('loadingModels')]></p>
+        <p ng-if="modelsLoaded && models.all.length === 0"><[locale.str('noModelRegistered')]></p>
 
         <label ng-if="!!models.selected.name">
             {{trans('strings.selectModel')}}: <[models.selected.name]>
         </label>
 
-        <div class="centered-spaced-buttons">
+        <div
+            ng-if="!models.selected"
+            class="centered-spaced-buttons"
+        >
             <!-- Trigger the modal with a button -->
             <button
-                ng-if="!models.selected"
                 ng-repeat="model in models.all"
                 ng-click="chooseModel(model)"
                 ng-disabled="models.selected"
@@ -28,16 +32,19 @@
             </button>
         </div>
 
+        <!-- MODE DISPLAY -->
         <div ng-if="!!models.selected">
             <model-display model="models.selected" />
         </div>
 
-        <div class="form-group">
+        <!-- ADDITIONAL INFO -->
+        <div ng-if="models.all.length > 0" class="form-group">
             <label for="comment">{{trans('strings.additionalInfo')}}</label>
             <textarea class="form-control" ng-model="additionalInfo" rows="5" id="comment"></textarea>
         </div>
 
-        <div class="form-group">
+        <!-- PICK FILE -->
+        <div ng-if="models.all.length > 0" class="form-group">
             <label for="inputFile">{{trans('strings.pickFile')}}</label>
             <input
                 class="form-control"
@@ -48,12 +55,13 @@
             />
         </div>
 
-        <div ng-if="!!uploadLabel" class="form-group">
-        </div>
+        <!-- UPLOAD LABEL -->
+        <div ng-if="!!uploadLabel" class="form-group"></div>
 
+        <!-- ACTION BUTTONS -->
         <div class="centered-spaced-buttons fixed-width">
             <button
-                type="submit"
+                type="button"
                 class="btn btn-success btn-margins"
                 ng-click="uploadSheet()"
                 ng-disabled="disabledUpload"
@@ -63,7 +71,7 @@
             </button>
 
             <button
-                type="submit"
+                type="button"
                 class="btn btn-warning btn-margins"
                 ng-click="downloadModel()"
                 ng-if="models.selected"
@@ -72,17 +80,23 @@
             </button>
             @can('manage')
                 <button
-                    type="submit"
-                    class="btn btn-danger btn-margins"
-                    ng-click="deleteModel()"
-                    ng-if="models.selected"
+                        type="button"
+                        class="btn btn-info btn-margins"
+                        ng-click="editModel()"
+                        ng-if="models.selected"
+                >
+                    <[locale.str('edit')]>
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-danger btn-margins"
+                        ng-click="deleteModel()"
+                        ng-if="models.selected"
                 >
                     <[locale.str('delete')]>
                 </button>
             @endcan
         </div>
-
-
 
     </div>
 </div>

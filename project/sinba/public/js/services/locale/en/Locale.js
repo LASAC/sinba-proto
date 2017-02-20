@@ -23,7 +23,12 @@ angular.module('SinbaApp').factory("locale", function() {
         'uploaded': 'Uploaded!',
         'successfullyUploaded': 'Successfully Uploaded!',
         'delete': 'Delete',
-        'modelSuccessfullyDeleted': 'Model Successfully Deleted!'
+        'confirmDelete': 'Are you sure you want to delete this model?',
+        'noModelRegistered': 'No model registered!',
+        'createNewModel': 'Create new sheet model',
+        'editModel': 'Edit sheet model',
+        'edit': 'Edit',
+        'loadingModels': 'Loading models...'
     }
     const str = function (key) {
         const term = dictionary[key]

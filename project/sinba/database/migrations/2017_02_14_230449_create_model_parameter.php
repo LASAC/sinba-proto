@@ -19,8 +19,14 @@ class CreateModelParameter extends Migration
             $table->integer('parameter_id')->unsigned()->nullable();
             $table->string('label');
             $table->integer('sequence');
-            $table->foreign('model_id')->references('id')->on('models');
-            $table->foreign('parameter_id')->references('id')->on('parameters');
+
+            $table->foreign('model_id')
+                  ->references('id')->on('models')
+                  ->onDelete('cascade');
+
+            $table->foreign('parameter_id')
+                  ->references('id')->on('parameters')
+                  ->onDelete('cascade');
         });
     }
 

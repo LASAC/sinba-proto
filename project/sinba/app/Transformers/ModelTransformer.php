@@ -15,7 +15,7 @@ class ModelTransformer
         return $modelsTransformed;
     }
 
-    private function transformModel($model) {
+    public function transformModel($model) {
         $transformed = null;
         if ($model instanceof Model) {
             $transformed = [
@@ -51,7 +51,7 @@ class ModelTransformer
 
     private function transformModelLabel($parameter) {
         return [
-            'parameter_id' => $parameter->id,
+            'parameterId' => $parameter->id,
             'label' => $parameter->pivot->label,
             'sequence' => $parameter->pivot->sequence
         ];

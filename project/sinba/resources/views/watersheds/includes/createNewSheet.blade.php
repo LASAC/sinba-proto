@@ -1,8 +1,10 @@
 <div ng-controller="CreateModelCtrl" ng-init="init()">
+    <input type="hidden" id="editMode" name="editMode" ng-model="editMode" value="0" />
+    <input type="hidden" id="modelId" name="modelId" ng-model="modelId" value="0" />
     <div class="checkbox">
         <label style="font-weight: bold">
-            <input ng-model="createNewSheet" type="checkbox">
-            {{trans('strings.createNewSheet')}}
+            <input id="createNewSheet" name="createNewSheet" ng-model="createNewSheet" type="checkbox" ng-click="init()">
+            <[ editMode ? locale.str('editModel') : locale.str('createNewModel') ]>
         </label>
     </div>
 
@@ -140,7 +142,7 @@
             {{--<button type="button" class="btn btn-default">Visualizar Modelo</button>--}}
             <button ng-if="step > 1" ng-click="previousStep()" type="button" class="btn btn-default">{{trans('strings.previousStep')}}</button>
             <button ng-if="step < 3" ng-click="nextStep()" type="button" class="btn btn-default">{{trans('strings.nextStep')}}</button>
-            <button ng-if="step === 3" ng-click="exportModel()" type="button" class="btn btn-default">{{trans('strings.exportModel')}}</button>
+            <button ng-if="step === 3" ng-click="saveModel()" type="button" class="btn btn-default">{{trans('strings.saveModel')}}</button>
         </div>
 
     </div>
