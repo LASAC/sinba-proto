@@ -15,12 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dev', function () {
-    if(env('APP_ENV') === 'local') {
-        phpinfo();
-    }
-});
-
 // Rotas de Autenticação
 Auth::routes();
 
@@ -48,7 +42,6 @@ Route::group(['middleware' => 'auth'], function(){
         // Watershed Models Import/Export Actions
 
         Route::get('watersheds/models/{modelId}/download', 'ExcelFileController@download');
-
         // Watershed Models
 
         Route::resource('watersheds/models', 'WatershedModelController');
@@ -73,4 +66,14 @@ Route::group(['middleware' => 'auth'], function(){
         ]);
     });
 
+});
+
+Route::group(['middleware' => 'dev'], function (){
+
+    Route::get('/dev', function () {
+        phpinfo();
+    });
+
+    // Examples of Excel Exporting and Importing
+    Route::get('excel/samples/export', 'ExcelSamplesController@export');
 });

@@ -7,6 +7,13 @@ use App\Parameter;
 
 class ModelTransformer
 {
+    protected $parameterTransformer;
+
+    function __construct()
+    {
+        $this->parameterTransformer = new ParameterTransformer();
+    }
+
     public function transformModels($models) {
         $modelsTransformed = [];
         foreach ($models as $model) {
@@ -24,36 +31,8 @@ class ModelTransformer
                 'layout_header_in_first_column' => $model->layout_header_in_first_column,
             ];
             list($transformed['parameters'], $transformed['labels']) =
-                $this->transformModelParametersAndLabels($model->parameters);
+                $this->parameterTransformer->transformModelParametersAndLabels($model->parameters);
         }
         return $transformed;
-    }
-
-    private function transformModelParametersAndLabels($parameters) {
-        $transformedParameters = [];
-        $transformedLabels = [];
-        foreach($parameters as $parameter) {
-            if ($parameter instanceof Parameter) {
-                $index = $parameter->pivot ? $parameter->pivot->sequence : $parameter->id;
-                $transformedParameters[$index] = $this->transformModelParameter($parameter);
-                $transformedLabels[$index] = $this->transformModelLabel($parameter);
-            }
-        }
-        return [$transformedParameters, $transformedLabels];
-    }
-
-    private function transformModelParameter($parameter) {
-        return [
-            'id' => $parameter->id,
-            'name' => $parameter->name
-        ];
-    }
-
-    private function transformModelLabel($parameter) {
-        return [
-            'parameterId' => $parameter->id,
-            'label' => $parameter->pivot->label,
-            'sequence' => $parameter->pivot->sequence
-        ];
     }
 }
