@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mariliack
- * Date: 20/02/17
- * Time: 23:00
- */
 
 namespace App\Http\Controllers;
 
@@ -24,12 +18,11 @@ class ExcelFileController extends Controller
     protected $request;
 
     public function __construct (
-        ExcelCreator $excelCreator,
         ExceptionTransformer $exceptionTransformer,
         Model $model,
         Request $request
     ) {
-        $this->excelCreator = $excelCreator;
+        $this->excelCreator = new ExcelCreator('MariliaCK');
         $this->exceptionTransformer = $exceptionTransformer;
         $this->model = $model;
         $this->request = $request;

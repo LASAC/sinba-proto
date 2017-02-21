@@ -16,11 +16,7 @@ class Model extends EloquentModel
     }
 
     public function addParameter($parameterId) {
-        // TODO: implement it.
         $this->parameters()->attach($parameterId, ['quantity' => 1]);
-        // $this->parameters()->attach([$parameterId, [1 => ['quantity' => 1]]],[],...);
-        // $this->products()->detach($productId);
-        // $this->products()->updateExistingPivot($productId, ['quantity' => $newQuantity]);
     }
 
 }

@@ -31,14 +31,14 @@ class ExcelCreator
             $excel->setTitle($sheet->title());
 
             // Chain the setters
-            $excel->setCreator($sheet->creator())
+            $excel->setCreator($this->creator)
                   ->setCompany($sheet->company());
 
             // Call them separately
             $excel->setDescription($sheet->description());
 
             // Define the Excel spreadsheet headers
-            $labels[] = $sheet->labels();
+            $labels = $sheet->labels();
 
             // Build the spreadsheet, passing in the payments array
             $excel->sheet($sheet->title(), function($sheet) use ($labels) {

@@ -46,7 +46,7 @@ class ParameterTransformer
         foreach($parameters as $parameter) {
             if ($parameter instanceof Parameter) {
                 $index = $parameter->pivot ? $parameter->pivot->sequence : $parameter->id;
-                $transformedParameters[$index] = $parameter->pivot->label;
+                $transformedLabels[$index] = $parameter->pivot->label;
             }
         }
         return $transformedLabels;

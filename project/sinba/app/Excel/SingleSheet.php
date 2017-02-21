@@ -21,11 +21,6 @@ abstract class SingleSheet
     /**
      * @return string
      */
-    abstract public function creator();
-
-    /**
-     * @return string
-     */
     abstract public function description();
 
     /**

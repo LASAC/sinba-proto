@@ -31,7 +31,7 @@
             </button>
         </div>
 
-        <!-- MODE DISPLAY -->
+        <!-- MODEL DISPLAY -->
         <div ng-if="!!models.selected">
             <model-display model="models.selected" />
         </div>

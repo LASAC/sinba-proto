@@ -95,7 +95,7 @@
 
             <br>
 
-            <div>
+            <!--LAYOUT AINDA NÃO SUPORTADO <div>
                 <p>{{trans('strings.layout')}}: {{trans('strings.headerOnFirst')}} <b><[getLayout()]></b></p>
                 <div class="checkbox">
                     <label style="font-weight: bold">
@@ -103,7 +103,7 @@
                         {{trans('strings.invert')}} {{trans('strings.layout')}}
                     </label>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <!-- STEP 3 -->
@@ -137,7 +137,7 @@
 
             <div>
                 <p>{{trans('strings.modelName')}}: <b><[model.name]></b></p>
-                <p style="text-transform: uppercase;">{{trans('strings.layout')}}: {{trans('strings.headerOnFirst')}} <b><[getLayout()]></b></p>
+                <!--<p style="text-transform: uppercase;">{{trans('strings.layout')}}: {{trans('strings.headerOnFirst')}} <b><[getLayout()]></b></p>-->
             </div>
         </div>
 

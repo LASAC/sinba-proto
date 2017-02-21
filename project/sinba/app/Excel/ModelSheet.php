@@ -33,14 +33,6 @@ class ModelSheet extends SingleSheet
     /**
      * @return string
      */
-    public function creator()
-    {
-        return 'MariliaCK';
-    }
-
-    /**
-     * @return string
-     */
     public function description()
     {
         return $this->model->name;
