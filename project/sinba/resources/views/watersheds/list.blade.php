@@ -1,24 +1,24 @@
 @extends('layouts.crud.list')
 
 @section('links')
-    <h2>{{trans('strings.watersheds')}}</h2> |
+    <h2><label class="ativo">{{trans('strings.watersheds')}} </label> |
     <a href="{{ url('/watersheds/create') }}">{{trans('strings.createWatershed')}}</a>
+    </h2>
 @endsection
 
 @section('search')
-    {{ Form::open([
-        'url' => '/watersheds/search'
-    ]) }}
-    {{Form::label('search', trans('strings.watershedSearch') . ':')}}
-    {{Form::text('search', Session::get('search'))}}
-    {{Form::submit(trans('strings.search'), [
-        'class' => 'btn btn-primary',
-        'style' => 'padding: 2px 2px'
-    ])}}
-    {{Form::label(count($watersheds) . ' ' . trans('strings.results') , '',[
-        'style' => 'font-style: italic; font-size: x-small;'
-    ])}}
-    {{ Form::close() }}
+{{ Form::open(['url' => '/watersheds/search', 'class' => 'form-inline']) }}
+<div class="row searchBar">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="form-group">
+                <i class="fa fa-search fa-lg"></i>
+                {{Form::text('search', Session::get('search'), ['class' => 'form-control', 'placeholder' => 'Buscar bacia'])}}
+                {{Form::submit(trans('strings.search'), ['class' => 'btn btn-primary'])}}
+                {{Form::label(count($watersheds) . ' ' . trans('strings.results'), '',['style' => 'font-style: italic; font-size: x-small;'])}}
+            </div>
+        </div>
+</div>
+{{ Form::close() }}
 @endsection
 
 @section('table')
@@ -37,9 +37,7 @@
                 <td><a href="{{url("/watersheds/{$watershed->id}")}}">{{$watershed->name}}</a></td>
                 <td class="action">
                     <a href="{{url("/watersheds/{$watershed->id}/edit")}}">
-                        <button type="button" class="btn btn-success">
-                            {{trans('strings.edit')}}
-                        </button>
+                            <i class="fa fa-edit fa-2x text-info" data-toggle="tooltip" title="{{trans('strings.edit')}}"></i>
                     </a>
                 </td>
             </tr>

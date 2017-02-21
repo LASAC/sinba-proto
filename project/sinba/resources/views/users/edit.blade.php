@@ -6,13 +6,11 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="panel-heading" style="text-align: center">
-                    <a href="{{ url('/users') }}">{{trans('strings.listUsers')}}</a> | {{$title}}
+                    <h2><a href="{{ url('/users') }}">{{trans('strings.listUsers')}}</a> | 
+                    <label class="ativo"> {{$title}} </label> </h2>
+                    <hr/>
                 </div>
-
-                <fieldset>
-                    <legend style="text-align: center">Cadastrar Usuário</legend>
                 {{Form::open([ 'url' => $url, 'method' => $method])}} 
-                
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -105,10 +103,9 @@
                 </div>
 
                 <hr /> @if($saveEnabled)
-                <div style="text-align: center"> {{Form::submit(trans('strings.save'), [ 'class' => 'btn btn-default' ])}}</div>
+                <div style="text-align: center"> {{Form::submit(trans('strings.save'), [ 'class' => 'btn btn-primary' ])}}</div>
                 @endif 
                 {{Form::close()}}
-                </fieldset>
             </div>
         </div>
     </div>

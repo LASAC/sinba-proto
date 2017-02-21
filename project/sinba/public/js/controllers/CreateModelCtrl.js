@@ -475,6 +475,5 @@ angular.module('SinbaApp').controller('CreateModelCtrl', function ($rootScope, $
         moveUp: moveUp,
         moveDown: moveDown,
         updateLabelsFromText: updateLabelsFromText,
-        testing: testing
     })
 })

@@ -2,36 +2,46 @@
 
 @section('style')
 <link href="/css/watersheds.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
 @endsection
 
 @section('content')
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="panel-heading" style="text-align: center">
+                    <h2>
+                    <a href="{{ url('/watersheds/') }}">{{trans('strings.watershedsManagement')}}</a> |
+                        <label class="ativo"> Cadastrar Bacia</label>
+                        </h2>
+                        <hr/>
+                </div>
 
-    <div class="row">
 
-        <div class="col-sm-1">
-        </div>
-
-        <div class="col-sm-1">
-        </div>
-
-
-        <div class="col-sm-8">
-        {{Form::open([
+       {{Form::open([
             'url' => $url,
             'method' => $method,
             'files' => true
         ])}}
-            {{Form::hidden('id', $watershed->id)}}
-
-            <h1>
-                {{ trans('strings.watershedName') }}:
-                {{Form::text('name', $watershed->name, [
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                        {{Form::hidden('id', $watershed->id)}}
+                        {{ trans('strings.watershedName') }}:
+                    {{Form::text('name', $watershed->name, [
                     'class' => 'form-control'
-                ])}}
-            </h1>
-            <h5>
-                {{ trans('strings.levelAbove') }}:
-                {{Form::select(
+                    ])}}
+            </div>
+        </div>
+        <div class="col-sm-4"><span></span>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                    {{ trans('strings.levelAbove') }}:
+                    {{Form::select(
                     'parent_id',
                     $watershed->pluckOtherNames(trans('strings.none')),
                     $watershed->parent_id ? $watershed->parent_id : 0,
@@ -39,12 +49,25 @@
                         'class' => 'form-control'
                     ]
                 )}}
-            </h5>
+            </div>
+        </div>
+        
+        <div class="col-sm-4">
+        </div>
+        </div>
+        <hr />
 
-            <hr />
+         <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                        <h4>{{ trans('strings.information') }}</h4>
+                    </div>
+            </div>
 
-            <h4>{{ trans('strings.information') }}</h4>
-
+        <div class="col-sm-4">
+            </div>
+        </div>
+            
             <br>
 
             <p>
@@ -74,11 +97,9 @@
         {{Form::close()}}
         </div>
 
-            <div class="col-sm-1">
-            </div>
-
-            <div class="col-sm-1">
-            </div>
     </div>
-
+</div>
+</div>
+</div>
+</div>
 @endsection

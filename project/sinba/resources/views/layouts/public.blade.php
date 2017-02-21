@@ -30,6 +30,9 @@
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 </head>
 <body class="nav-md">
@@ -88,7 +91,7 @@
                                 </ul>
                             </li>
                             @endcan
-                            <li class="active"><a><i class="fa fa-edit"></i> {{trans('strings.watersheds')}} <span class="fa fa-chevron-down"></span></a>
+                            <li class="active"><a><i class="fa fa-map"></i> {{trans('strings.watersheds')}} <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: block;">
                                     <li>
                                         <a href="{{ url('/watersheds') }}">

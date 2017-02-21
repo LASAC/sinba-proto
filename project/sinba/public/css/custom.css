@@ -4315,6 +4315,11 @@ ul.notifications {
     margin: 0 auto;
 }
 
+.searchBar {
+  margin-bottom: 35px;
+  margin-top: 0;
+}
+
 
 /* Custom css from less files */
 .btn-group, .btn-group-vertical {
@@ -4347,4 +4352,9 @@ ul.notifications {
   height: 50%;
   width: 80%;
   padding: 40px;
+}
+
+/* Custom active page */
+.ativo {
+  text-decoration: underline;
 }

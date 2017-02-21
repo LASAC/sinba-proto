@@ -6,13 +6,14 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="panel-heading" style="text-align: center">
+                <h2>
                     <a href="{{ url('/parameters/') }}">{{trans('strings.parametersManagement')}}</a> |
                         <a href="{{ url('/units') }}">{{trans('strings.listUnits')}}</a> |
-                        {{$title}}
+                        <label class="ativo"> {{$title}} </label>
+                        </h2>
+                        <hr/>
                 </div>
 
-                <fieldset>
-                    <legend style="text-align: center">Cadastrar Unidade</legend>
                 {{Form::open(['url' => $url, 'method' => $method])}}
 
                 <div class="row">
@@ -64,9 +65,7 @@
                                 </div>
                             @endif
                 {{Form::close()}}
-
                 </div>
-                </fieldset>
             </div>
         </div>
     </div>

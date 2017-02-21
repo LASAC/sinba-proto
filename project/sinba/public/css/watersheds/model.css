@@ -60,7 +60,7 @@ h5{
     margin: 5px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1325px) {
     .white-box-container > .form-group > .box {
         width: 200px;
         height: 150px;

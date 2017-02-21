@@ -7,13 +7,13 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="panel-heading" style="text-align: center">
-                       <a href="{{ url('/parameters') }}">{{trans('strings.Parameters')}}</a> |
-                        {{$title}} |
-                        <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a>
+                    <h2>
+                       <a href="{{ url('/parameters') }}">{{trans('strings.parameters')}}</a> |
+                        <label class="ativo"> {{$title}}  </label> |
+                        <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a> </h2>
+                        <hr /> 
                 </div>
 
-                <fieldset>
-                    <legend style="text-align: center">Cadastrar Parâmetro</legend>
                 {{Form::open(['url' => $url, 'method' => $method])}}
 
                 <div class="row">
@@ -56,7 +56,6 @@
                 {{Form::close()}}
 
                 </div>
-                </fieldset>
             </div>
         </div>
     </div>
