@@ -23,17 +23,6 @@
         }
     </style>
     @yield('style')
-
-    <!-- Scripts -->
-    <script src="/js/libs/angular.min.js"></script>
-    <script>
-        window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-        ]); ?>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -211,14 +200,17 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-<script>
-    window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-    ]); ?>
-</script>
+<script src="/js/libs/angular.min.js"></script>
 <script src="/js/jquery.min.js" type="text/javascript" ></script>
 <script src="/js/bootstrap.min.js" type="text/javascript" ></script>
+<script>
+    window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>;
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 <script src="/js/SinbaApp.js"></script>
 <script src="/js/services/locale/{{ config('app.locale') }}/Locale.js?<?=date('YmdHis')?>"></script>
 <script src="/js/custom.js"></script>

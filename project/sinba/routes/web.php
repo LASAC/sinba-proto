@@ -45,9 +45,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('parameters/search', 'ParameterController@search');
         Route::resource('parameters', 'ParameterController');
 
+        // Watershed Models Import/Export Actions
+
+        Route::get('watersheds/models/{modelId}/download', 'ExcelFileController@download');
+
         // Watershed Models
 
-        Route::get('watersheds/models/{modelId}/download', 'WatershedModelController@download');
         Route::resource('watersheds/models', 'WatershedModelController');
 
         // Watershed CRUD:

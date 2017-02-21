@@ -87,8 +87,20 @@ angular.module('SinbaApp').controller('ImportDataCtrl', function (
     }
 
     const downloadModel = function () {
-        // TODO: downloadModel
-        $log.debug('TODO: downloadModel')
+        var modelId = $scope.models.selected.id
+        $log.debug('DOWNLOADING:', modelId)
+        $http({
+            method: 'GET',
+            url: 'watersheds/models/' + modelId + '/download',
+            Accept: 'application/json'
+        }).then(function (response) {
+            $scope.models.all = response.data
+            notify.showSuccess(response.data.message)
+            $log.debug('DELETE OK:', response)
+        }).catch(function (response) {
+            $log.debug('DELETE ERROR:', response)
+            notify.showDanger(response.data.message)
+        })
     }
 
     const deleteModel = function () {
