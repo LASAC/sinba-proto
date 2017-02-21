@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="white-box-buttons">
-                    <button ng-click="add()" type="button" class="btn btn-default">{{trans('strings.add')}}</button>
-                    <button ng-click="remove()" type="button" class="btn btn-default">{{trans('strings.remove')}}</button>
+                    <button ng-click="add()" type="button" class="btn btn-default"><i class="fa fa-plus-square-o"></i> {{trans('strings.add')}} </button>
+                    <button ng-click="remove()" type="button" class="btn btn-default"><i class="fa fa-minus-square-o"></i> {{trans('strings.remove')}}</button>
                 </div>
 
                 <div class="form-group">
@@ -66,15 +66,19 @@
 
                 <div class="white-box-buttons">
                     <button ng-click="moveUp()" type="button" class="btn btn-default">
-                        {{trans('strings.moveUp')}}
+                        <i class="fa fa-arrow-up"></i>
+                        {{trans('strings.moveUp')}} &nbsp;
                     </button>
                     <button ng-click="moveDown()" type="button" class="btn btn-default">
+                        <i class="fa fa-arrow-down"></i>
                         {{trans('strings.moveDown')}}
                     </button>
                     <button ng-click="swap()" type="button" class="btn btn-default">
+                    <i class="fa fa-arrows-alt"></i>
                         {{trans('strings.invert')}}
                     </button>
                     <button ng-click="remove()" type="button" class="btn btn-default">
+                    <i class="fa fa-remove"></i>
                         {{trans('strings.remove')}}
                     </button>
                 </div>
@@ -140,9 +144,9 @@
         <div class="white-box-container">
             {{--<button type="button" class="btn btn-default">Definir Linha e Coluna Inicial</button>--}}
             {{--<button type="button" class="btn btn-default">Visualizar Modelo</button>--}}
-            <button ng-if="step > 1" ng-click="previousStep()" type="button" class="btn btn-default">{{trans('strings.previousStep')}}</button>
-            <button ng-if="step < 3" ng-click="nextStep()" type="button" class="btn btn-default">{{trans('strings.nextStep')}}</button>
-            <button ng-if="step === 3" ng-click="saveModel()" type="button" class="btn btn-default">{{trans('strings.saveModel')}}</button>
+            <button ng-if="step > 1" ng-click="previousStep()" type="button" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{trans('strings.previousStep')}}</button>
+            <button ng-if="step < 3" ng-click="nextStep()" type="button" class="btn btn-primary">{{trans('strings.nextStep')}} <i class="fa fa-arrow-right"></i></button>
+            <button ng-if="step === 3" ng-click="saveModel()" type="button" class="btn btn-success"><i class="fa fa-save"></i> {{trans('strings.saveModel')}}</button>
         </div>
 
     </div>

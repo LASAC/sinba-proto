@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         // Watershed Models
 
+        Route::get('watersheds/models/{modelId}/download', 'WatershedModelController@download');
         Route::resource('watersheds/models', 'WatershedModelController');
 
         // Watershed CRUD:

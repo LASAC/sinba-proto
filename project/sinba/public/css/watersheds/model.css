@@ -53,14 +53,14 @@ h5{
 
 .white-box-buttons > button {
     margin: 5px;
-    width: 90px;
+    width: 100px;
 }
 
 .white-box-container > button {
     margin: 5px;
 }
 
-@media screen and (max-width: 1325px) {
+@media screen and (max-width: 1200px) {
     .white-box-container > .form-group > .box {
         width: 200px;
         height: 150px;

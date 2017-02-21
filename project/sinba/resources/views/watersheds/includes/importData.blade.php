@@ -5,9 +5,7 @@
             {{ trans('strings.importDataFromExistingSheet') }}
         </label>
     </div>
-
     <div ng-show="importData">
-
         <br />
         <p ng-if="!modelsLoaded"><[locale.str('loadingModels')]></p>
         <p ng-if="modelsLoaded && models.all.length === 0"><[locale.str('noModelRegistered')]></p>
@@ -26,8 +24,9 @@
                 ng-click="chooseModel(model)"
                 ng-disabled="models.selected"
                 type="button"
-                class="btn btn-info btn-margins"
+                class="btn btn-success btn-margins"
             >
+            <i class="fa fa-file-excel-o"></i>
                 <[model.name]>
             </button>
         </div>
@@ -60,41 +59,58 @@
 
         <!-- ACTION BUTTONS -->
         <div class="centered-spaced-buttons fixed-width">
-            <button
+            <a data-toggle="tooltip"
+                title="Enviar">
+                <button
                 type="button"
                 class="btn btn-success btn-margins"
                 ng-click="uploadSheet()"
                 ng-disabled="disabledUpload"
                 ng-if="models.selected"
-            >
+                >
+                <i class="fa fa-send"></i>
                 <[uploadLabel]>
             </button>
+            </a>
 
+            <a data-toggle="tooltip"
+                title="Download">
             <button
                 type="button"
                 class="btn btn-warning btn-margins"
                 ng-click="downloadModel()"
                 ng-if="models.selected"
             >
+                <i class="fa fa-download"></i>
                 Download
             </button>
+            </a>
             @can('manage')
+            <a data-toggle="tooltip"
+                title="Editar">
                 <button
                         type="button"
-                        class="btn btn-info btn-margins"
+                        class="btn btn-primary btn-margins"
                         ng-click="editModel()"
                         ng-if="models.selected"
                 >
+                <i class="fa fa-edit"></i>
                     <[locale.str('edit')]>
                 </button>
+                </a>
+                
+                <a data-toggle="tooltip"
+                title="Excluir">
                 <button
                         type="button"
                         class="btn btn-danger btn-margins"
                         ng-click="deleteModel()"
                         ng-if="models.selected"
                 >
+                <i class="fa fa-remove"></i>
                     <[locale.str('delete')]>
                 </button>
+                </a>
             @endcan
         </div>
 
