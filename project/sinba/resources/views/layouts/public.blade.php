@@ -77,6 +77,7 @@
                                     <li class="current-page"><a href="{{ url('/users') }}">{{ trans('strings.users') }}</a></li>
                                     <li><a href="{{ url('/units') }}">{{ trans('strings.units') }}</a></li>
                                     <li><a href="{{ url('/parameters') }}">{{ trans('strings.parameters') }}</a></li>
+                                    <li><a href="{{ url('/data') }}">{{ trans('strings.data') }}</a></li>
                                 </ul>
                             </li>
                             @endcan

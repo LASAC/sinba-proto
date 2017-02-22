@@ -53,6 +53,7 @@ return [
     'search' => 'Buscar',
     'edit' => 'Editar',
     'delete' => 'Excluir',
+    'cancel' => 'Cancelar',
     'save' => 'Salvar',
     'start' => 'Iniciar',
     'results' => 'resultado(s)',
@@ -70,9 +71,12 @@ return [
     'noItemsFound' => 'Nenhum Item Encontrado',
     'fixTheErrors' => 'Por favor, verifique os seguintes erros:',
     'confirmDelete' => 'Tem certeza que deseja excluir?',
+    'confirmDeleteSelectedUser' => 'Tem certeza que deseja excluir o usuário selecionado?',
+    'confirmDeleteSelectedData' => 'Tem certeza que deseja excluir o dado selecionado?',
     'new' => 'Novo',
     'view' => 'Ver',
     'listUsers' => 'Listar Usuários',
+    'user' => 'Usuário',
     'users' => 'Usuários',
     'createUser' => 'Criar Usuário',
     'searchUser' => 'Buscar Usuários',
@@ -90,6 +94,7 @@ return [
     'information' => 'Informações',
 
     'none' => 'Nenhum',
+    'all' => 'Todos',
 
     // Watershed
     'watershed' => 'Bacia Hidrográfica',
@@ -99,8 +104,11 @@ return [
     'createWatershed' => 'Cadastrar Bacia Hidrográfica',
     'updateWatershed' => 'Atualizar Bacia Hidrográfica',
     'levelAbove' => 'Nível Acima',
+    'data' => 'Dados',
+    'createData' => 'Lançar Dado',
     'showData' => 'Visualizar Dados',
     'manage' => 'Gerenciar',
+    'importData' => 'Importar Dados',
     'manageData' => 'Gerenciar Dados',
     'registerData' => 'Lançar Dados',
     'dataRegister' => 'Cadastro de Dados',
@@ -135,5 +143,18 @@ return [
     'orderedColumns' => 'Colunas/linhas ordenadas',
     'layout' => 'Disposição',
     'headerOnFirst' => 'Cabeçalho na primeira',
-    'hello' => 'Olá'
+    'hello' => 'Olá',
+
+    // Data
+    'value' => 'Valor',
+    'parameter' => 'Parâmetro',
+    'collectedAt' => 'Coletado em',
+    'collectedBy' => 'Coletado por',
+    'registeredBy' => 'Registrado por',
+    'sharingType' => 'Compartilhamento',
+    'filter' => 'Filtrar',
+    'private' => 'Privado',
+    'public' => 'Público',
+    'restricted' => 'Restrito',
+    'clickSearch' => "Clique em Buscar para Iniciar uma Pesquisa"
 ];

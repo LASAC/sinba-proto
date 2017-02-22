@@ -10,8 +10,8 @@
                     <h2>
                        <a href="{{ url('/parameters') }}">{{trans('strings.parameters')}}</a> |
                         <label class="ativo"> {{$title}}  </label> |
-                        <a href="{{ url('/units') }}">{{ trans('strings.unitsSystem') }}</a> </h2>
-                        <hr /> 
+                    </h2>
+                    <hr />
                 </div>
 
                 {{Form::open(['url' => $url, 'method' => $method])}}

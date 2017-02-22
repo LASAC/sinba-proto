@@ -60,4 +60,20 @@ class User extends Authenticatable
             'password' => 'required|min:6' . $passwordConfirmed,
         ]);
     }
+
+    public function fullName() {
+        return $this->name . ' ' . $this->lastName ;
+    }
+
+    public function pluckFullNames($noneValue = null) {
+        $users = $this->orderBy('name')->get();
+        $userArray = [];
+        foreach($users as $user) {
+            $userArray[$user->id] = $user->fullName();
+        }
+        if($noneValue) {
+            $userArray[0] = $noneValue;
+        }
+        return $userArray;
+    }
 }

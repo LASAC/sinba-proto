@@ -7,11 +7,10 @@
             <div class="x_panel">
                 <div class="panel-heading" style="text-align: center">
                 <h2>
-                    <a href="{{ url('/parameters/') }}">{{trans('strings.parametersManagement')}}</a> |
-                        <a href="{{ url('/units') }}">{{trans('strings.listUnits')}}</a> |
-                        <label class="ativo"> {{$title}} </label>
-                        </h2>
-                        <hr/>
+                    <a href="{{ url('/units') }}">{{trans('strings.listUnits')}}</a> |
+                    <label class="ativo"> {{$title}} </label>
+                </h2>
+                <hr/>
                 </div>
 
                 {{Form::open(['url' => $url, 'method' => $method])}}

@@ -1,8 +1,12 @@
 @extends('layouts.crud.list')
 
 @section('links')
-    <h2><label class="ativo">{{trans('strings.listParameters')}}</label> |
-    <a href="{{ url('/parameters/create') }}">{{trans('strings.createParameter')}}</a> </h2> 
+    <h2>
+        <label class="ativo">{{trans('strings.listParameters')}}</label> |
+        <a href="{{ url('/parameters/create') }}">{{trans('strings.createParameter')}}</a> |
+        <a href="{{ url('/units') }}">{{trans('strings.unitsSystem')}}</a> |
+        <a href="{{ url('/data') }}">{{trans('strings.dataRegister')}}</a>
+    </h2>
 @endsection
 
 @section('search')

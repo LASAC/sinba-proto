@@ -67,10 +67,14 @@ return [
     'noItemsFound' => 'No Items Found',
     'fixTheErrors' => 'Please, fix the following errors',
     'confirmDelete' => 'Are you sure you want to delete it?',
+    'confirmDeleteSelectedUser' => 'Are you sure you want to delete the selected user?',
     'new' => 'New',
     'view' => 'View',
     'edit' => 'Edit',
+    'delete' => 'Delete',
+    'cancel' => 'Cancel',
     'listUsers' => 'List Users',
+    'user' => 'User',
     'users' => 'Users',
     'createUser' => 'Create Users',
     'searchUser' => 'Search Users',
@@ -89,6 +93,7 @@ return [
     'information' => 'Information',
 
     'none' => 'None',
+    'all' => 'All',
 
     // Watershed
     'watershed' => 'Watershed',
@@ -98,8 +103,11 @@ return [
     'createWatershed' => 'Create Watershed',
     'updateWatershed' => 'Update Watershed',
     'levelAbove' => 'Level Above',
+    'data' => 'Data',
+    'createData' => 'Create Data',
     'showData' => 'Show Data',
     'manage' => 'Manage',
+    'importData' => 'Import Data',
     'manageData' => 'Manage Data',
     'registerData' => 'Register Data',
     'dataRegister' => 'Data Register',
@@ -131,5 +139,18 @@ return [
     'orderedColumns' => 'Ordered columns/lines',
     'layout' => 'Layout',
     'headerOnFirst' => 'Header on first',
-    'hello' => 'Hello'
+    'hello' => 'Hello',
+
+    // Data
+    'value' => 'Value',
+    'parameter' => 'Parameter',
+    'collectedAt' => 'Collected at',
+    'collectedBy' => 'Collected by',
+    'registeredBy' => 'Registered by',
+    'sharingType' => 'Sharing type',
+    'filter' => 'Filter',
+    'private' => 'Private',
+    'public' => 'Public',
+    'restricted' => 'Restricted',
+    'clickSearch' => "Click Search to Retrieve the Data"
 ];

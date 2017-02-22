@@ -43,7 +43,7 @@ class ParameterController extends CRUDController
     {
         $id = $isUpdate ? ", " . $this->request->input('id') : '';
         $this->validate($this->request, [
-            'name' => 'required|max:255|unique:units,name' . $id
+            'name' => 'required|max:255|unique:parameters,name' . $id
         ]);
     }
 

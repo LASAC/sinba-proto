@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelSamplesController
@@ -36,5 +37,15 @@ class ExcelSamplesController
 
         })->download('xls');
         return $download;
+    }
+
+    public function tableExport($class) {
+        $class = 'App\\'.$class;
+        $result = $class::all();
+        Excel::create('output', function($excel) use($result) {
+            $excel->sheet('Sheet 1', function($sheet) use($result) {
+                $sheet->fromArray($result);
+            });
+        })->download('xls');
     }
 }

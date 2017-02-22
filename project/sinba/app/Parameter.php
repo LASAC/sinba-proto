@@ -36,6 +36,18 @@ class Parameter extends Model
         return $this->name . (strlen($this->symbol()) ? " ($symbol)" : '');
     }
 
+    public function pluckNamesAndSymbols($noneValue = null) {
+        $parameters = $this->orderBy('name')->get();
+        $paramArray = [];
+        foreach($parameters as $parameter) {
+            $paramArray[$parameter->id] = $parameter->nameAndSymbol();
+        }
+        if($noneValue) {
+            $paramArray[0] = $noneValue;
+        }
+        return $paramArray;
+    }
+
     public function pluckNames($noneValue = null) {
         $plucks = $this->orderBy('name')->pluck('name', 'id');
         $array = $plucks->toArray();
@@ -43,14 +55,5 @@ class Parameter extends Model
             $array[0] = $noneValue;
         }
         return $array;
-    }
-
-    public function pluckNamesAndSymbols($noneValue = null) {
-        $parameters = $this->orderBy('name')->get();
-        $paramArray = [];
-        foreach($parameters as $parameter) {
-            $paramArray[$parameter->id] = $parameter->nameAndSymbol();
-        }
-        return $paramArray;
     }
 }

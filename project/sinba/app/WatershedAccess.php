@@ -22,6 +22,11 @@ class WatershedAccess extends Model
         return $watershed;
     }
 
+    public function lastWatershedIdAccessedBy($userId) {
+        $watershed = $this->lastWatershedAccessedBy($userId);
+        return $watershed ? $watershed->id : 0;
+    }
+
     public static function watershedsAccessedBy($userId) {
         $results = DB::table('watershed_accesses')
             ->join('watersheds', 'watershed_accesses.watershed_id', '=', 'watersheds.id')

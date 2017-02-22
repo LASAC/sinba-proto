@@ -50,17 +50,23 @@
                 </div>
                 <div class="row">
                      <div class="centered-spaced-buttons">
-                        <a href="/watersheds/models/{{ $watershed->id }}">
-                        <button id="btnCadastrar" type="button" class="btn btn-primary" style="padding: 9px 9px">
-                            <i class="fa fa-database"></i> 
-                            {{ trans('strings.manageData') }}
-                        </button>
+                        <a href="/watersheds/{{ $watershed->id }}/data/{{ Auth::id() }}">
+                            <button id="btnCadastrar" type="button" class="btn btn-primary" style="padding: 9px 9px">
+                                <i class="fa fa-database"></i>
+                                {{ trans('strings.manageData') }}
+                            </button>
+                        </a>
+                         <a href="/watersheds/models/{{ $watershed->id }}">
+                             <button id="btnCadastrar" type="button" class="btn btn-primary" style="padding: 9px 9px">
+                                 <i class="fa fa-database"></i>
+                                 {{ trans('strings.importData') }}
+                             </button>
                          </a>
                         <a href="/watersheds/{{ $watershed->id }}/edit">
-                        <button type="button" class="btn btn-primary" style="padding: 9px 9px">
-                        <i class="fa fa-refresh"></i> 
-                        {{ trans('strings.updateWatershed') }}
-                        </button>
+                            <button type="button" class="btn btn-primary" style="padding: 9px 9px">
+                            <i class="fa fa-refresh"></i>
+                            {{ trans('strings.updateWatershed') }}
+                            </button>
                         </a>
                     </div>
                 </div>

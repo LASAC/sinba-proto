@@ -27,6 +27,10 @@ angular.module('SinbaApp').factory("locale", function() {
         'noModelRegistered': 'Nenhum modelo de planilha cadastrado!',
         'createNewModel': 'Criar nova planilha modelo',
         'editModel': 'Editar planilha modelo',
+        'editSelectedModel': 'Editar planilha modelo selecionada',
+        'deleteSelectedModel': 'Excluir planilha modelo selecionada',
+        'downloadSelectedModel': 'Baixar planilha modelo selecionada',
+        'sendSheetBasedOnModel': 'Enviar planilha preenchida com base no modelo selecionado',
         'edit': 'Editar',
         'loadingModels': 'Carregando modelos de planilha...'
     }

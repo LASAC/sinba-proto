@@ -74,14 +74,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                Excluir usuário
+                {{ trans('strings.delete') }} {{ trans('strings.user') }}
             </div>
             <div class="modal-body">
-                Tem certeza que deseja excluir o usuário selecionado ?
+                {{ trans('strings.confirmDeleteSelectedUser') }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-danger btn-ok"> Excluir </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('strings.cancel') }}</button>
+                <a class="btn btn-danger btn-ok"> {{ trans('strings.delete') }} </a>
             </div>
         </div>
     </div>

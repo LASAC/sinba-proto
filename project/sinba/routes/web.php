@@ -39,6 +39,14 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('parameters/search', 'ParameterController@search');
         Route::resource('parameters', 'ParameterController');
 
+        // Data CRUD:
+
+        Route::get('watersheds/{watershedId}/data/{userId}', 'DataController@fromWatershed');
+        Route::get('data/search', 'DataController@index');
+        Route::post('data/search', 'DataController@search');
+        Route::post('data/export', 'DataController@export');
+        Route::resource('data', 'DataController');
+
         // Watershed Models Import/Export Actions
 
         Route::get('watersheds/models/{modelId}/download', 'ExcelFileController@download');
@@ -75,5 +83,7 @@ Route::group(['middleware' => 'dev'], function (){
     });
 
     // Examples of Excel Exporting and Importing
-    Route::get('excel/samples/export', 'ExcelSamplesController@export');
+    Route::get('excel/samples/simple', 'ExcelSamplesController@export');
+
+    Route::get('excel/samples/export/{class}', 'ExcelSamplesController@tableExport');
 });

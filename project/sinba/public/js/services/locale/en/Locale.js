@@ -27,6 +27,10 @@ angular.module('SinbaApp').factory("locale", function() {
         'noModelRegistered': 'No model registered!',
         'createNewModel': 'Create new sheet model',
         'editModel': 'Edit sheet model',
+        'editSelectedModel': 'Edit selected sheet model',
+        'deleteSelectedModel': 'Delete selected sheet model',
+        'downloadSelectedModel': 'Download selected sheet model',
+        'sendSheetBasedOnModel': 'Send a sheet that was filled according to the selected model',
         'edit': 'Edit',
         'loadingModels': 'Loading models...'
     }
