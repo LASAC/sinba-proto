@@ -34,7 +34,7 @@ class CreateDataTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // TODO: collected by restringir a um conjunto pré-definido
-            $table->string('collected_by')->unsigned();
+            $table->string('collected_by');
 
             $table->timestamp('collected_at');
 
