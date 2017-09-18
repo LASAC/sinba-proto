@@ -16,5 +16,5 @@ php artisan route:clear
 # set file permissions
 sudo chown -R www-data:www-data /var/www/html/sinba
 sudo chmod 2775 /var/www/html/sinba
-find /var/www -type d -exec sudo chmod 2775 {} \;
-find /var/www -type f -exec sudo chmod 0664 {} \;
+find /var/www/html/sinba -type d -exec sudo chmod 2775 {} \;
+find /var/www/html/sinba -type f -exec sudo chmod 0664 {} \;

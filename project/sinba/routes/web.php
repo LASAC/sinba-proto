@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Rotas de Autenticação
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'can:manage'], function () {
         // User Management
