@@ -78,6 +78,11 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group(['middleware' => 'dev'], function (){
 
+    Route::get('/mailable/registered', function () {
+        $user = App\User::find(Auth::id() ?? 1);
+        return new App\Mail\UserRegistered($user);
+    });
+
     Route::get('/dev', function () {
         phpinfo();
     });
