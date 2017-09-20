@@ -6,7 +6,10 @@
 #
 # SINBA dependencies
 #
-apt-get install -y git curl php7.0-mbstring php7.0-xml php7.0-mysql
+sudo apt-get install -y git curl php7.0-mbstring php7.0-xml php7.0-mysql
+
+# laravel-excel dependencies
+sudo apt-get install php7.0-zip php7.0-gd
 
 #
 # Apache
@@ -82,8 +85,14 @@ composer install
 # try to delete composer.lock, then delete vendor/, 
 # and then run composer install again.
 
+# generate app key
 php artisan key:generate
+
+# seed initial data
 php artisan migrate --seed
+
+# make storage folder public
+php artisan storage:link
 
 # set permissions
 # in order to assure www-data is the user apache is running as
