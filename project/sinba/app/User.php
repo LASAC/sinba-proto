@@ -48,7 +48,7 @@ class User extends Authenticatable
             'name' => 'required|max:255',
             'lastName' => 'required|max:255',
             'birthDate' => 'required|date_format:"d/m/Y"',
-            'cpf' => 'required|regex:[([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}]',
+            'cpf' => 'required|regex:[([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}]|unique:users' . $id,
             'rg' => 'required|max:15',
             'address' => 'required|max:255',
             'phone' => 'required|regex:[\(\d{3}\)\s*\d{4}\-\d{4}]',
