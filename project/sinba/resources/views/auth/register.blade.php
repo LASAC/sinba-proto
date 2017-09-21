@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="container">
+<div class="container" ng-controller="RegisterCtrl as ctrl" ng-init="init()">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -43,7 +43,7 @@
 
                             <div class="col-md-6">
                                 <input id="birthDate" type="text" class="form-control" name="birthDate" value="{{ old('birthDate') }}" required autofocus>
-
+                                {{-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker> --}}
                                 @if ($errors->has('birthDate'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('birthDate') }}</strong>

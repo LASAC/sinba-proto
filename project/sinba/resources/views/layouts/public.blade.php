@@ -181,10 +181,12 @@
             </div>
         </div>
 
-        <!-- Page content-->
         <div class="right_col" role="main" style="min-height: 1657px;">
             <div class="row">
+                <!-- ########## MESSAGES ########## -->
                 @yield('messages')
+
+                <!-- ########## CONTENT ########## -->
                 @yield('content')
             </div>
         </div>

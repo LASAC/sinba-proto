@@ -1,7 +1,5 @@
 var angular = require('angular')
 
-console.log('CONTROLLER: CreateModelCtrl')
-
 module.exports = (angularModule) => {
 
   angularModule.controller('CreateModelCtrl', [

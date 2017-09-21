@@ -1,14 +1,6 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap')
+require('angular-material')
 
-/**
- * Create an AngularJS app here.
- */
 var angular = require('angular')
 var services = require('./services')
 var controllers = require('./controllers')
@@ -22,7 +14,5 @@ var sinbaApp = angular.module('SinbaApp', [])
   })
 
 services(sinbaApp, document.documentElement.lang)
-
 controllers(sinbaApp)
-
 directives(sinbaApp)
