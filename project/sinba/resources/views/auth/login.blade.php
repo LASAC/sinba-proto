@@ -24,14 +24,15 @@
     @yield('style')
 
     <!-- Scripts -->
-    <script src="/js/libs/angular.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script src="/js/SinbaApp.js"></script>
-    <script src="/js/services/locale/{{ config('app.locale') }}/Locale.js?<?=date('YmdHis')?>"></script>
+    <script src="/js/manifest.js"></script>
+    <script src="/js/vendor.js"></script>
+    <script src="/js/app.js"></script>
+
     @yield('script')
 </head>
 <body>

@@ -1,20 +1,28 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
+ * Create an AngularJS app here.
  */
+var angular = require('angular')
+var services = require('./services')
+var controllers = require('./controllers')
+var directives = require('./directives')
 
-Vue.component('example', require('./components/Example.vue'));
+var sinbaApp = angular.module('SinbaApp', [])
+  .config(function($interpolateProvider, $logProvider) {
+    $interpolateProvider.startSymbol('<[')
+    $interpolateProvider.endSymbol(']>')
+    $logProvider.debugEnabled(true) // put false to disable logs in production
+  })
 
-const app = new Vue({
-    el: 'body'
-});
+services(sinbaApp, document.documentElement.lang)
+
+controllers(sinbaApp)
+
+directives(sinbaApp)
