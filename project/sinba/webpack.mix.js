@@ -20,6 +20,7 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     'angular-material',
     'angular-messages',
     'axios',
-    'jquery'
+    'jquery',
+    'moment'
   ])
   .sourceMaps();

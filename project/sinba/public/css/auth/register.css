@@ -1,0 +1,15 @@
+.datepicker-container {
+    display: flex;
+    align-items: center;
+}
+.md-datepicker-input-container {
+    border-bottom-style: none;
+    position: inherit;
+}
+.md-button.md-icon-button {
+    margin: 0 -6px;
+}
+.md-datepicker-triangle-button.md-button.md-icon-button {
+    right: 30px;
+    top: 0
+}

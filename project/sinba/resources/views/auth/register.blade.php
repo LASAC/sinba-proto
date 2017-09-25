@@ -1,5 +1,9 @@
 @extends('layouts.public')
 
+@section('style')
+<link href="/css/auth/register.css?<?=date('YmdHis')?>" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container" ng-controller="RegisterCtrl as ctrl" ng-init="init()">
     <div class="row">
@@ -42,21 +46,49 @@
                             <label for="birthDate" class="col-md-4 control-label">{{trans('strings.birthDate')}}</label>
 
                             <div class="col-md-6">
-                                <input id="birthDate" type="text" class="form-control" name="birthDate" value="{{ old('birthDate') }}" required autofocus>
-                                {{-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker> --}}
+                                <div class="form-control datepicker-container">
+
+                                    <md-datepicker
+                                        ng-model="birthDate"
+                                        md-current-view="year"
+                                        md-placeholder=""
+                                    >
+                                    </md-datepicker>
+
+                                    <input type="hidden" name="birthDate" value="<[ birthDate | date:'dd/MM/yyyy' ]>" />
+
+                                    <input
+                                        type="hidden"
+                                        name="oldBirthDate"
+                                        value="{{ old('birthDate') }}"
+                                        id="oldBirthDate"
+                                    />
+
+                                </div>
+
                                 @if ($errors->has('birthDate'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('birthDate') }}</strong>
                                     </span>
                                 @endif
                             </div>
+
                         </div>
 
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="dpf" class="col-md-4 control-label">{{trans('strings.cpf')}}</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                <input
+                                    id="cpf"
+                                    name="cpf"
+                                    value="{{ old('cpf') }}"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="___.___.___-__"
+                                    required
+                                    autofocus
+                                />
 
                                 @if ($errors->has('cpf'))
                                     <span class="help-block">
