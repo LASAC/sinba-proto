@@ -1,6 +1,6 @@
 require('./bootstrap')
 require('angular-material')
-
+require('angular-input-masks')
 var angular = require('angular')
 var moment = require('moment')
 
@@ -8,7 +8,7 @@ var services = require('./services')
 var controllers = require('./controllers')
 var directives = require('./directives')
 
-var sinbaApp = angular.module('SinbaApp', ['ngMaterial', 'ngMessages'])
+var sinbaApp = angular.module('SinbaApp', ['ngMaterial', 'ngMessages', 'ui.utils.masks'])
   .config([
     '$interpolateProvider',
     '$logProvider',

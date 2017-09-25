@@ -17,10 +17,9 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     'angular',
     'angular-animate',
     'angular-aria',
-    'angular-material',
+    'angular-input-masks',
     'angular-messages',
-    'axios',
-    'jquery',
-    'moment'
+    'angular-material',
+    'jquery'
   ])
   .sourceMaps();

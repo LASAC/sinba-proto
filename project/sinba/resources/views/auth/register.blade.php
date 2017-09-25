@@ -80,14 +80,20 @@
 
                             <div class="col-md-6">
                                 <input
-                                    id="cpf"
-                                    name="cpf"
-                                    value="{{ old('cpf') }}"
-                                    type="text"
+                                    ui-br-cpf-mask
                                     class="form-control"
+                                    type="text"
+                                    name="field"
+                                    ng-model="cpf"
                                     placeholder="___.___.___-__"
-                                    required
-                                    autofocus
+                                />
+
+                                <input type="hidden" name="cpf" value="<[ cpf ]>" />
+                                <input
+                                    name="oldCpf"
+                                    type="hidden"
+                                    value="{{ old('cpf') }}"
+                                    id="oldCpf"
                                 />
 
                                 @if ($errors->has('cpf'))

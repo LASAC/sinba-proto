@@ -96,4 +96,9 @@ Route::group(['middleware' => 'dev'], function () {
     Route::get('/angular', function () {
         return view('dev.angular');
     });
+
+    // Angular Material Playground
+    Route::get('/angular/masks', function () {
+        return view('dev.angular-masks');
+    });
 });
