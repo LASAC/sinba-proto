@@ -1,13 +1,21 @@
 @extends('layouts.public')
 
+@section('style')
+<link href="/css/auth/register.css?<?=date('YmdHis')?>" rel="stylesheet">
+@endsection
+
+@section('script')
+<script src="/js/libs/masks.js"></script>
+@endsection
+
 @section('content')
-<div class="container">
+<div class="container" ng-controller="RegisterCtrl as ctrl" ng-init="init()">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">{{trans('auth.register.title')}}</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form name="registerForm" class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -42,7 +50,26 @@
                             <label for="birthDate" class="col-md-4 control-label">{{trans('strings.birthDate')}}</label>
 
                             <div class="col-md-6">
-                                <input id="birthDate" type="text" class="form-control" name="birthDate" value="{{ old('birthDate') }}" required autofocus>
+                                <div class="form-control datepicker-container">
+
+                                    <md-datepicker
+                                        ng-model="birthDate"
+                                        md-current-view="year"
+                                        md-placeholder=""
+                                        md-open-on-focus
+                                    >
+                                    </md-datepicker>
+
+                                    <input type="hidden" name="birthDate" value="<[ birthDate | date:'dd/MM/yyyy' ]>" />
+
+                                    <input
+                                        type="hidden"
+                                        name="oldBirthDate"
+                                        value="{{ old('birthDate') }}"
+                                        id="oldBirthDate"
+                                    />
+
+                                </div>
 
                                 @if ($errors->has('birthDate'))
                                     <span class="help-block">
@@ -50,19 +77,45 @@
                                     </span>
                                 @endif
                             </div>
+
                         </div>
 
-                        <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
+                        <div
+                            class="form-group {{ $errors->has('cpf') ? 'has-error' : '' }}"
+                            ng-class="{'has-error': !cpfFocus && registerForm.maskedCpf.$error.cpf}"
+                        >
                             <label for="dpf" class="col-md-4 control-label">{{trans('strings.cpf')}}</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                <input
+                                    ui-br-cpf-mask
+                                    class="form-control"
+                                    type="text"
+                                    name="maskedCpf"
+                                    ng-model="cpf"
+                                    ng-focus="cpfFocus = true; cpfEdited = true;"
+                                    ng-blur="cpfFocus = false"
+                                    placeholder="___.___.___-__"
+                                    id="maskedCpf"
+                                />
 
-                                @if ($errors->has('cpf'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('cpf') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="hidden" name="cpf" value="<[ cpf ]>" />
+                                <input
+                                    name="oldCpf"
+                                    type="hidden"
+                                    value="{{ old('cpf') }}"
+                                    id="oldCpf"
+                                />
+
+                                <span class="help-block">
+                                    <strong ng-show="!cpfEdited">{{ $errors->first('cpf') }}</strong>
+                                    <strong
+                                        ng-cloak
+                                        ng-show="!('{{ $errors->first('cpf') }}' && !cpfEdited) &&!cpfFocus && registerForm.maskedCpf.$error.cpf"
+                                    >
+                                        {{trans('auth.validations.cpf')}}
+                                    </strong>
+                                </span>
                             </div>
                         </div>
 
@@ -70,7 +123,16 @@
                             <label for="rg" class="col-md-4 control-label">{{trans('strings.rg')}}</label>
 
                             <div class="col-md-6">
-                                <input id="rg" type="text" class="form-control" name="rg" value="{{ old('rg') }}" required autofocus>
+                                <input
+                                    type="text"
+                                    name="rg"
+                                    value="{{ old('rg') }}"
+                                    id="rg"
+                                    maxlength="15"
+                                    class="form-control"
+                                    required
+                                    autofocus
+                                />
 
                                 @if ($errors->has('rg'))
                                     <span class="help-block">
@@ -94,31 +156,79 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div
+                            class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}"
+                            ng-class="{'has-error': !phoneFocus && !isValidPhone()}"
+                        >
                             <label for="phone" class="col-md-4 control-label">{{trans('strings.phone')}}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus>
+                                <input
+                                    ui-br-phone-number
+                                    class="form-control"
+                                    type-"text"
+                                    name="maskedPhone"
+                                    ng-model="phone"
+                                    ng-focus="phoneFocus = true"
+                                    ng-blur="phoneFocus = false"
+                                    placeholder="(67) 3333-3333"
+                                />
 
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="hidden" name="phone" value="<[ phone ]>" />
+                                <input
+                                    name="oldPhone"
+                                    type="hidden"
+                                    value="{{ old('phone') }}"
+                                    id="oldPhone"
+                                />
+
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('phone') }}</strong>
+                                    <strong
+                                        ng-cloak
+                                        ng-show="!phoneFocus && !isValidPhone()"
+                                    >
+                                        {{trans('validation.custom.phone.regex')}}
+                                    </strong>
+                                </span>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('cellphone') ? ' has-error' : '' }}">
+                        <div
+                            class="form-group {{ $errors->has('cellphone') ? 'has-error' : '' }}"
+                            ng-class="{'has-error': !cellphoneFocus && !isValidCellphone()}"
+                        >
                             <label for="cellphone" class="col-md-4 control-label">{{trans('strings.cellphone')}}</label>
 
                             <div class="col-md-6">
-                                <input id="cellphone" type="text" class="form-control" name="cellphone" value="{{ old('cellphone') }}" required autofocus>
+                                <input
+                                    ui-br-phone-number
+                                    class="form-control"
+                                    type-"text"
+                                    name="maskedPhone"
+                                    ng-model="cellphone"
+                                    ng-focus="cellphoneFocus = true"
+                                    ng-blur="cellphoneFocus = false"
+                                    placeholder="(67) 93333-3333"
+                                />
 
-                                @if ($errors->has('cellphone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('cellphone') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="hidden" name="cellphone" value="<[ cellphone ]>" />
+                                <input
+                                    name="oldCellphone"
+                                    type="hidden"
+                                    value="{{ old('cellphone') }}"
+                                    id="oldCellphone"
+                                />
+
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('cellphone') }}</strong>
+                                    <strong
+                                        ng-cloak
+                                        ng-show="!cellphoneFocus && !isValidCellphone()"
+                                    >
+                                        {{trans('validation.custom.cellphone.regex')}}
+                                    </strong>
+                                </span>
                             </div>
                         </div>
 

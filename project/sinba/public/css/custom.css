@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .left_col {
   /*background: #2A3F54;*/
-  background: #2A3F54; 
+  background: #2A3F54;
   }
 
 .nav-sm .container.body .col-md-3.left_col {
@@ -3407,10 +3407,12 @@ a.hiddenanchor {
   outline: none; }
 
 #username {
-  background-position: 10px 10px !important; }
+  background-position: 10px 10px;
+}
 
 #password {
-  background-position: 10px -53px !important; }
+  background-position: 10px -53px;
+}
 
 .login_content form div a {
   font-size: 12px;

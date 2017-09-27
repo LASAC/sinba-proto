@@ -76,12 +76,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 });
 
-Route::group(['middleware' => 'dev'], function (){
-
-    Route::get('/mailable/registered', function () {
-        $user = App\User::find(Auth::id() ?? 1);
-        return new App\Mail\UserRegistered($user);
-    });
+Route::group(['middleware' => 'dev'], function () {
 
     Route::get('/dev', function () {
         phpinfo();
@@ -89,6 +84,21 @@ Route::group(['middleware' => 'dev'], function (){
 
     // Examples of Excel Exporting and Importing
     Route::get('excel/samples/simple', 'ExcelSamplesController@export');
-
     Route::get('excel/samples/export/{class}', 'ExcelSamplesController@tableExport');
+
+    // E-mails:
+    Route::get('/mailable/registered', function () {
+        $user = App\User::find(Auth::id() ?? 1);
+        return new App\Mail\UserRegistered($user);
+    });
+
+    // Angular (Material) Playground
+    Route::get('/angular/calendar', function () {
+        return view('dev.angular.calendar');
+    });
+
+    // Angular Material Playground
+    Route::get('/angular/masks', function () {
+        return view('dev.angular.masks');
+    });
 });

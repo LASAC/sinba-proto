@@ -181,10 +181,12 @@
             </div>
         </div>
 
-        <!-- Page content-->
         <div class="right_col" role="main" style="min-height: 1657px;">
             <div class="row">
+                <!-- ########## MESSAGES ########## -->
                 @yield('messages')
+
+                <!-- ########## CONTENT ########## -->
                 @yield('content')
             </div>
         </div>
@@ -201,7 +203,6 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/libs/angular.min.js"></script>
 <script src="/js/jquery.min.js" type="text/javascript" ></script>
 <script src="/js/bootstrap.min.js" type="text/javascript" ></script>
 <script>
@@ -212,8 +213,9 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
-<script src="/js/SinbaApp.js"></script>
-<script src="/js/services/locale/{{ config('app.locale') }}/Locale.js?<?=date('YmdHis')?>"></script>
+<script src="/js/manifest.js"></script>
+<script src="/js/vendor.js"></script>
+<script src="/js/app.js"></script>
 <script src="/js/custom.js"></script>
 
 @yield('script')
