@@ -93,7 +93,7 @@
                                     type="text"
                                     name="maskedCpf"
                                     ng-model="cpf"
-                                    ng-focus="cpfFocus = true"
+                                    ng-focus="cpfFocus = true; cpfEdited = true;"
                                     ng-blur="cpfFocus = false"
                                     placeholder="___.___.___-__"
                                     id="maskedCpf"
@@ -108,8 +108,13 @@
                                 />
 
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('cpf') }}</strong>
-                                    <strong ng-cloak ng-show="!cpfFocus && registerForm.maskedCpf.$error.cpf">{{trans('auth.validations.cpf')}}</strong>
+                                    <strong ng-show="!cpfEdited">{{ $errors->first('cpf') }}</strong>
+                                    <strong
+                                        ng-cloak
+                                        ng-show="!('{{ $errors->first('cpf') }}' && !cpfEdited) &&!cpfFocus && registerForm.maskedCpf.$error.cpf"
+                                    >
+                                        {{trans('auth.validations.cpf')}}
+                                    </strong>
                                 </span>
                             </div>
                         </div>

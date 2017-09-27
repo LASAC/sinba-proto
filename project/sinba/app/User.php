@@ -44,7 +44,7 @@ class User extends Authenticatable
     {
         $id = $isUpdate ? ", " . $data['id'] : '';
         $passwordConfirmed = !$isUpdate ? '|confirmed' : '';
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'name' => 'required|max:255',
             'lastName' => 'required|max:255',
             'birthDate' => 'required|date_format:"d/m/Y"',
@@ -59,6 +59,15 @@ class User extends Authenticatable
             'justification' => 'required|max:511',
             'password' => 'required|min:6' . $passwordConfirmed,
         ]);
+
+        $validator->after(function ($validator) use ($data) {
+            $cpfIsValid = self::isCpfValid($data['cpf']);
+            if (!$cpfIsValid) {
+                $validator->errors()->add('cpf', trans('auth.validations.cpf'));
+            }
+        });
+
+        return $validator;
     }
 
     public function fullName() {
@@ -75,5 +84,38 @@ class User extends Authenticatable
             $userArray[0] = $noneValue;
         }
         return $userArray;
+    }
+
+    /**
+     * Function to validate CPF
+     * Source: https://gist.github.com/rafael-neri/ab3e58803a08cb4def059fce4e3c0e40
+     * @param  string $cpf to be validated
+     * @return boolean      true if it's valid, false otherwise.
+     */
+    private static function isCpfValid($cpf) {
+        // Extrai somente os numeros
+        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+
+        // Verifica se foi informado todos os digitos corretamente
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+
+        // Verifica se foi informada uma sequencia de digitos repetidos. Ex: 111.111.111-11
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return false;
+        }
+
+        // Faz o calculo para validar o CPF
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf{$c} * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf{$c} != $d) {
+                return false;
+            }
+        }
+        return true;
     }
 }
