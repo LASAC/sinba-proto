@@ -99,6 +99,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'phone' => [
+            'regex' => 'Incorrect format. Example: (67) 3333-3333'
+        ],
+        'cellphone' => [
+            'regex' => 'Incorrect format. Example: (67) 99999-9999'
+        ]
     ],
 
     /*

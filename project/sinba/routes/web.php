@@ -92,13 +92,13 @@ Route::group(['middleware' => 'dev'], function () {
         return new App\Mail\UserRegistered($user);
     });
 
-    // Angular Material Playground
-    Route::get('/angular', function () {
-        return view('dev.angular');
+    // Angular (Material) Playground
+    Route::get('/angular/calendar', function () {
+        return view('dev.angular.calendar');
     });
 
     // Angular Material Playground
     Route::get('/angular/masks', function () {
-        return view('dev.angular-masks');
+        return view('dev.angular.masks');
     });
 });

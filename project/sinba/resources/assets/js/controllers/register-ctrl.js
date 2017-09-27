@@ -10,6 +10,10 @@ module.exports = (angularModule) => {
     function ($scope, $log) {
       $log.debug('RegisterCtrl')
 
+      // Constants
+      const PHONE_DIGITS = 10
+      const CELL_DIGITS = 11
+
       // Properties
       // ...
 
@@ -56,6 +60,18 @@ module.exports = (angularModule) => {
 
         $log.debug('$(\'#oldCellphone\').val(): ', $('#oldCellphone').val())
         $log.debug('$scope.cellphone: ', $scope.cellphone)
+      } // init
+
+      const isValidCellphone = () => {
+        $log.debug('RegisterCtrl.isValidCellphone')
+        $log.debug('$scope.cellphone:', $scope.cellphone)
+        return !$scope.cellphone || $scope.cellphone.length === CELL_DIGITS
+      }
+
+      const isValidPhone = () => {
+        $log.debug('RegisterCtrl.isValidPhone')
+        $log.debug('$scope.phone:', $scope.phone)
+        return !$scope.cellphone || $scope.phone.length === PHONE_DIGITS
       }
 
       angular.extend($scope, {
@@ -63,7 +79,9 @@ module.exports = (angularModule) => {
           // ...
 
           // Methods
-          init
+          init,
+          isValidCellphone,
+          isValidPhone
       })
     }
   ])

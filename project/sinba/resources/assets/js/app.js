@@ -1,6 +1,6 @@
 require('./bootstrap')
 require('angular-material')
-require('angular-input-masks')
+
 var angular = require('angular')
 var moment = require('moment')
 

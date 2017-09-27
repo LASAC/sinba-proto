@@ -100,10 +100,10 @@ return [
             'rule-name' => 'custom-message',
         ],
         'phone' => [
-            'regex' => 'Telefone no formato incorreto. Exemplo: (067) 3333-3333'
+            'regex' => 'Formato incorreto. Exemplo: (67) 3333-3333'
         ],
         'cellphone' => [
-            'regex' => 'Telefone no formato incorreto. Exemplo: (067) 99999-9999'
+            'regex' => 'Formato incorreto. Exemplo: (67) 99999-9999'
         ]
     ],
 
