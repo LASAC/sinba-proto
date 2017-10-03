@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -195,7 +195,9 @@
         <!-- Footer -->
         <footer>
           <div class="pull-right">
-            SINBA - 2017
+            <a href="{{ 'https://github.com/LASAC/SINBA/releases/tag/' . config('app.version') }}" target="_blank">
+                © LASAC/UFMS {{date('Y')}} - {{config('app.name')}} {{config('app.version')}}
+            </a>
           </div>
           <div class="clearfix"></div>
         </footer>
