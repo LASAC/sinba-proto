@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\UserRegistered;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -56,7 +59,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // create the user...
+        $newUser = User::create([
             'name' => $data['name'],
             'lastName' => $data['lastName'],
             'birthDate' => $data['birthDate'],
@@ -71,5 +75,15 @@ class RegisterController extends Controller
             'justification' => $data['justification'],
             'password' => bcrypt($data['password']),
         ]);
+
+        try {
+            // notify admins...
+            $recipients = User::where('isAdmin', true)->get();
+            Mail::bcc($recipients)->send(new UserRegistered($newUser));
+        } catch (\Exception $exception) {
+            Log::error($exception);
+        }
+
+        return $newUser;
     }
 }

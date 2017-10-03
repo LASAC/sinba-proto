@@ -1,20 +1,37 @@
+require('./bootstrap')
+require('angular-material')
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
+var angular = require('angular')
+var moment = require('moment')
 
-require('./bootstrap');
+var services = require('./services')
+var controllers = require('./controllers')
+var directives = require('./directives')
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
+var sinbaApp = angular.module('SinbaApp', ['ngMaterial', 'ngMessages', 'ui.utils.masks'])
+  .config([
+    '$interpolateProvider',
+    '$logProvider',
+    '$mdDateLocaleProvider',
+    function(
+      $interpolateProvider,
+      $logProvider,
+      $mdDateLocaleProvider
+    ) {
+      // Interpolation
+      $interpolateProvider.startSymbol('<[')
+      $interpolateProvider.endSymbol(']>')
 
-Vue.component('example', require('./components/Example.vue'));
+      // Log
+      $logProvider.debugEnabled(true) // put false to disable logs in production
 
-const app = new Vue({
-    el: 'body'
-});
+      // Locale: https://material.angularjs.org/latest/api/service/$mdDateLocaleProvider
+      $mdDateLocaleProvider.formatDate = function (date) {
+        return date ? moment(date).format('DD/MM/YYYY') : ''
+      }
+    }
+  ])
+
+services(sinbaApp, document.documentElement.lang)
+controllers(sinbaApp)
+directives(sinbaApp)

@@ -152,5 +152,5 @@ return [
     'private' => 'Private',
     'public' => 'Public',
     'restricted' => 'Restricted',
-    'clickSearch' => "Click Search to Retrieve the Data"
+    'clickSearch' => 'Click Search to Retrieve the Data'
 ];
