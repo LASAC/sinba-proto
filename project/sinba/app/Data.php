@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Log;
+
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 
@@ -52,5 +54,15 @@ class Data extends Model
             'restricted' => trans('strings.restricted'),
             'private' => trans('strings.private'),
         ];
+    }
+
+    public function fromDate(\DateTime $minDate) {
+        Log::debug('DataModel@fromDate($minDate): ' . $minDate->format('d/m/Y H:i:s'));
+        return $this->betweenDates($minDate, new \DateTime());
+    }
+
+    public function betweenDates(\DateTime $minDate, \DateTime $maxDate) {
+        Log::debug('DataModel@betweenDates($minDate, $maxDate): ' . $minDate->format('d/m/Y H:i:s') . ' - ' . $maxDate->format('d/m/Y H:i:s'));
+        return $this->whereBetween('collected_at', [$minDate, $maxDate])->get();
     }
 }
