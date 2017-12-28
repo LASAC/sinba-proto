@@ -1,0 +1,14 @@
+.register {
+  background-color: lightblue;
+}
+
+.register .appBar {
+  background-color: gray;
+}
+
+.register main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
