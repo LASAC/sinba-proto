@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Register from './pages/Register'
+import strings from './localization'
+
+strings.setLanguage('pt')
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">SINBA</h1>
-        </header>
-      </div>
-    );
+      <Register />
+    )
   }
 }
 
-export default App;
+export default App
