@@ -1,12 +1,9 @@
-/* eslint-disable no-console */
 import React from 'react'
 import strings from '../../localization'
 import { AppBar } from 'react-toolbox/lib/app_bar'
 import { Button } from 'react-toolbox/lib/button'
 import { IconButton } from 'react-toolbox/lib/button'
-import theme from './theme.css'
-
-console.log('theme:', theme)
+import styles from './styles.css'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -38,14 +35,14 @@ const ButtonsTest = () => (
 )
 
 const Register = () =>
-  <section>
-    <AppBar />
+  <div className={styles.register}>
+    <AppBar className={styles.appBar} />
     <header>
       <h1>{strings.registerTitle}</h1>
     </header>
     <main>
       <ButtonsTest />
     </main>
-  </section>
+  </div>
 
 export default Register

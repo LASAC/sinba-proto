@@ -32,7 +32,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "deploy": "rsync -avzH --delete build/* ../sinba/public",
+    "deploy": "yarn build; rsync -avzH --delete build/* ../sinba/public",
     "lint": "eslint .",
     "start": "node scripts/start.js",
     "test": "node scripts/test.js --env=jsdom",
@@ -48,6 +48,9 @@
     "babel-preset-react-app": "^3.1.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "6.26.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
     "eslint": "3.19.0",
     "eslint-config-react-app": "^1.0.5",
     "eslint-loader": "1.8.0",
@@ -55,14 +58,15 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.1.0",
-    "jest": "20.0.4"
+    "jest": "^22.0.4"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/prepare.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
