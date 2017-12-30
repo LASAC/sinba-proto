@@ -3,7 +3,7 @@ import strings from '../../localization'
 import { AppBar } from 'react-toolbox/lib/app_bar'
 import { Button } from 'react-toolbox/lib/button'
 import { IconButton } from 'react-toolbox/lib/button'
-import styles from './styles.css'
+import styles from './theme.css'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
