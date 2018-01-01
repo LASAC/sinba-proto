@@ -2,16 +2,11 @@ import pt from './pt'
 export default {
   ...pt,
   documentation: 'Documentation',
+  forgotYourPassword: 'Forgot your password?',
   landingPage: 'Landing Page',
+  password: 'Password',
   register: 'Register',
   registerTitle: 'Register Request',
   signIn: 'Sign In',
+  stayConnected: 'Stay Connected'
 }
-
-/*export default {
-  documentation: 'Documentação',
-  landingPage: 'Página Inicial',
-  register: 'Registar',
-  registerTitle: 'Solicitação de Cadastro',
-  signIn: 'Entrar'
-}*/

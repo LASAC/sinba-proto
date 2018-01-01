@@ -10,6 +10,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getClientEnvironment = require('./env')
 const paths = require('./paths')
+const cssnext = require('postcss-cssnext')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -189,6 +190,33 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              {
+                loader: require.resolve('css-loader'),
+                query: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 2,
+                  localIdentName: '[name]--[local]--[hash:base64:8]'
+                }
+              },
+              'sass-loader',
+              {
+                loader: require.resolve('sass-loader'),
+                options: {
+                  data: '@import "' + path.resolve(__dirname, 'theme/_theme.scss') + '";',
+                  plugins() {
+                    return [
+                      cssnext
+                    ]
+                  }
+                }
+              }
+            ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

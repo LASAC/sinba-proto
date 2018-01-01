@@ -29,6 +29,9 @@
     "no-cond-assign": [
       "error"
     ],
+    "no-console": [
+      "warn"
+    ],
     "no-control-regex": [
       "error"
     ],

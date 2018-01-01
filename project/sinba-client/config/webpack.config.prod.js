@@ -10,6 +10,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const paths = require('./paths')
+const cssnext = require('postcss-cssnext')
 const getClientEnvironment = require('./env')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -212,6 +213,33 @@ module.exports = {
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          {
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              {
+                loader: require.resolve('css-loader'),
+                query: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 2,
+                  localIdentName: '[name]--[local]--[hash:base64:8]'
+                }
+              },
+              'sass-loader',
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  data: '@import "' + path.resolve(__dirname, 'theme/_theme.scss') + '";',
+                  plugins() {
+                    return [
+                      cssnext
+                    ]
+                  }
+                }
+              }
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

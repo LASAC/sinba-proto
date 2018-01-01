@@ -1,0 +1,84 @@
+:root {
+  /* background colors: */
+  --bg-dark-blue: #2A3F54;
+  --bg-lightest-gray: rgb(247, 247, 247);
+  --bg-light-gray: rgb(237, 237, 237);
+
+  /* font colors: */
+  --main-color: #636b6f;
+  --color-primary: #337ab7;
+
+  /* font family */
+  --main-font-family: 'Raleway', sans-serif;
+}
+
+$button-primary-color: #337ab7;
+
+
+.login {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    background-color: var(--bg-light-gray);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  fieldset {
+    background-color: white;
+    border: none;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between
+  }
+  
+  .actions .primary {
+    color: #fff;
+    // background-color: #337ab7;
+    // border-color: #2e6da4;
+    font-family: var(--main-font-family);
+  }
+  
+  /* Input Fields */
+  
+  fieldset input {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
+}
+
+/* Checkbox Component
+
+.field {
+  font-size: 12px;
+
+  .check {
+    border-color: var(--main-color);
+  }
+  
+  .checked {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+  }
+  
+  .text {
+    color: var(--main-color);
+    font-family: var(--main-font-family);
+  }
+}
+ */
+/* Link Component */
+
+.link {
+  // color: #2e6da4;
+  font-family: var(--main-font-family);
+  font-size: 12px;
+}
+
+/* @media screen and (min-width: 501px) /* Tablet and Larger * / {
+  .login {
+    padding: 250px;
+  }
+} */

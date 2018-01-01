@@ -13,7 +13,6 @@ const App = () => (
   <Router>
     <Fragment>
       <Route exact path='/' component={Landing} />
-      <Route exact path='/login' component={Login} />
       <Route exact path='/register' component={Register} />
     </Fragment>
   </Router>
