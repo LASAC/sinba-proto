@@ -80,6 +80,9 @@
   "globals": {
     "afterEach": true,
     "beforeEach": true,
+    "context": true,
+    "cy": true,
+    "Cypress": true,
     "describe": true,
     "expect": true,
     "Promise": true,

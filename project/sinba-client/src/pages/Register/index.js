@@ -12,7 +12,10 @@ class Register extends React.Component {
           <h1>{strings.registerTitle}</h1>
         </header>
         <main>
-          <div>Hello</div>
+          <form>
+            <input name='name' id='name' />
+            <input name='lastName' id='lastName' />
+          </form>
         </main>
       </div>
     )
