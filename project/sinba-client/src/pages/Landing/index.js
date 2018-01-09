@@ -10,7 +10,7 @@ export default class extends React.Component {
     super(props)
 
     this.state = {
-      loginDialogActive: true
+      loginDialogActive: false
     }
 
     this.renderDialog = this.renderDialog.bind(this)

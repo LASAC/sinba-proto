@@ -1,7 +1,19 @@
+# front-end dependencies
 /node_modules
+
+# public files
 /public/storage
+
+# back-end dependencies
 /vendor
+
+# IDE settings
 /.idea
+/.vscode
+
+# Dev environment
 Homestead.json
 Homestead.yaml
+
+# Application Environment
 .env

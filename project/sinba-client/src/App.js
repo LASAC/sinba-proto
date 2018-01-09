@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import strings from './localization'
 import {
   Landing,
-  Login,
   Register
 } from './pages'
 
