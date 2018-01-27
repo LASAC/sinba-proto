@@ -696,27 +696,27 @@ describe('Kitchen Sink', function () {
         // Pass a function to should that can have any number
         // of explicit assertions within it.
         cy.get('.assertions-p').find('p')
-        .should(function ($p) {
+          .should(function ($p) {
           // return an array of texts from all of the p's
-          let texts = $p.map(function (i, el) {
+            let texts = $p.map(function (i, el) {
             // https://on.cypress.io/$
-            return Cypress.$(el).text()
+              return Cypress.$(el).text()
+            })
+
+            // jquery map returns jquery object
+            // and .get() convert this to simple array
+            texts = texts.get()
+
+            // array should have length of 3
+            expect(texts).to.have.length(3)
+
+            // set this specific subject
+            expect(texts).to.deep.eq([
+              'Some text from first p',
+              'More text from second p',
+              'And even more text from third p',
+            ])
           })
-
-          // jquery map returns jquery object
-          // and .get() convert this to simple array
-          texts = texts.get()
-
-          // array should have length of 3
-          expect(texts).to.have.length(3)
-
-          // set this specific subject
-          expect(texts).to.deep.eq([
-            'Some text from first p',
-            'More text from second p',
-            'And even more text from third p',
-          ])
-        })
       })
     })
   })
@@ -1330,7 +1330,7 @@ describe('Kitchen Sink', function () {
             $div.append(img)
 
             cy.get('.utility-blob img').click()
-            .should('have.attr', 'src', dataUrl)
+              .should('have.attr', 'src', dataUrl)
           })
       })
     })

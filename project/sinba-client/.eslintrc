@@ -1,9 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "eslint:recommended",
-    "react-app"
-  ],
+  "extends": ["eslint:recommended", "react-app"],
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module"
@@ -19,56 +16,21 @@
         "SwitchCase": 1
       }
     ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "no-compare-neg-zero": [
-      "error"
-    ],
-    "no-cond-assign": [
-      "error"
-    ],
-    "no-console": [
-      "warn"
-    ],
-    "no-control-regex": [
-      "error"
-    ],
-    "no-debugger": [
-      "error"
-    ],
-    "no-dupe-args": [
-      "error"
-    ],
-    "no-dupe-keys": [
-      "error"
-    ],
-    "no-duplicate-case": [
-      "error"
-    ],
-    "no-empty": [
-      "error"
-    ],
-    "no-empty-character-class": [
-      "error"
-    ],
-    "no-ex-assign": [
-      "error"
-    ],
-    "no-extra-boolean-cast": [
-      "error"
-    ],
-    "no-mixed-spaces-and-tabs": [
-      "error"
-    ],
-    "no-unneeded-ternary": [
-      "error"
-    ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
+    "semi": ["error", "never"],
+    "no-compare-neg-zero": ["error"],
+    "no-cond-assign": ["error"],
+    "no-control-regex": ["error"],
+    "no-debugger": ["error"],
+    "no-dupe-args": ["error"],
+    "no-dupe-keys": ["error"],
+    "no-duplicate-case": ["error"],
+    "no-empty": ["error"],
+    "no-empty-character-class": ["error"],
+    "no-ex-assign": ["error"],
+    "no-extra-boolean-cast": ["error"],
+    "no-mixed-spaces-and-tabs": ["error"],
+    "no-unneeded-ternary": ["error"],
+    "object-curly-spacing": ["error", "always"],
     "quotes": [
       "error",
       "single",

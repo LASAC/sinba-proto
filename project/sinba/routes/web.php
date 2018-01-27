@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,6 @@
 */
 
 Route::get('/{pathToFile?}', function ($pathToFile = 'index.html') {
-    \Illuminate\Support\Facades\Log::debug('pathToFile:[' . $pathToFile . ']' );
+    Log::debug('pathToFile:[' . $pathToFile . ']' );
     return response()->file("$pathToFile");
 });

@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "prettier.arrowParens": "always",
+  "prettier.eslintIntegration": true,
+  "prettier.ignorePath": ".eslintignore",
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": false,
+  "prettier.printWidth": 120
+}

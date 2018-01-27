@@ -52,55 +52,55 @@ measureFileSizesBeforeBuild(paths.appBuild)
     return build(previousFileSizes)
   })
   .then(
-  ({ stats, previousFileSizes, warnings }) => {
-    if (warnings.length) {
-      console.log(chalk.yellow('Compiled with warnings.\n'))
-      console.log(warnings.join('\n\n'))
-      console.log(
-        '\nSearch for the ' +
+    ({ stats, previousFileSizes, warnings }) => {
+      if (warnings.length) {
+        console.log(chalk.yellow('Compiled with warnings.\n'))
+        console.log(warnings.join('\n\n'))
+        console.log(
+          '\nSearch for the ' +
         chalk.underline(chalk.yellow('keywords')) +
         ' to learn more about each warning.'
-      )
-      console.log(
-        'To ignore, add ' +
+        )
+        console.log(
+          'To ignore, add ' +
         chalk.cyan('// eslint-disable-next-line') +
         ' to the line before.\n'
+        )
+      } else {
+        console.log(chalk.green('Compiled successfully.\n'))
+      }
+
+      console.log('File sizes after gzip:\n')
+      printFileSizesAfterBuild(
+        stats,
+        previousFileSizes,
+        paths.appBuild,
+        WARN_AFTER_BUNDLE_GZIP_SIZE,
+        WARN_AFTER_CHUNK_GZIP_SIZE
       )
-    } else {
-      console.log(chalk.green('Compiled successfully.\n'))
+      console.log()
+
+      const appPackage = require(paths.appPackageJson)
+      const publicUrl = paths.publicUrl
+      const publicPath = config.output.publicPath
+      const buildFolder = path.relative(process.cwd(), paths.appBuild)
+      printHostingInstructions(
+        appPackage,
+        publicUrl,
+        publicPath,
+        buildFolder,
+        useYarn
+      )
+    },
+    err => {
+      console.log(chalk.red('Failed to compile.\n'))
+      printBuildError(err)
+      process.exit(1)
     }
-
-    console.log('File sizes after gzip:\n')
-    printFileSizesAfterBuild(
-      stats,
-      previousFileSizes,
-      paths.appBuild,
-      WARN_AFTER_BUNDLE_GZIP_SIZE,
-      WARN_AFTER_CHUNK_GZIP_SIZE
-    )
-    console.log()
-
-    const appPackage = require(paths.appPackageJson)
-    const publicUrl = paths.publicUrl
-    const publicPath = config.output.publicPath
-    const buildFolder = path.relative(process.cwd(), paths.appBuild)
-    printHostingInstructions(
-      appPackage,
-      publicUrl,
-      publicPath,
-      buildFolder,
-      useYarn
-    )
-  },
-  err => {
-    console.log(chalk.red('Failed to compile.\n'))
-    printBuildError(err)
-    process.exit(1)
-  }
   )
 
 // Create the production build and print the deployment instructions.
-function build(previousFileSizes) {
+function build (previousFileSizes) {
   console.log('Creating an optimized production build...')
 
   let compiler = webpack(config)
@@ -141,7 +141,7 @@ function build(previousFileSizes) {
   })
 }
 
-function copyPublicFolder() {
+function copyPublicFolder () {
   fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
     filter: file => file !== paths.appHtml,

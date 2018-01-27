@@ -1,0 +1,28 @@
+.register {
+  background-color: white;
+  border: 1px solid rgb(217, 222, 228);
+  border-radius: 15px;
+  margin: 5% 0;
+
+  .header {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(217, 222, 228);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0 15px;
+    h1 {
+      color: rgb(115, 135, 156);
+      font-size: 16px;
+      font-weight: normal;
+      font-family: 'Raleway', 'Helvetica Neue', Arial, 'Droid Sans', sans-serif !important;
+      line-height: 1.5;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+  }
+}
