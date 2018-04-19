@@ -33,6 +33,7 @@ $button-primary-color: #337ab7;
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     .primary {
       color: #fff;

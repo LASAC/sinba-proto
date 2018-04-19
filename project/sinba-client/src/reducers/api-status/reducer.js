@@ -16,7 +16,7 @@ export const Status = {
   READY: 'READY',
   IN_PROGRESS: 'IN_PROGRESS',
   SUCCESS: 'SUCCESS',
-  ERROR: 'SUCCESS'
+  ERROR: 'ERROR'
 }
 
 /**
@@ -39,9 +39,12 @@ function updateApiStatus(state, payload) {
  */
 export function secureApiStatus(data = {}) {
   return {
+    // api info
     clientVersion: data.clientVersion || null,
     serverVersion: data.serverVersion || null,
+    // api call states
     getPing: data.getPing || Status.READY,
-    getVersion: data.getVersion || Status.READY
+    getVersion: data.getVersion || Status.READY,
+    postLogin: data.postLogin || Status.READY
   }
 }

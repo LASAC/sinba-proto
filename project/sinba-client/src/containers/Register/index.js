@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPing } from '../../reducers/api-status/actions'
 import { isBackspace, isDelete, validCPF, isNumeric } from '../../utils'
-import log from '../../services/logger'
-import strings from '../../localization'
+import { log, strings } from '../../services'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import AppBar from '../../components/AppBar'
 import { Button, Input, DatePicker } from './components'
@@ -50,7 +49,7 @@ class Register extends React.Component {
         <Row xs={12}>
           <Col xs={12}>
             {/* App Bar */}
-            <AppBar />
+            <AppBar hide={['/register']} />
           </Col>
         </Row>
         <Row xs={12}>
@@ -281,7 +280,11 @@ class Register extends React.Component {
     this.checkField(name)
   }
 
-  checkField = (name, callIsValid = (value) => value.length !== 0, errorMessage = strings.fieldRequired) => {
+  checkField = (
+    name,
+    callIsValid = (value) => value.length !== 0,
+    errorMessage = strings.fieldRequired
+  ) => {
     let { error } = this.state
     if (!callIsValid(this.state[name])) {
       error[name] = errorMessage
@@ -292,7 +295,11 @@ class Register extends React.Component {
   }
 
   checkCPF = () => {
-    return this.checkField('cpf', (value) => validCPF(value), strings.invalidCpf)
+    return this.checkField(
+      'cpf',
+      (value) => validCPF(value),
+      strings.invalidCpf
+    )
   }
 
   handleSubmit = async () => {
@@ -323,6 +330,7 @@ class Register extends React.Component {
 }
 
 const mapStateToProps = (state) => state
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getPing }, dispatch)
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ getPing }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register)

@@ -30,6 +30,52 @@ function updateAuth(state, payload) {
  */
 export function secureAuth(data = {}) {
   return {
-    token: data.token || null
+    authenticated: data.authenticated || false,
+    user: secureUser()
   }
+}
+
+function secureUser(data = {}) {
+  const {
+    id,
+    name,
+    lastName,
+    birthDate,
+    cpf,
+    rg,
+    address,
+    phone,
+    cellphone,
+    email,
+    occupation
+  } = data
+
+  if (
+    id &&
+    name &&
+    lastName &&
+    birthDate &&
+    cpf &&
+    rg &&
+    address &&
+    phone &&
+    cellphone &&
+    email &&
+    occupation
+  ) {
+    return {
+      id,
+      name,
+      lastName,
+      birthDate,
+      cpf,
+      rg,
+      address,
+      phone,
+      cellphone,
+      email,
+      occupation
+    }
+  }
+  return null
 }

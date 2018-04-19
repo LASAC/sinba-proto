@@ -1,0 +1,45 @@
+.topNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 13px;
+
+  a {
+    text-decoration: none;
+    color: $main-color !important;
+    font-family: $main-font-family;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  .button {
+    color: $main-color !important;
+    letter-spacing: 0.1rem;
+    font-family: $main-font-family;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    button {
+      margin: -7px 0;
+    }
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .topNav {
+    a {
+      padding: 0 25px;
+    }
+    .link {
+      button {
+        margin: -11px 0;
+      }
+    }
+    justify-content: flex-end;
+  }
+}

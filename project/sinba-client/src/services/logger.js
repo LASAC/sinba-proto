@@ -1,1 +1,1 @@
-export default (...args) => (process.env.NODE_ENV === 'development' ? console.log(...args) : undefined) // eslint-disable-line no-console
+export default (...args) => (process.env.REACT_APP_DEBUG ? console.log(...args) : undefined) // eslint-disable-line no-console

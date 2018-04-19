@@ -1,0 +1,11 @@
+{
+  "name": "sinba-api",
+  "version": "2.0.0",
+  "description": "SINBA - Sistema de Informações de Bacias Hidrográficas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marília Chinem Kameya, Geraldo Barbosa Landre",
+  "license": "MIT"
+}
