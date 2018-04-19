@@ -7,5 +7,5 @@
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
   "eslint.alwaysShowStatus": false,
-  "prettier.printWidth": 80
+  "prettier.printWidth": 120
 }

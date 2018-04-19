@@ -1,0 +1,11 @@
+{
+  "url": "localhost",
+  "port": 8080,
+  "bodyLimit": "100kb",
+  "corsHeaders": ["Link"],
+  "logFormat": "tiny",
+  "sessionCookieName": "sinba.sid",
+  "sessionType": "memory",
+  "sessionFolder": "dist/sessions",
+  "debug": true
+}

@@ -1,0 +1,40 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "semi": ["error", "never"],
+    "no-compare-neg-zero": ["error"],
+    "no-cond-assign": ["error"],
+    "no-control-regex": ["error"],
+    "no-debugger": ["error"],
+    "no-dupe-args": ["error"],
+    "no-dupe-keys": ["error"],
+    "no-duplicate-case": ["error"],
+    "no-empty": ["error"],
+    "no-empty-character-class": ["error"],
+    "no-ex-assign": ["error"],
+    "no-extra-boolean-cast": ["error"],
+    "no-mixed-spaces-and-tabs": ["error"],
+    "no-unneeded-ternary": ["error"],
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single", {"avoidEscape": true}],
+    "arrow-parens": ["error", "always"]
+  },
+  "globals": {
+    "afterEach": true,
+    "beforeEach": true,
+    "describe": true,
+    "expect": true,
+    "Promise": true,
+    "test": true,
+    "window": true
+  }
+}
