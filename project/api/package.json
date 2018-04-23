@@ -4,8 +4,10 @@
   "description": "SINBA - Sistema de Informações de Bacias Hidrográficas",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run build && npm run build:client",
+    "preinstall": "node scripts/preinstall.js",
+    "prestart": "npm run mongo:restart && npm run build && npm run build:client",
     "start": "nodemon -w src --exec \"babel-node src\"",
+    "poststart": "echo \"POST START!\" && npm run mongo:stop",
     "test": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watch",
     "lint": "eslint src/",
@@ -13,19 +15,28 @@
     "build": "babel src -s -D -d dist --ignore test.js && npm run api-docs:generate",
     "build:client": "echo \"TODO: BUILD CLIENT\"",
     "api-docs:generate": "swagger-jsdoc -d src/api-docs/swagger-definitions.js -o dist/api-docs/swagger.yaml",
-    "api-docs:preview": "swagger_swagger_fileName=dist/api-docs/swagger.yaml swagger project edit"
+    "api-docs:preview": "swagger_swagger_fileName=dist/api-docs/swagger.yaml swagger project edit",
+    "mongo:start": "mongod --dbpath ./db --fork --logpath ./logs/mongo.log",
+    "mongo:stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\" || :",
+    "mongo:restart": "npm run mongo:stop && npm run mongo:start",
+    "mongo:logs": "tail -f ./logs/mongo.log"
   },
   "author": "LASAC/UFMS, Marília Chinem Kameya, Geraldo Barbosa Landre",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "cpf": "^1.0.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "faker": "^4.1.0",
     "json": "^9.0.6",
     "memorystore": "^1.6.0",
     "moment": "^2.20.1",
+    "mongoose": "^4.0.0",
     "morgan": "^1.9.0",
+    "node-restful": "^0.2.6",
     "session-file-store": "^1.2.0",
     "swagger-jsdoc": "^1.9.7",
     "swagger-ui-express": "^3.0.4",
@@ -56,5 +67,6 @@
     "test",
     "lint"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }

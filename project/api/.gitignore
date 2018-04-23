@@ -4,6 +4,9 @@ dist
 # session files folder
 sessions
 
+# db folder
+db
+
 # Development Configuration
 src/config/config.local.json
 

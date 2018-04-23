@@ -7,5 +7,7 @@
   "sessionCookieName": "sinba.sid",
   "sessionType": "memory",
   "sessionFolder": "dist/sessions",
-  "debug": true
+  "debug": true,
+  "databaseUri": "mongodb://localhost/sinba",
+  "bcryptRounds": 12
 }

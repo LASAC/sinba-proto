@@ -8,6 +8,10 @@ import express from 'express'
 import applyMiddlewares from './middlewares'
 import logger from './services/logger'
 
+import db from './database'
+
+db.connect()
+
 const app = express()
 app.server = http.createServer(app)
 

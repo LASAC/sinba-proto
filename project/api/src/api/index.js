@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import version from './handlers/version'
+import userService from './services/user-service'
 // import {authentication} from './middlewares'
 
 export default () => {
@@ -24,6 +25,8 @@ export default () => {
     const { body, status } = version({ req })
     res.status(status).json(body)
   })
+
+  userService.register(api, '/users')
 
   return api
 }
