@@ -3,10 +3,8 @@ import session from 'express-session'
 import createFileStore from 'session-file-store'
 import { isDev } from '../../helpers'
 import sessionData from './session-data'
-import logger from '../../services/logger'
-import config from '../../config'
 
-export default ({ app }) => {
+export default ({ app, config, logger }) => {
   return sessionSetup()
 
   function sessionSetup() {
@@ -14,7 +12,7 @@ export default ({ app }) => {
     const store = getSessionStore(logger)
 
     app.use(getSession(store))
-    app.use(sessionData)
+    app.use(sessionData(logger, config))
   }
 
   function getSession(store) {

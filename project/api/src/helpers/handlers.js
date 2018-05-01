@@ -1,10 +1,36 @@
 import { isDev } from './dev'
-import logger from '../services/logger'
 
-export const handleError = (err, status = 400) => {
-  const detailedError = parseError(err, status)
+export const DEFAULT_SUCCESS_STATUS = 200
+export const DEFAULT_ERROR_STATUS = 400
+
+//
+// Note about the DEFAULT_ERROR_CODE:
+//
+// Currently, 400 is the default code
+// being sent inside the error object
+// when no code is passed.
+//
+// Maybe we should change this to
+// something more meaningful, such as
+// 'UnrecognizedError'. However, client
+// implementation needs to be carefully
+// inspected before doing such a change.
+//
+// In one way or another, The concepts
+// of code (error code) and status
+// (http status code) are different.
+//
+// That's why we have two different
+// constants with the same value here.
+//
+export const DEFAULT_ERROR_CODE = 'sinba/Unknown'
+export const DEFAULT_ERROR_MESSAGE = 'Bad request'
+
+export const handleError = ({ status, err, req }) => {
+  status = status || DEFAULT_ERROR_STATUS
+  const detailedError = parseError(err)
   const { code, message } = detailedError
-  logger.debug('handleError > detailedError:', detailedError)
+  req.logger.debug('[handler helper] > handleError > detailedError:', detailedError)
   return {
     status,
     body: {
@@ -13,23 +39,30 @@ export const handleError = (err, status = 400) => {
   }
 }
 
-export const handleSuccess = (body, req) => {
-  const { sessionData } = req
-  logger.debug('[handler helper] handleSuccess > body:', body)
+export const handleSuccess = ({ status, body, req }) => {
+  status = status || DEFAULT_SUCCESS_STATUS
+
+  const { sessionData, logger } = req
   const { user } = body
+
+  logger.debug('handleSuccess > user:', user)
 
   // first, update user in the session
   if (user) {
     sessionData.set('user', user)
   }
 
+  logger.debug('handleSuccess > session data:', sessionData.get())
+
   // then return the response data
-  return { status: 200, body }
+  return { status, body }
 }
 
-export const parseError = (err, status) => {
-  // TODO
-  logger.debug('parseError (TODOO) > err:', err)
-  logger.debug('parseError (TODOO) > status:', status)
-  return Object.assign({}, err, { code: status })
+export const parseError = (err) => {
+  const { code, message } = err
+  return {
+    code,
+    message,
+    details: err.stack
+  }
 }

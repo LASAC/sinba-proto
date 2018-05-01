@@ -1,0 +1,16 @@
+{
+  "email": "Carlos.Macedo@bol.com.br",
+  "password": "$2b$12$cE24TFNPGH2cMwymGwXgEe4wI906/n9bphHMBOrLXLObss3aoyYiO",
+  "firstName": "Núbia",
+  "lastName": "Carvalho",
+  "birthDate": "2018-02-08T20:03:27.352Z",
+  "cpf": "37198921159",
+  "rg": "227513030990291",
+  "address": "799 Dalila Rua",
+  "phone": "35622362633",
+  "occupation": "Direct Assurance Architect",
+  "institution": "Costa, Reis and Souza",
+  "justification":
+    "Ratione rerum nulla saepe omnis esse maiores. Recusandae enim dolore. Officia corrupti provident. Doloribus magnam sint sint blanditiis minus qui esse.",
+  "isAdmin": false
+}

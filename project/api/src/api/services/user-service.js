@@ -1,7 +1,18 @@
-import { User } from '../models'
-// import logger from '../../services/logger'
+import User from '../models/user'
 
-User.methods(['get', 'post', 'put', 'delete'])
-// logger.debug('services/user-service > User Service:', User)
+export default () => {
+  User.methods(['get', 'post', 'put', 'delete'])
+  User.updateOptions({ new: true, runValidators: true })
 
-export default User
+  User.route('count', (req, res) => {
+    User.count((err, value) => {
+      if (err) {
+        res.status(500).json({ errors: [err] })
+      } else {
+        res.json({ value })
+      }
+    })
+  })
+
+  return User
+}

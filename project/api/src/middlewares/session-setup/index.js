@@ -1,10 +1,8 @@
 import fileSessionSetup from './file-store'
 import memorySessionSetup from './memory-store'
 import { isTest } from '../../helpers'
-import config from '../../config'
-import logger from '../../services/logger'
 
-export default ({ app }) => {
+export default ({ app, config, logger }) => {
   // Use file session on non-local environments.
   if (config.sessionType === 'memory' || isTest()) {
     // 1) Test Environment (jest):

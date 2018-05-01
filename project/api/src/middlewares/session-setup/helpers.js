@@ -1,5 +1,3 @@
-import logger from '../../services/logger'
-
 class SessionDataHelper {
   constructor(session) {
     if (!session) {
@@ -13,11 +11,9 @@ class SessionDataHelper {
     }
 
     this.session = session
-    logger.debug('SessionDataHelper > constructor > this.session:', this.session)
   }
 
   get = (key = null) => {
-    logger.debug(`SessionDataHelper > get(key: ${key}) - this.session.data:`, this.session.data)
     if (!key) {
       return this.session.data
     }
@@ -26,17 +22,14 @@ class SessionDataHelper {
 
   set = (key, value) => {
     this.session.data[key] = value
-    logger.debug(`SessionDataHelper > set(key: ${key}, value: ${value}) - this.session.data:`, this.session.data)
   }
 
   delete = (key) => {
     delete this.session.data[key]
-    logger.debug(`SessionDataHelper > delete(key: ${key}) - this.session.data:`, this.session.data)
   }
 
   clear = () => {
     this.session.data = {}
-    logger.debug('SessionDataHelper > clear() - this.session.data:', this.session.data)
   }
 }
 

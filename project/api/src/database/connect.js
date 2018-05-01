@@ -3,7 +3,9 @@ import config from '../config'
 import logger from '../services/logger'
 
 logger.debug('[DB] Setting up...')
+
 mongoose.Promise = Promise
+mongoose.Error.messages.general.required = "O campo '{PATH}' é obrigatório"
 
 export default () =>
   mongoose

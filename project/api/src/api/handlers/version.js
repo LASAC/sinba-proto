@@ -1,6 +1,5 @@
 import { version } from '../../../package.json'
 import config from '../../config'
-import logger from '../../services/logger'
 import { handleSuccess } from '../../helpers/handlers'
 
 export default ({ req }) => {
@@ -10,11 +9,12 @@ export default ({ req }) => {
     ...testSession({ req })
   }
 
-  return handleSuccess(body, req)
+  return handleSuccess({ body, req })
 }
 
 // manipulates session data for testing purposes
 const testSession = ({ req }) => {
+  const { logger } = req
   if (config.debug) {
     const { sessionData } = req
     let { hits, user } = sessionData.get()

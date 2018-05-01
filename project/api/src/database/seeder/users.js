@@ -11,12 +11,14 @@ function randomStringNumber(max, length) {
     .join('')
 }
 
-export function fakeUser(isAdmin = false) {
+export const DEFAULT_PASSWORD = '11111111'
+
+export function fakeUser(plainPassword = DEFAULT_PASSWORD, isAdmin = false) {
   const startDate = new Date()
   logger.debug('config.bcryptRounds:', config.bcryptRounds)
   logger.debug('bcrypt start: ', startDate)
 
-  const password = bcrypt.hashSync('11111111', config.bcryptRounds)
+  const password = bcrypt.hashSync(plainPassword, config.bcryptRounds)
 
   const endDate = new Date()
   logger.debug('bcrypt end: ', endDate)
@@ -26,7 +28,7 @@ export function fakeUser(isAdmin = false) {
 
   return {
     email: faker.internet.email(),
-    password, // : bcrypt.hashSync('11111111', 16),
+    password,
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     birthDate: faker.date.past(),
@@ -41,4 +43,4 @@ export function fakeUser(isAdmin = false) {
   }
 }
 
-logger.debug('fakeUser(true):', fakeUser(false))
+logger.debug('fakeUser():', fakeUser())

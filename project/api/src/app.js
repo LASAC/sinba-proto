@@ -7,7 +7,7 @@ import http from 'http'
 import express from 'express'
 import applyMiddlewares from './middlewares'
 import logger from './services/logger'
-
+import config from './config'
 import db from './database'
 
 db.connect()
@@ -15,7 +15,7 @@ db.connect()
 const app = express()
 app.server = http.createServer(app)
 
-applyMiddlewares({ app })
+applyMiddlewares({ app, config, logger })
 
 logger.debug('process.env.NODE_ENV:', process.env.NODE_ENV)
 

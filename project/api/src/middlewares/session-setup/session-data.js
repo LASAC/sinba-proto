@@ -1,7 +1,5 @@
 import createSessionDataHelper, { createSingleSessionDataHelper } from './helpers'
 import { isFrontEndDev } from '../../helpers'
-import logger from '../../services/logger'
-import config from '../../config'
 
 /**
  * Session Data Middleware
@@ -29,7 +27,7 @@ import config from '../../config'
  * @throws Error if `req.session` is not present. This would happen if this middleware is
  * used before the session middleware in the app's middleware chain.
  */
-export default (req, res, next) => {
+export default (logger, config) => (req, res, next) => {
   logger.debug('[session-data middleware]')
   if (!req.session) {
     throw Error('Session is not attached to the request object! Make sure session-setup middleware is run')

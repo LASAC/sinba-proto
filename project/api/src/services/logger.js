@@ -10,4 +10,13 @@ export const createLogger = (debugMode = false) => ({
   debug: (...args) => (debugMode ? console.log('\n\n\n\n\n\nDEBUG:', ...args, '\n\n') : undefined) // eslint-disable-line no-console
 })
 
+export const onlyVerbose = () => ({
+  info: () => undefined,
+  warn: () => undefined,
+  error: () => undefined,
+  debug: () => undefined,
+  verbose: (...args) => console.log('\n\n\n\n\n\nVERBOSE:', ...args, '\n\n') // eslint-disable-line no-console
+})
+
 export default createLogger(config.debug)
+// export default onlyVerbose(config.debug)

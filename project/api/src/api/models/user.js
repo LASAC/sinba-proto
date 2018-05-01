@@ -20,7 +20,7 @@ $validator = Validator::make($data, [
 */
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, required: true },
+  email: { type: String, required: [true, 'E-mail é obrigatório'] },
   password: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },

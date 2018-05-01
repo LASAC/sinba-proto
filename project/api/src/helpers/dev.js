@@ -8,6 +8,6 @@ const isDev = () => !process.env.NODE_ENV || process.env.NODE_ENV === 'developme
 
 const isTest = () => process.env.NODE_ENV === 'test'
 
-const isFrontEndDev = (config, req) => config.dev && req.get('origin') === config.dev.frontEndOrigin
+const isFrontEndDev = (config, req) => config.frontEndOrigin && req.get('origin') === config.frontEndOrigin
 
 module.exports = { isDev, isFrontEndDev, isTest }

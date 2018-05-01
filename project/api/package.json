@@ -7,6 +7,7 @@
     "preinstall": "node scripts/preinstall.js",
     "prestart": "npm run mongo:restart && npm run build && npm run build:client",
     "start": "nodemon -w src --exec \"babel-node src\"",
+    "start:production": "NODE_ENV=production nodemon -w src --exec \"babel-node src\"",
     "poststart": "echo \"POST START!\" && npm run mongo:stop",
     "test": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watch",
