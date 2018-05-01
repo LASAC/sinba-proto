@@ -4,7 +4,7 @@ import User from '../models/user'
 export default async ({ username, password }, logger) => {
   logger.debug('username:', username)
   // go to db and retrieve a user with this username
-  const user = await User.findOne({ email: username })
+  const user = await User.findOne({ email: username }).exec()
 
   logger.debug('user:', user)
   if (!user) {

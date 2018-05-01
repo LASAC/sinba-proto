@@ -11,7 +11,10 @@ class SessionDataHelper {
     }
 
     this.session = session
+    this.id = session.id
   }
+
+  getId = () => this.id
 
   get = (key = null) => {
     if (!key) {
@@ -41,4 +44,4 @@ const createSessionDataHelper = (session) => new SessionDataHelper(session)
 let data = {}
 
 export default createSessionDataHelper
-export const createSingleSessionDataHelper = () => createSessionDataHelper({ data })
+export const createSingleSessionDataHelper = () => createSessionDataHelper({ data, id: 1 })
