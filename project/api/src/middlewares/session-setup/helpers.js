@@ -28,7 +28,9 @@ class SessionDataHelper {
   }
 
   delete = (key) => {
-    delete this.session.data[key]
+    if (key && this.session.data[key] != null) {
+      delete this.session.data[key]
+    }
   }
 
   clear = () => {
