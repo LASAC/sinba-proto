@@ -17,6 +17,6 @@ app.server = http.createServer(app)
 
 applyMiddlewares({ app, config, logger })
 
-logger.debug('process.env.NODE_ENV:', process.env.NODE_ENV)
+logger.debug('process.env.NODE_ENV:', process.env.NODE_ENV || 'development')
 
 export default app

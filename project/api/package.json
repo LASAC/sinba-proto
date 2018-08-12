@@ -13,10 +13,8 @@
     "test:watch": "NODE_ENV=test jest --watch",
     "lint": "eslint src/",
     "lint-fix": "npm run lint -- --fix",
-    "build": "babel src -s -D -d dist --ignore test.js && npm run api-docs:generate",
+    "build": "babel src -s -D -d dist --ignore test.js",
     "build:client": "echo \"TODO: BUILD CLIENT\"",
-    "api-docs:generate": "swagger-jsdoc -d src/api-docs/swagger-definitions.js -o dist/api-docs/swagger.yaml",
-    "api-docs:preview": "swagger_swagger_fileName=dist/api-docs/swagger.yaml swagger project edit",
     "mongo:start": "mongod --dbpath ./db --fork --logpath ./logs/mongo.log",
     "mongo:stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\" || :",
     "mongo:restart": "npm run mongo:stop && npm run mongo:start",
@@ -38,10 +36,7 @@
     "mongoose": "^4.0.0",
     "morgan": "^1.9.0",
     "node-restful": "^0.2.6",
-    "session-file-store": "^1.2.0",
-    "swagger-jsdoc": "^1.9.7",
-    "swagger-ui-express": "^3.0.4",
-    "yamljs": "^0.3.0"
+    "session-file-store": "^1.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

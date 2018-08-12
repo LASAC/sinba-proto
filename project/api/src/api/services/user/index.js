@@ -1,10 +1,14 @@
-import User from '../models/user'
+import User from '../../models/user'
+import withAuthorization from './authorization'
 
 export default () => {
+
+  // Endpoints
   User.methods(['get', 'post', 'put', 'delete'])
+
   User.updateOptions({ new: true, runValidators: true })
 
-  User.route('count', (req, res) => {
+  User.route('count.get', (req, res) => {
     User.count((err, value) => {
       if (err) {
         res.status(500).json({ errors: [err] })
@@ -14,5 +18,5 @@ export default () => {
     })
   })
 
-  return User
+  return withAuthorization(User)
 }

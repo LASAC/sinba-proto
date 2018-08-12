@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import cpf from 'cpf'
 import config from '../../config'
 import logger from '../../services/logger'
+import { UserRole } from '../../api/models/user'
 
 function randomStringNumber(max, length) {
   return Array(length)
@@ -13,7 +14,7 @@ function randomStringNumber(max, length) {
 
 export const DEFAULT_PASSWORD = '11111111'
 
-export function fakeUser(plainPassword = DEFAULT_PASSWORD, isAdmin = false) {
+export function fakeUser(plainPassword = DEFAULT_PASSWORD, role = UserRole.INACTIVE) {
   const startDate = new Date()
   logger.debug('config.bcryptRounds:', config.bcryptRounds)
   logger.debug('bcrypt start: ', startDate)
@@ -39,7 +40,7 @@ export function fakeUser(plainPassword = DEFAULT_PASSWORD, isAdmin = false) {
     occupation: faker.name.jobTitle(),
     institution: faker.company.companyName(),
     justification: faker.lorem.paragraph(),
-    isAdmin
+    role
   }
 }
 

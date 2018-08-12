@@ -15,7 +15,7 @@
     "justification":
       "In veritatis aliquam exercitationem quia quis quae. Neque natus architecto exercitationem natus rerum libero laborum. Rerum qui aut quo.",
     "__v": 0,
-    "isAdmin": false
+    "role": "INACTIVE"
   },
   {
     "_id": "5ae4b9e947e52b0c94bba6e6",
@@ -33,7 +33,7 @@
     "justification":
       "Ratione rerum nulla saepe omnis esse maiores. Recusandae enim dolore. Officia corrupti provident. Doloribus magnam sint sint blanditiis minus qui esse.",
     "__v": 0,
-    "isAdmin": false
+    "role": "READER"
   },
   {
     "_id": "5ae4baa6ae806e0cbb73a945",
@@ -51,7 +51,7 @@
     "justification":
       "Ratione rerum nulla saepe omnis esse maiores. Recusandae enim dolore. Officia corrupti provident. Doloribus magnam sint sint blanditiis minus qui esse.",
     "__v": 0,
-    "isAdmin": true
+    "role": "ADMIN"
   },
   {
     "_id": "5ae4bac9ae806e0cbb73a946",
@@ -69,7 +69,7 @@
     "justification":
       "Et voluptatem fugit cupiditate sunt. Magnam quae accusantium ipsam qui. Voluptatem et sed amet temporibus sequi consequatur. Dolorem porro deserunt molestiae. Alias minima aut et aperiam omnis facilis. Inventore molestias sed eos velit.",
     "__v": 0,
-    "isAdmin": false
+    "role": "INACTIVE"
   },
   {
     "_id": "5ae4c4c7b0bdb41378cbcbea",
@@ -87,7 +87,7 @@
     "justification":
       "Quis qui commodi eum et. Consequatur inventore perferendis sequi. Sit amet est expedita molestiae iste excepturi dolor molestiae beatae. Quo non voluptas consectetur at. Aut eveniet nostrum corrupti rerum ullam nam et autem. Sapiente et quos excepturi.",
     "__v": 0,
-    "isAdmin": false
+    "role": "CONTRIBUTOR"
   },
   {
     "_id": "5ae4c5339eafa613c6c924de",
@@ -105,7 +105,7 @@
     "justification":
       "Nobis sint et magnam quidem. Aperiam asperiores non perferendis aliquam aut aliquam qui. Ut eaque velit. Est aut odio ex aliquid quod hic nisi et non. Earum unde et occaecati. Id illo consequatur ut minus corporis culpa illum beatae.",
     "__v": 0,
-    "isAdmin": false
+    "role": "INTERMEDIATE"
   },
   {
     "_id": "5ae4c5c0768b49142c472da9",
@@ -123,7 +123,7 @@
     "justification":
       "In recusandae sed qui nihil nobis non. Harum esse iste architecto. Aut dolor numquam atque dolor animi eum similique ad minima. Quia velit et soluta possimus ad ad accusamus et necessitatibus.",
     "__v": 0,
-    "isAdmin": false
+    "role": "INACTIVE"
   },
   {
     "_id": "5ae4c794c0af6815afcfa345",
@@ -141,6 +141,6 @@
     "justification":
       "Enim eligendi harum sequi omnis nostrum eum. Eum ut consequuntur iste sed consequatur voluptas officia doloremque optio. Dignissimos rerum voluptas aut quo autem.",
     "__v": 0,
-    "isAdmin": false
+    "role": "INACTIVE"
   }
 ]

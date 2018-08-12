@@ -1,17 +1,24 @@
 import { handleError } from '../../helpers/handlers'
+import User from '../models/user'
+import UnauthorizedError from '../errors/UnauthorizedError'
 
-export default () => (req, res, next) => {
+const NOT_LOGGED_IN = 'Not logged in'
+
+export default () => async (req, res, next) => {
   try {
     const { logger, sessionData } = req
-    const user = sessionData.get('user')
+    const _id = sessionData.get('userId')
+    const user = await User.findOne({ _id }).exec()
 
     if (!user) {
       throw new UnauthorizedError(NOT_LOGGED_IN)
     }
 
+    req.user = user
+
     logger.debug(
       '[authentication middleware]',
-      user ? `\n - user: ${user.firstName} ${user.lastName} - ${user.email}` : `\nuser: ${user}`,
+      req.user ? `\n - req.user: ${req.user.firstName} ${req.user.lastName} - ${req.user.email}` : `\nreq.user: ${req.user}`,
       '\n - Cookies:',
       req.cookies
     )
@@ -25,16 +32,5 @@ export default () => (req, res, next) => {
     })
     res.status(status).json(body)
     return
-  }
-}
-
-const NOT_LOGGED_IN = 'Not logged in'
-
-// UnauthorizedError
-class UnauthorizedError extends Error {
-  constructor(...args) {
-    super(...args)
-    this.code = 'authenticator/UnauthorizedError'
-    Error.captureStackTrace(this, UnauthorizedError)
   }
 }

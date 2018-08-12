@@ -1,5 +1,14 @@
 import restful, { mongoose } from 'node-restful'
 
+// User Roles:
+export const UserRole = {
+  ADMIN: 'ADMIN',
+  SUPPORT: 'SUPPORT',
+  CONTRIBUTOR: 'CONTRIBUTOR',
+  READER: 'READER',
+  INACTIVE: 'INACTIVE'
+}
+
 /*
 // Validation:
 $validator = Validator::make($data, [
@@ -20,7 +29,7 @@ $validator = Validator::make($data, [
 */
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, required: [true, 'E-mail é obrigatório'] },
+  email: { type: String, required: [true, 'E-mail é obrigatório'], unique: true },
   password: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -32,7 +41,14 @@ const userSchema = new mongoose.Schema({
   occupation: { type: String, required: true },
   institution: { type: String, required: true },
   justification: { type: String, required: true },
-  isAdmin: { type: Boolean, default: true }
+  role: { 
+    type: String, 
+    enum: {
+      values: Object.keys(UserRole),
+      message: '`{VALUE}` is not a valid value for path `{PATH}`.'
+    }, 
+    default: UserRole.INACTIVE
+  }
 })
 
 export default restful.model('user', userSchema)

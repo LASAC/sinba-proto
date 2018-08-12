@@ -48,8 +48,8 @@ export const handleSuccess = ({ status, body, req }) => {
   logger.debug('handleSuccess > user:', user)
 
   // first, update user in the session
-  if (user) {
-    sessionData.set('user', user)
+  if (user && user._id) {
+    sessionData.set('userId', user._id)
   }
 
   logger.debug('handleSuccess > session data:', sessionData.get())

@@ -4,7 +4,7 @@ import { isFrontEndDev } from '../../helpers/dev'
 export default ({ config, req }) => {
   const { sessionData, logger } = req
   logger.debug('[logout] > signing out...')
-  sessionData.clear('user')
+  sessionData.clear('userId')
   logger.debug('[logout] > session:', sessionData.get())
 
   // delete all sessions if it's front-end dev
