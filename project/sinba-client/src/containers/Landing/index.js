@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Button } from 'react-toolbox/lib/button'
+// import { Button } from 'react-toolbox/lib/button'
 import { getVersion } from '../../reducers/api-status/actions'
 import { login } from '../../reducers/auth/actions'
 import Dialog from 'react-toolbox/lib/dialog'
@@ -12,15 +12,8 @@ import theme from './theme.scss'
 import AppBar from '../../components/AppBar'
 
 class Landing extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      loginDialogActive: false
-    }
-
-    this.renderDialog = this.renderDialog.bind(this)
-    this.toggleLogin = this.toggleLogin.bind(this)
+  state = {
+    loginDialogActive: false
   }
 
   render() {
@@ -37,9 +30,7 @@ class Landing extends React.Component {
         </header>
         <main className={theme.main}>
           <nav>
-            <a href="https://github.com/LASAC/SINBA/wiki">
-              {strings.documentation}
-            </a>
+            <a href="https://github.com/LASAC/SINBA/wiki">{strings.documentation}</a>
             <a href="http://lasac.ledes.net">LASAC</a>
             <a href="http://www.ledes.net">LEDES</a>
             <a href="https://ufms.br">UFMS</a>
@@ -86,6 +77,8 @@ const mapStateToProps = (state) => {
   const { clientVersion, serverVersion } = state.apiStatus
   return { clientVersion, serverVersion }
 }
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ getVersion, login }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(Landing)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getVersion, login }, dispatch)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Landing)

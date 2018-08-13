@@ -8,11 +8,7 @@ import theme from './theme.scss'
 const renderButtons = (buttons) =>
   buttons.map((button, index) => (
     <Link key={index} to={button.to}>
-      <Button
-        className={theme.button}
-        label={button.label}
-        onClick={button.onClick}
-      />
+      <Button className={theme.button} label={button.label} onClick={button.onClick} />
     </Link>
   ))
 
@@ -42,7 +38,8 @@ AppBar.defaultProps = {
 const buttonsPropTypes = PropTypes.arrayOf(
   PropTypes.shape({
     label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func,
+    to: PropTypes.string.isRequired
   })
 )
 

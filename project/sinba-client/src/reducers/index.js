@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import apiStatus, { secureApiStatus } from './api-status/reducer'
-import auth, { secureAuth } from './auth/reducer'
+import apiStatus from './api-status/reducer'
+import auth from './auth/reducer'
 import log from '../services/logger'
 
 log(process.env)
@@ -12,8 +12,3 @@ export default combineReducers({
   apiStatus,
   auth
 })
-
-export const initialState = {
-  apiStatus: secureApiStatus({ clientVersion: process.env.REACT_APP_VERSION }),
-  auth: secureAuth()
-}

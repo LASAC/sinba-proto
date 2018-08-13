@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { login } from '../../reducers/auth/actions'
 import { Button } from '../Button'
@@ -10,18 +11,22 @@ import strings from '../../services/localization'
 import theme from './theme.scss'
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props)
-    this.usernameInput = null
-    this.passwordInput = null
-    this.state = {
-      username: '',
-      password: '',
-      remember: false
-    }
+  state = {
+    username: '',
+    password: '',
+    remember: false
   }
+  usernameInput = null
+  passwordInput = null
+
   render() {
+    const { authenticated } = this.props
     const { username, password, remember } = this.state
+
+    if (authenticated) {
+      return <Redirect to="/home" />
+    }
+
     return (
       <div className={theme.login}>
         <fieldset>
@@ -43,13 +48,9 @@ class Login extends React.Component {
             onChange={this.changePassword}
             theme={theme}
           />
-          <Checkbox
-            checked={remember}
-            label={strings.stayConnected}
-            onChange={this.toggleRemember}
-          />
+          <Checkbox checked={remember} label={strings.stayConnected} onChange={this.toggleRemember} />
           <div className={theme.actions}>
-            <Button label={strings.signIn} onClick={this.onSubmit} />
+            <Button primary label={strings.signIn} onClick={this.onSubmit} />
             <Link href="#" label={strings.forgotYourPassword} theme={theme} />
           </div>
         </fieldset>
@@ -71,8 +72,13 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { authenticated } = state.auth
   const { clientVersion, serverVersion } = state.apiStatus
-  return { clientVersion, serverVersion }
+  return { clientVersion, serverVersion, authenticated }
 }
 const mapDispatchToProps = (dispatch) => bindActionCreators({ login }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)

@@ -192,31 +192,31 @@ class Register extends React.Component {
                   error={this.state.error.email}
                   onChange={this.handleChange.bind(this, 'email')}
                   onBlur={this.handleBlur.bind(this, 'email')}
-                  maxLength={16}
+                  maxLength={255}
                 />
                 <Input
                   required
                   type="password"
                   label={strings.password}
                   name="password"
-                  pattern=".{6,}"
+                  pattern=".{6,255}"
                   value={this.state.password}
                   error={this.state.error.password}
                   onChange={this.handleChange.bind(this, 'password')}
                   onBlur={this.handleBlur.bind(this, 'password')}
-                  maxLength={16}
+                  maxLength={255}
                 />
                 <Input
                   required
                   type="password"
                   label={strings.passwordConfirm}
                   name="passwordConfirm"
-                  pattern=".{6,}"
+                  pattern=".{6,255}"
                   value={this.state.passwordConfirm}
                   error={this.state.error.passwordConfirm}
                   onChange={this.handleChange.bind(this, 'passwordConfirm')}
                   onBlur={this.handleBlur.bind(this, 'passwordConfirm')}
-                  maxLength={16}
+                  maxLength={255}
                 />
                 <Button onClick={this.handleSubmit}>{strings.submit}</Button>
               </div>
@@ -324,6 +324,11 @@ class Register extends React.Component {
       }
     }
 
+    if (this.state.password !== this.state.passwordConfirm) {
+      valid = false
+      error.passwordConfirm = 'As senhas não coincidem'
+    }
+
     this.setState({ error })
     return valid
   }
@@ -333,4 +338,7 @@ const mapStateToProps = (state) => state
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ getPing }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Register)

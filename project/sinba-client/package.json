@@ -42,7 +42,7 @@
     "build": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') node scripts/build.js",
     "deploy": "yarn build && rsync -avzH --delete build/* ../sinba/public && mv ../sinba/public/index.html ../sinba/public/index.template.html",
     "lint": "eslint .",
-    "start": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') node scripts/start.js",
+    "start": "PORT=3001 REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') node scripts/start.js",
     "test": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') node scripts/test.js --env=jsdom",
     "cy": "yarn cypress open",
     "toolbox": "react-toolbox-themr"
@@ -107,5 +107,5 @@
     },
     "output": "src/assets/react-toolbox"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8081"
 }

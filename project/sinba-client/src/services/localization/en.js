@@ -8,6 +8,7 @@ export default {
   register: 'Register',
   registerTitle: 'Register Request',
   signIn: 'Sign In',
+  signOut: 'Sign Out',
   stayConnected: 'Stay Connected',
 
   // Registro
@@ -23,5 +24,8 @@ export default {
   justification: 'Justification',
   passwordConfirm: 'Confirm Password',
   fieldRequired: 'Field Required',
-  invalidCpf: 'Invalid CPF'
+  invalidCpf: 'Invalid CPF',
+
+  // Página Inicial
+  home: 'Home'
 }

@@ -6,6 +6,7 @@ export default {
   register: 'Registrar',
   registerTitle: 'Solicitação de Cadastro',
   signIn: 'Entrar',
+  signOut: 'Sair',
   stayConnected: 'Permanecer Conectado',
 
   // Registro
@@ -21,5 +22,8 @@ export default {
   justification: 'Justificativa',
   passwordConfirm: 'Confirmar Senha',
   fieldRequired: 'Campo Obrigatório',
-  invalidCpf: 'CPF Inválido'
+  invalidCpf: 'CPF Inválido',
+
+  // Página Inicial
+  home: 'Página Inicial'
 }
