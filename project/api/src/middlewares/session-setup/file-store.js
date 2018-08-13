@@ -1,7 +1,6 @@
 import path from 'path'
 import session from 'express-session'
 import createFileStore from 'session-file-store'
-import { isDev } from '../../helpers'
 import sessionData from './session-data'
 
 export default ({ app, config, logger }) => {
@@ -23,7 +22,7 @@ export default ({ app, config, logger }) => {
       resave: true,
       saveUninitialized: true,
       cookie: {
-        secure: !isDev(),
+        secure: false,
         domain: config.url,
         httpOnly: true,
         sameSite: true

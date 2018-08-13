@@ -29,7 +29,7 @@ export default ({ app, config, logger }) => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        secure: !isDev(),
+        secure: false,
         domain: config.url,
         httpOnly: true,
         sameSite: true

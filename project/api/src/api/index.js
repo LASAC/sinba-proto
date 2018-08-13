@@ -3,7 +3,7 @@ import version from './handlers/version'
 import login from './handlers/login'
 import logout from './handlers/logout'
 import register from './handlers/register'
-import { authentication } from './middlewares'
+import { authentication, encryptPassword } from './middlewares'
 import userService from './services/user'
 
 export default ({ config }) => {
@@ -18,7 +18,7 @@ export default ({ config }) => {
 
   api.post('/login', jsonHandler(login))
 
-  api.post('/register', jsonHandler(register))
+  api.post('/register', encryptPassword({ config }), jsonHandler(register))
 
   //
   // Authenticated Routes

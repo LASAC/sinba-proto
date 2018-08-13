@@ -1,6 +1,6 @@
 {
   "name": "sinba-api",
-  "version": "2.0.0-alpha-1",
+  "version": "2.0.0-alpha-2",
   "description": "SINBA - Sistema de Informações de Bacias Hidrográficas",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "test:watch": "NODE_ENV=test jest --watch",
     "lint": "eslint src/",
     "lint-fix": "npm run lint -- --fix",
-    "build": "babel src -s -D -d dist --ignore test.js",
+    "build": "rm -r dist/* && babel src -s -D -d dist --ignore test.js && (rm scripts/builds/sinba.zip; zip -r scripts/builds/sinba.zip dist scripts/*.js package.json package-lock.json --exclude *.local.json)",
     "build:client": "echo \"TODO: BUILD CLIENT\"",
     "mongo:start": "mongod --dbpath ./db --fork --logpath ./logs/mongo.log",
     "mongo:stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\" || :",

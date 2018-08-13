@@ -25,10 +25,29 @@ const testSession = ({ req }) => {
     }
     hits++
     sessionData.set('hits', hits)
+    const {
+      url,
+      port,
+      bodyLimit,
+      corsHeaders,
+      logFormat,
+      sessionCookieName,
+      sessionType,
+      sessionFolder
+    } = config
     return {
       hits,
       user,
-      config
+      config: {
+        url,
+        port,
+        bodyLimit,
+        corsHeaders,
+        logFormat,
+        sessionCookieName,
+        sessionType,
+        sessionFolder
+      }
     }
   }
   return {}
